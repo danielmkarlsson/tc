@@ -1,0 +1,80 @@
+d1 
+$ (894<~)
+$ sometimesBy 0.2 (slow 4) 
+$ sometimesBy 0.4 (striate' (wchoose[1..8] [1..8]) (1/100))
+$ sometimesBy 0.2 (spread _slow (replicate 5 1)) 
+$ slow (discretise (1/2) $ choose [1,1.1..1.4]) 
+$ fast (discretise (1/3) $ choose [2,2.1..5]) 
+$ s (randcat["vin","amencutup","foo","jus","txz","dx7"])
+# n (slow 0.1 $ wchoose [9,12,21,15,27,31,11,38][0..999])
+# cut (wchoose[1,2][0,1])
+# up (discretise (1/4) $ slow 0.11 $ wchoose[1,2,3,4,5][-9,-6,-3,0,3])
+# pan (slow 0.12 $ rand)
+# rel (slow 8 $ scale 0.1 0.8 $ sine)
+# gain (slow 0.13 $ scale 0.5 1.25 $ rand)
+# lpf (slow 0.14 $ scalex 200 20000 $ rand)
+# begin (slow 0.22 $ scale 0 2 $ rand)
+# end (slow 0.23 $ scale 0 2 $ rand)
+# loop (slow 0.24 $ choose [2..6])
+
+d2
+$ (478<~)
+$ sometimesBy 0.4 (striate' (wchoose[1..8] [1..8]) (1/100))
+$ degradeBy 0.6
+$ s "jus"
+# n (slow 0.27 $ choose [0..99])
+
+d3
+$ (736<~)
+$ spaceOut [1,2,(1/2),(1/3),3]
+$ degradeBy 0.7
+$ s "syn:41"
+# nudge (slow 16 $ scale 0 3 $ sine)
+# speed (slow 0.28 $ wchoose [2,1][1,-1])
+# up (slow 0.29 $ wchoose [4,3,2,1][-3,0,12,6])
+# rel 0.4
+
+d4
+$ (287<~)
+$ spaceOut [1,1.1..9]
+$ degradeBy 0.4
+$ s "bass1*8"
+# n (choose [1..5])
+# rel 0.1
+# nudge (slow 17 $ scale 0 3 $ sine)
+# pan (slow 0.3 $ rand)
+# up (discretise (1/3) $ slow 0.31 $ scale (-12) 12 $ rand)
+# gain (discretise (1/5) $ slow 0.32 $ scale 0.5 1 $ rand)
+
+m1
+$ (894<~)
+$ sometimesBy 0.2 (slow 4) 
+$ slow (choose [8,16])
+$ sometimesBy 0.3 (spread _slow (replicate 5 1))
+$ fast (discretise (1/3) $ choose [8..32]) 
+$ n "0"
+#cc0 (discretise (1/1) $ slow 0.15 $ rand)
+#cc1 (discretise (1/2) $ slow 0.16 $ scalex 0.01 1 $ rand)
+#cc2 (discretise (1/6) $ slow 7.17 $ rand)
+#cc3 (discretise (1/2) $ slow 0.18 $ rand)
+#cc4 (discretise (1/6) $ slow 0.19 $ rand)
+#cc5 (discretise (1/4) $ slow 0.20 $ scalex 0.1 1 $ rand)
+#cc6 (discretise (1/6) $ slow 0.21 $ rand)
+#cc7 (slow 0.24 $ wchoose [1,5] [0,1])
+#cc8 (discretise (1/5) $ slow 0.25 $ rand)
+#cc9 (slow 0.26 $ wchoose [1,3] [0,1])
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+cps (-1)
+
+cps 1
