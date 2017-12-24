@@ -1,0 +1,59 @@
+d1
+$ degradeBy 0.1
+$ stack [
+s "sbu?"
+# rel 0.45
+# pan (slow 22 $ saw),
+slow 1.1
+$ s "sbu:1"
+# pan (slow 13 $ saw),
+slow 1.2
+$ s "sbu:2"
+# pan (slow 14 $ saw),
+slow 1.3
+$ s "sbu:3"
+# pan (slow 15 $ saw),
+slow 1.4
+$ s "sbu:4"
+# pan (slow 16 $ saw),
+slow 1.5
+$ s "sbu:5"
+# pan (slow 16 $ saw),
+slow 1.6
+$ s "sbu:6?"
+# pan (slow 17 $ saw)
+# rel 0.5,
+slow 1.7
+$ s "sbu:7/2"
+# pan (slow 18 $ saw)
+# up (slow 0.1 $ scale (-3) 29 $ rand),
+slow 1.8
+$ s "sbu:8"
+# pan (slow 19 $ saw),
+slow 1.9
+$ s "sbu:9"
+# pan (slow 20 $ saw),
+slow 2.1
+$ s "sbu:10"
+# pan (slow 21 $ saw),
+slow 2.2
+$ s "sbu:11"
+# pan (slow 22 $ saw),
+slow 2.3
+$ s "sbu:12"
+# pan (slow 23 $ saw),
+slow 2.4
+$ s "sbu:13/5?"
+# pan (slow 24 $ saw),
+slow 2.5
+$ s "sbu:14/3?"
+# pan (slow 25 $ saw)
+# up (slow 0.12 $ choose [0,12]),
+slow 2.6
+$ s "sbu:15"
+# pan (slow 26 $ saw),
+slow 2.7
+$ s "sbu:16"
+# pan (slow 27 $ saw)
+]
+# gain 2

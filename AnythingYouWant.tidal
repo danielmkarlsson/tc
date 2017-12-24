@@ -1,0 +1,14 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ spreadChoose slow [1,2,4]
+$ spreadChoose density [1,1.5,2,3]
+$ sound "{g2}%8"
+# pan (slow 0.1 $ rand)
+# cutoff (slow 0.11 $ scale 20 20000 $ rand)
+# n (discretise (1/8)(slow 0.12 $ choose [1..666]))
+# gain (slow 0.13 $ scale 1 2 $ rand)
+# cut (slow 0.14 $ wchoose [16,1][0,1])
+# attack (slow 0.15 $ scale 0 0.3 $ rand)
+# release (slow 0.16 $ scale 0.3 2 $ rand)
+# up (slow 0.17 $ choose [-12,-10,-9,-7,0,2,3,5,7,8,11])

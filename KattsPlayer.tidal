@@ -1,0 +1,39 @@
+d1
+$ stack[
+(278<~)
+$ spreadChoose _fast [1..9]
+$ degradeBy 0.37
+$ s "srg"
+# att (slow 0.1 $ scale 0 2 $ rand)
+# hold (slow 0.11 $ scale 1 2 $ rand)
+# release (slow 0.12 $ scale 0 2 $ rand)
+# speed (slow 0.13 $ scale -1.5 -0.9 $ rand)
+# n (slow 0.14 $ choose [0..37])
+# gain (slow 0.15 $ scalex 0.001 1 $ rand)
+# pan (slow 0.16 $ rand)
+# begin (slow 0.17 scale 0 8 $ rand),
+(947<~)
+$ spreadChoose _fast [1..9]
+$ degradeBy 0.25
+s "sbu"
+# att (slow 0.18 $ scale 0 2 $ rand)
+# hold (slow 0.19 $ scale 1 2 $ rand)
+# release (slow 0.2 $ scale 0 2 $ rand)
+# speed (slow 0.21 $ scale -0.7 - 1.1 $ rand)
+# n (slow 0.22 $ choose [0..87])
+# gain (slow 0.23 $ scalex 0.001 1 $ rand)
+# pan (slow 0.24 $ rand)
+# begin (slow 0.25 scale 0 8 $ rand),
+(638<~)
+$ spreadChoose _fast [1..9]
+degradeBy 0.49
+s "bch"
+# att (slow 0.26 $ scale 0 2 $ rand)
+# hold (slow 0.27 $ scale 1 2 $ rand)
+# release (slow 0.28 $ scale 0 2 $ rand)
+# speed (slow 0.29 $ scale 0.2 - 1.4 $ rand)
+# n (slow 0.3 $ choose [0..94])
+# gain (slow 0.31 $ scalex 0.001 1 $ rand)
+# pan (slow 0.32 $ rand)
+# begin (slow 0.33 scale 0 8 $ rand)
+]

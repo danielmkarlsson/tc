@@ -1,0 +1,20 @@
+every 4 (linger 0.25) $
+whenmod 7 6 (0.25 <~) $
+degradeBy 0.123 $
+stack [
+  sound "rave:2(3,8)" # shape 0.8 # gain 0.7 # up (slow 4 "0 0 1 0"),
+  fast 8 $ s "amencutup" # n (choose [1,2,3,4,5,8,9,11]) # shape 0.5 # up 2 # pan (scale 0.4 0.6 rand),
+  fast 2 $ sound "bd:1" # shape 0.5,
+  fast 4 $ sound "jungbass" # shape "0.2" # up (slow 4 "0 0 1 0")
+] # accelerate (fast 6 "0 0 0 -0.4 0 0 0.6 0.2 0 0 0.4 0 -0.3")
+
+stack [
+  s "cp*9"
+  # nudge (slow 9 $ scale 0 3 $ sine)
+  # hpf (slow 5 $ scale 9999 20 $ sine)
+  # pan (slow 7 $ sine),
+  sound "808bd:6*2"
+  # pan(slow 3saw)
+  ]
+
+  slow 3.5$spread slow[0.2,0.1,0.1]$superimpose(iter 4)$sound"808:7?house:5*2?"#rel"0.1 2"#gain"1.3 1"#shape 0.3#pan(fast 9rand)

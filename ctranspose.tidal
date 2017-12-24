@@ -1,0 +1,8 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import qualified Sound.Tidal.Scales as Scales
+import qualified Sound.Tidal.Chords as Chords
+
+d1 $ degree (run 4) |+| ctranspose "<-3 -2>"
+# scale_p "<hexMajor7 hexMinor7>"
+ # octave "5"
+ # s "superpiano"

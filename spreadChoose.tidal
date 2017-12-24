@@ -1,0 +1,6 @@
+let spreadChoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+d1 $ spreadChoose density [9,5,3,1] $ s "cp odx hc 808bd hc d sf"

@@ -1,0 +1,16 @@
+d1 $ density 1.3 $ (6789 <~)$ s "ac*8" # n (choose [0,0,1]) # shape (scale 0.1 0.999 $ rand) # cutoff (scale 20 20000 $ rand)  # pan (scale 0.1 0.999 $ rand)
+d2 $ s "cp*8" # n (choose [0,0,1]) # shape (scale 0.1 0.999 $ rand) # cutoff (scale 20 20000 $ rand) #  cut  "1" #  up "-12" # pan (scale 0.1 0.999 $ rand)
+
+let timesToEvents (s,e) x ts = zip3 (zip ts $ ends e ts) (zip ts $ ends e ts) (replicate (length ts) x)
+      where ends e ts = map (ts!!) [1..length(ts)-1] ++ [e]
+
+let timesToPat' r@(a,b) x ts = splitQueries $ Pattern $ \arc@(s,e) -> map (mapEvent (+ (sam s))) $
+        filter (onsetIn $ mapArc (subtract $ sam s) arc) (map (mapEvent ((/ (b-a)).(subtract a))) $ timesToEvents r x ts)
+      where mapEvent f (a1,a2,x) = (mapArc f a1, mapArc f a2, x)
+
+d1 $ sound (slow 3.5 $ timesToPat' (0,512) "cp" (map (^ 2)[0..22])) # pan rand # cutoff (scale 20 2000 $ rand) # cutoff (scale 20 2000 $ rand)
+d2 $ sound (slow 3.6 $ timesToPat' (0,512) "808" (map (^ 2)[0..22])) #  n "4" # pan rand
+d3 $ sound (slow 3.7 $ timesToPat' (0,512) "808" (map (^ 2)[0..22])) #  n "8" # pan rand # cutoff (scale 20 4000 $ rand) # gain "1.1"
+d4 $ sound (slow 3.8 $ timesToPat' (0,512) "303" (map (^ 2)[0..22])) #  n "2" # pan rand # up "[-12]" # cut  "1" # hcutoff (scale 20 500 $ rand)
+
+hush

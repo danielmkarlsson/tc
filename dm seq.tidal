@@ -1,0 +1,1 @@
+d9 $ degradeBy 0.13 $ density 20.00008 $ (900 <~) $ s "dm" # speed (slow 2040 $ scale 2.08 1.25 sine1) # attack "0.5" # hold "0.5" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 160 $ scale 500 50 sine1) # begin "0.1" # end "0.3" # gain "0.8"

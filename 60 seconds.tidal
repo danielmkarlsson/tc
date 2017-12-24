@@ -1,0 +1,32 @@
+d1$every 8(slowspread slow[1,1,1,1])$every 7(5<~)$stack[
+(47<~)$degradeBy 0.1$every 4(slow 2)$every 5(slow 0.25)$every 7(slow 2)$s"808bd*2?"#gain"2"#attack"0"#release"0.1"#cut"6",
+(16<~)$degradeBy 0.6$every 3(density 2)$every 4(density 2)$s"808bd*2?(3,11)"#n"3"#pan(slow 6rand)#gain"1.2"#attack"0"#release"0.25"#cut"4",
+(23<~)$s"hc*8"#hcutoff(slow 9$scale 12000 18000$saw1)#gain(slow 4$scale 0.2 0.7$rand),
+(76<~)$s"cp?"#hcutoff(slow 2$scale 20 2000$rand)#pan(slow 5rand)#attack"0"#release(slow 29$scale 0.1 1$sine1),
+(91<~)$slow 2$degradeBy 0.95$every 2(density 2)$every 4(density 2)$s"bass1(3,9)"#cut"1"#n"4"#up(slow 0.17$choose[1,3,6])#attack"0"#release"0.4"#gain(slow 19$scale 0 0.9saw1),
+(34<~)$iter 8$s"house*4?"#n"3 4 5"#pan(slow 39$tri1)#gain(slow 49$scale 0 1.25$saw1)#attack"0"#release"0.2"#end"0.2",
+degradeBy 0.9$(19<~)$s"rave*8"#cut"2"#n"8"#cutoff(slow 0.1$scale 20 2000$rand)#attack"0"#release(slow 0.11$scale 0.01 0.3$rand)#up(1<~(discretise(1/7)$choose[-1,-2,3]))#pan(slow 9rand),
+(0.25~>)$s"808*2"#n"1"#gain(slow 0.13$scale 0.7 1$rand),
+s"808/7"#n"4"#gain"1.25",
+every 4(0.125<~)$every 10(0.125<~)$every 3(0.25~>)$s"808"#n"5"#gain"1.5"#delay"1"#delaytime(slow 024$scale 0 0.0005$rand)#delayfeedback"1",
+s"808"#n"7"#gain(slow 19$scale 0 1.5$saw1)#pan(slow 10$sine1),
+s"808"#n"9"#gain(slow 21$scale 0 1.5$saw1)#pan(slow 11$sine1)#attack"0"#release(slow 21$scale 1 0.1$saw1),
+s"808cy/8?"#n"1"#speed"-1",
+(81<~)$slow 4$degradeBy 0.9$s"808hc(6,9,4)"#up"-31.4"#attack"0"#release(slow 0.26$scale 0.25 1rand)#cut"3"#pan"0 0.5 1 0.5"#gain"0.8"
+]
+
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+m1$(0.1<~)$slowchoose slow[0.25,0.5,1,2,4,8]$n"128"
+#cc0(slow 0.10$rand)
+#cc1(slow 0.11$rand)
+#cc2(slow 0.12$rand)
+#cc3(slow 0.12$rand)
+
+cps (-1)
+cps 1
+
+d1$degradeBy 0.1$every 4(slow 2)$every 5(slow 0.25)$every 7(slow 2)$s"808bd*2?"#gain"2"#attack"0"#release"0.1"#cut"6"

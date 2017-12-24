@@ -1,0 +1,31 @@
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+d1 $ slowchoose density [9,5,3,1] $ s "cp odx hc 808bd hc d sf"
+
+d1 $ slowchoose slow [1,1.1..2] $ slowchoose density [1,2] $ slowchoose density [1,1.5..3.5] $ slowchoose density [1,1.75..3.25] $ slowchoose density [1,1.25..2] $ stack [
+s "808bd" #n (irand 24) #pan (slow 0.1 $ scale 0 1 $ rand),
+s "bass/4?" #cutoff (slow 0.11 $ scale 20 20000 $ rand) #pan (slow 0.12 $ scale 0 1 $ rand) #gain "0.95" #cut "1" #up (slow 0.13 $ choose[-9,-3,-9]) #n (slow 0.14 $ choose[0..31]),
+s "cp/9?" #pan rand,
+s "moog/7?" #attack "0" #release (slow 49 $ scale 0 0.1 $ saw1) #shape "0.9" #gain "0.8",
+s "odx/3?" #cut "1" #end (slow 39 $ scale 0 0.1 $ saw1) #gain "0.8"
+]
+
+d1 $ every 4 (1.5<~)$iter 2$slow 0.1$stack[s"808bd?"#up(choose[-6,-3+..9]),s"bass?"#up(choose[-9,-3,-9])]#n(choose[0..31])#cut"1"#gain"2"
+
+d1 $ (999<~) $ slowchoose density [0.5,1,2] $ s "bp" #up (choose [0,3,7,11]) #pan "0"
+d2 $ (888<~) $ slowchoose density [1,2,3] $ s "bp" #up (choose [2,5,8,12])  #pan "1"
+d3 $ (777<~) $ slowchoose density [2,3,4] $ s "bp" #up (choose [14,20,23,-12]) #pan "0.5"
+
+d1 $ slowchoose density [0.2,0.6..4] $ s "cp gabba bass1 bev 808bd?" #n (slow 0.1 $ choose [0..29]) #pan (slow 0.11 $ rand) #cut "1"
+
+
+d1 $ juxBy 0.5 (rev) $ every 2 (|+| n (irand 10)) $ every 4 (slowspread density ([1,4])) $ cat [
+  sound "[mouth*4, mouth*3]",
+  sound "gabba gabba numbers? lighter*4"
+] |=| n "0"
+
+d1 $ s "cp" #pan "0"
+d2 $ slow 1.001 $ s "cp" #pan "1" #

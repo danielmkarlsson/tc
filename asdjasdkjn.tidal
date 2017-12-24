@@ -1,0 +1,2 @@
+d1 $ degradeBy 0.85 $ density 2 $ smash 3 [1, 2, 4]  $ randcat [s "[bch, ~ bch*2,bch*4?]",s "[cp, ~~ cp*2, cp*4?]",s "[ac, ~~~ ac*2, ac*4?]",s "[bass2, ~~~~ bass2*2, bass2*4?]",s "[aut, ~~~~~ aut*2, aut*4?]",s "[arpy, ~~~~~ arpy*2, arpy*4?]"] # n (irand 29) # up (choose[-12, -10, -9, -7, -5,-4,-1, 0, 2, 3, 5, 7, 8, 11]) # attack (scale 0.0 1.75 $ rand) # hold (scale 0.25 0.5 $ rand) # release (scale 0.5 1.0 $ rand) # pan rand # cut "1"
+hush

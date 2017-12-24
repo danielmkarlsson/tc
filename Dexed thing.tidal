@@ -1,0 +1,63 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+import qualified Sound.Tidal.Scales as Scales
+import qualified Sound.Tidal.Chords as Chords
+
+m1
+$ iter "1 2 3"
+$ slow "1 2 3 4 5"
+$ fast "1 2 3 4 3"
+$ spreadChoose _slow [1,2..5]
+$ spreadChoose _density [3,6..12]
+$ midinote (toScale Scales.harmonicMinor (randcat["0","2","3","5","7","8","11"]+(99<~randcat["0","12","24","36"])))
+# velocity (slow 0.1 $ rand)
+# dur (slow 0.11 $ scale 0 0.05 $ rand)
+# cc0 (slow 0.12 $ rand) --algorithm
+# cc1 (slow 0.13 $ rand) --feedback
+# cc2 (slow 0.14 $ scale 0 0.05 $ rand) --state
+# legato (slow 0.15 $ scale 0 0.05 $ rand)
+# cc3 (slow 0.16 $ rand) --comb
+# cc4 (slow 0.17 $ rand) --decay
+# cc5 (slow 0.18 $ rand) --input gain
+# cc6 (slow 0.19 $ rand) --input lpf
+# cc7 (slow 0.20 $ rand) --output lpf
+# cc8 (slow 0.21 $ rand) --high room size
+# cc9 (slow 0.22 $ rand) --high damp
+# cc10 (slow 0.23 $ rand) --low room size
+# cc11 (slow 0.24 $ rand) --low damp
+# cc12 (slow 0.25 $ rand) --impulse mix
+# cc13 (slow 0.26 $ rand) --impulse decay
+# cc14 (slow 0.27 $ rand) --room wet
+# cc15 (slow 0.28 $ rand) --karplus wet
+# cc16 (slow 0.29 $ rand) --karplus feedback
+# cc17 (slow 0.30 $ rand) --karplus filter
+# cc18 (slow 0.31 $ rand) --karplus time left
+# cc19 (slow 0.32 $ rand) --karplus time right
+# cc20 (slow 0.33 $ scale 0 0.1 $ rand) --kick
+# cc21 (slow 0.34 $ rand) --buffer divisor
+# cc22 (slow 0.35 $ rand) --buffer size
+# cc23 (slow 0.36 $ rand) --buffer wet
+# cc24 (slow 0.37 $ scale 0 0.55 $ rand) --fft learn
+# cc25 (slow 0.38 $ rand) --fft threshold
+# cc26 (slow 0.39 $ rand) --fft gate
+# cc27 (slow 0.40 $ rand) --fft reduction
+
+d1
+$ iter "1 2 3"
+$ slow "1 2 3 4 5 6 7 8"
+$ fast "1 2 3 4 3"
+$ spreadChoose _slow [1,2..8]
+$ spreadChoose _density [3,6..12]
+$ s (randcat["rnb"])
+# n (slow 0.34 $ choose([2..10]++[56,58,60,61]++[29,30,36,39,40,41,45,46]))
+# rel 0.1
+# cut 1
+# gain (slow 0.35 rand)
+# pan (slow 0.36 $ scale 0.25 0.75 $ rand)

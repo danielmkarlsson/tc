@@ -1,0 +1,35 @@
+d1
+$ sometimesBy 0.5 (iter 4)
+$ degradeBy 0.85
+$ s "clp*8"
+# rel (slow 0.1 $ scale 0.0001 0.001 $ rand)
+# gain 2
+# up (slow 0.11 $ choose [0,12,24,36,48,60,72])
+# pan 0
+
+m1
+$ sometimesBy 0.5 (iter 4)
+$ degradeBy 0.85
+$ n "128*8"
+# cc0 (slow 0.1 $ rand)
+# cc1 (slow 0.11 $ rand)
+# cc2 (slow 0.12 $ rand)
+# cc3 (slow 0.13 $ rand)
+# cc4 (slow 0.14 $ rand)
+# cc5 (slow 0.15 $ rand)
+# cc6 (slow 0.16 $ rand)
+# cc7 (slow 0.17 $ rand)
+# cc8 (slow 0.18 $ rand)
+# cc9 (slow 0.19 $ rand)
+# cc10 (slow 0.2 $ rand)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush

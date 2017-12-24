@@ -1,0 +1,17 @@
+d1 
+$ slow 1.5
+$ sometimesBy (1/5) (iter 4)
+$ spread _slow [1,1,1]
+$ fast (choose [1,1.5,3])
+$ slow (choose [1,1.5..4])
+$ stack[
+s "rnb*8"
+# n (slow 0.1 $ choose [0..999])
+# pan (slow 0.12 $ rand),
+s "dx7*8"
+# rel (slow 0.14 $ wchoose [10,1][0.2,0.1])
+# n (slow 0.13 $ choose [0,2,4,5,6,7,8,9,10,11])
+# lpf (slow 0.11 $ scalex 20 20000 $ rand)
+# hpf (slow 0.15 $ scalex 20000 20 $ rand)
+]
+# gain 4

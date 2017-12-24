@@ -1,0 +1,43 @@
+d1
+$ sometimesBy 0.5 (spreadChoose _fast [1,1.25..3])
+$ sometimesBy 0.75 (spreadChoose _slow [1,1.125..7.25])
+$ sometimesBy 1 (1.75~>)
+$ spread fast [1,1,1]
+$ stack[
+(111<~)
+$ degradeBy 0.5
+$ s "sbu*9"
+# rel 0.1
+# n (discretise (1/8) $ slow 0.11 $ choose [0..16])
+# pan (slow 8 $ saw)
+# up (slow 0.26 $ choose [0,3,6,9,12])
+# shape (slow 0.17 $ scale 0.5 0.999999 $ rand)
+# lpf (slow 0.20 $ scalex 2000 20000 $ rand)
+# gain (slow 0.12 $ scalex 0.85 1.5 $ rand),
+(222<~)
+$ degradeBy 0.5
+$ s "bch*8"
+# rel 0.2
+# n (discretise (1/8) $ slow 0.13 $ choose [0..16])
+# pan (slow 8 $ saw)
+# up (-9)
+# shape (slow 0.18 $ scale 0.5 0.999999 $ rand)
+# lpf (slow 0.19 $ scalex 2000 20000 $ rand)
+# gain (slow 0.14 $ scalex 0.85 1.5 $ rand),
+(333<~)
+$ degradeBy 0.5
+$ s "srg*7"
+# rel 0.3
+# n (discretise (1/8) $ slow 0.21 $ choose [0..16])
+# pan (slow 8 $ saw)
+# up (-9)
+# shape (slow 0.22 $ scale 0.5 0.999999 $ rand)
+# lpf (slow 0.23 $ scalex 2000 20000 $ rand)
+# gain (slow 0.24 $ scalex 0.85 1.5 $ rand)
+]
+# delay (slow 0.25 $ scalex 0.001 (1/4) $ rand)
+# delayfb (discretise (1/8) $ slow 0.16 $ choose [0,1,1])
+# delayt (slow 0.15 $ 1/243 * choose [1,2,4,8,16])
+# comb (slow 8 $ scale 0 0.33 $ sine)
+
+import Sound.Tidal.SpectralTricks

@@ -1,0 +1,10 @@
+m2 $ degradeBy 0.0 $ slowspread density [3,4,5] $ randcat [n "25/2", n "27/3", n "28/5"] # cc41 (density 2 $ scale 0.1 0.7 $ rand) {-velocity-} {- # cc42 (density 3 $ scale 0 0 $ rand) {-modulator attack-}  # cc43 (density 4 $ scale 0.75 1.0 $ rand) {-modulator decay-}  # cc44 (density 5 $ scale 0.0 0 $ rand) {-carrier attack-}  # cc45 (scale 0.75 1.0 $ rand) {-carrier decay-} -} # cc48 (density 16 $ choose [0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.31,0.34,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79,0.82,0.86,0.89,0.92,0.95,1]) {-algorithm-}
+
+let hush = mapM_ ($ silence) [m2]
+solo = (>>) hush
+hush
+1/32
+
+0,0.05,0.07,0.10,0.14
+
+0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.31,0.34,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79,0.82,0.86,0.89,0.92,0.95,1

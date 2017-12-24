@@ -1,0 +1,21 @@
+d1 
+$ degradeBy 0.7
+$ sometimesBy 0.5 (fast 2)
+$ (every 6 (iter 8) 
+$ every 5 (iter 4) 
+$ s "pluck*2")
+# n (irand 6) 
+# speed (choose[0,1]) 
+# cut (run 4)
+# gain 4
+# lpf (scale 200 20000 rand)
+# hpf 200
+# end rand
+# begin (slow 0.11 $ rand)
+# loop 9
+# orbit 1
+# delay 1
+# delayfb "0 1"
+# delayt (slow 0.12 $ scalex 0.001 0.1 $ rand)
+# up (choose [0..9])
+# pan (slow 99 saw)

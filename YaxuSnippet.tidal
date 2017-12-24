@@ -1,0 +1,2 @@
+d1 $ degradeBy 0.936 $ slowspread density [0.25,0.5,1,2] $ whenmod 8 4 (# nudge(slow 4 sine1)) $ jux rev $ (density 2 $ chop  16 $ randcat [s "bd*6 cp bd 606",s "bd cp sn*5 909 303",s "bd a hh*3 808 bd",s "ac cp*9 707"]) # speed (choose[0.125,0.25,0.5,1,2]) # begin "0" # end (scale 0.1 1 $ rand) # loop (choose[1,2..10]) # cutoff (scale 20 8000 $ rand) # cut (choose[0,1]) # up (choose[12,0,-12,-24])
+hush

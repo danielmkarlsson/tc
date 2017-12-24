@@ -1,0 +1,4 @@
+cycleChoose::[a] -> Pattern a
+cycleChoose xs = Pattern $ \(s,e) -> [((s,e),(s,e), xs!!(floor $ (dlen xs)*(ctrand s) ))]
+  where dlen xs = fromIntegral $ length xs
+        ctrand s = timeToRand $ fromIntegral $ floor $ sam s

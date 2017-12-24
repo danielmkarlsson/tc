@@ -1,0 +1,196 @@
+First thing is to remember to save this file as SomethingWhatever.tidal
+The .tidal part tells Atom to start reading the text as TidalCycles code.
+
+Now we can do code in here. We even get this nice color highlighting to help us with syntax.
+Ok here we go.
+Everything starts with d1
+d1 is a stream or a pattern if you will.
+The $ sign is like a cable. We use it to connect the thing on the left with the thing on the right of the $.
+Hold down Alt and then press 4 to make a $
+Sound is exactly what it sounds like. It makes sound by playing a sample.
+The quotation marks are where you put values inside of them.
+The value cp is the name of a folder. Like just a regular in finder kind of folder.
+If we run this line of code by placing the cursor on it and hold down shift while pressing Enter we play the first sample in the folder cp.
+
+d1 $ sound "cp"
+
+The handclap sample will play once every cycle.
+If we want to hear that sound twice per cycle then we can do this:
+
+d1 $ sound "cp*2"
+
+An interesting thing to note is that when we ran the above line d1 got overwritten.
+If we run the first line with just 1 clap per cycle d1 gets overwritten again.
+
+Try messing around with that multiplying number.
+
+d1 $ sound "cp*8"
+
+If we use higher numbers then it starts to get crowded.
+
+A thing to try then is to use # cut
+
+d1 $ sound "cp*8" # cut "1"
+
+# cut is a way to make the previous sample stop playing when a new sample begins. This way it's less crowded. You might want that.
+
+The # is for when we want to apply an effect to a sample. # cut is sometimes called Choke in drummachines. There is a number after cut. In this case 1. I chose it as the cut channel. You can have many cut channels. Anything that gets put in that channel gets cut by each other.
+Another effect is # pan
+
+d1 $ sound "cp*8" # cut "1" # pan "1"
+
+Now the clap is just in the right speaker.
+
+d1 $ sound "cp*8" # cut "1" # pan "0"
+
+Now it's just in the left speaker.
+Most times values for effects have a range between 0.0 and 1.0 You can do values like 0.0056 but values like 3.6745 will just end up as 1.0
+
+d1 $ sound "cp*8" # cut "1" # pan "0.5"
+
+0.5 is the deafult for # pan
+Defaults are values that are there even if we choose nothing.
+
+d1 $ sound "cp*8" # cut "1"
+
+Same thing right?  No change. Defaults.
+
+d1 $ sound "cp bd" # cut "1"
+
+You can sequence many different sounds within one cycle by adding them inside the quotationmarks.
+
+d1 $ sound "cp bd hh" # cut "1"
+
+d1 $ sound "cp bd hh sn drum" # cut "1"
+
+d1 $ sound "cp bd hh sn drum gabba" # cut "1"
+
+d1 $ sound "cp bd hh sn drum gabba rave" # cut "1"
+
+d1 $ sound "cp bd hh sn drum gabba rave rave2" # cut "1"
+
+An intersting thing to note is that when you add sample folders like above they just get squuezed in there together in the same space.
+So this make everything crowded after a while. Here's a way to have a flexible container for our rhythms so we can add stuff as we go along:
+
+d1 $ sound "{cp bd sn hh drum rave2}%1"
+
+The squiggly or curly brackets are not visible on your keyboard. Press Shift + Alt + 8 to get at them. Notice how Atom is nice and gives us both of them straight away because we've installed the TIdalCycles syntax. Atom is eager to help us.
+
+The percentage sign is I guess Modulo. Nevermind what it's called. It makes it so you can decide the amount of time it should take for each item to play. Try changing that number to a higher number:
+
+d1 $ sound "{cp bd sn hh drum rave2}%8"
+
+hush
+
+This is cool.
+So far we've only been sequencing the names of folders. What we've been hearing are the first files in those folders. Thats the default behaviour.
+Lets sequence which files get chosen inside those folders.
+
+d1 $ sound "{cp bd sn hh drum rave2}%8" # n "1"
+hush
+Try changing the 1 after n
+
+d1 $ sound "{cp bd sn hh drum rave2}%8" # n "235"
+
+Delicously tacky/ravey.
+An intersting thing to take note of is that different folders most times have different amounts of files in them.
+So the cp folder may only have one file in it while the rave2 folder may have eight in it and the bd folder may have twelve files in it. No probs. TidalCycles helps us out here and wraps around so even very large numbers still give a result which makes a sound. Very friendly.
+
+ So far we've only made linear sequences. Let's introduce a degree of chance. This is an opportunity for variation.
+
+ d1 $ sound "{cp bd sn hh e rave2}%8" # n "23737123213" # pan rand
+
+ Now the panning effect is being applied to our sequence randomly.
+
+ Other stuff can be randomized too:
+
+ d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 30) # pan rand
+
+irand means give me some integers (numbers) and the 30 means all the numbers up to 30 can get chosen.
+Mess around with that 30 number and run that line.
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 5) # pan rand
+
+Another effect is # gain
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 5) # pan rand # gain (choose [0.75,1.0])
+
+In the above line there's another example of making things more varied. choose chooses from a list. The list is inside square brackets.
+You make square brackets by holding down Alt and pressing 8. Again you get both at the same time because this is the future and everything is friendly here.
+
+Try adding some more values to the list and running the line.
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 5) # pan rand # gain (choose [0.25,0.5,0.75,1.0])
+
+An interesting thing about gain is that it can go above 1.0. It'll get loud but it will never distort. It will compress instead. Turn down your volume on your machine and try slowly introducing values above 1.
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16])
+
+I like compression. It reminds me of Mr Oizo.
+Some folks might not dig it though so, just be aware. Anyway compression is way better than the alternative which is very dangerous. More on this later but for now just know that TidalCycles is safe to use for many reasons and one of those is this compression solution.
+
+Another cool thing that can be varied is # cut
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,1])
+
+This way there is a 50/50% chance, or indeed risk, of the next sample cutting the previous sample. You can hear it most clearly with the cymbal. Maybe the trumpet stab also.
+
+You maybe want the likeliness of the sample not to be cut to be higher.
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,1])
+
+0 is the default for cut. 0 means do not cut. Increase the amount of zeros in the list to make that choice more likely.
+
+d1 $ sound "{cp bd sn hh e rave2}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+Four to one not cut to cut ratio in the above line.This most likely could be done with more finesse in Haskell but this easy to read and fun I think.
+
+So far each step has had the same duration. One way to change this is to use hard brackets:
+
+d1 $ sound "{cp bd [sn hh] e rave2}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+Anything put inside the hard gets fit to one part of the cycle. So 2 things happen in the space of 1 beat.
+You can use brackets around brackets too:
+
+d1 $ sound "{cp [bd [sn hh] e] rave2}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+Very fun. Mess around with the brackets for a bit to get your bearings.
+
+d1 $ sound "{cp [bd [sn hh]] e [rave2 rave bd bd]}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+So far the sequencing of the folders has been deterministic. Lets shake things up with ?
+
+d1 $ sound "{cp? [bd [sn? hh]] e? [rave2 rave? bd bd?]}%8" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+The ? after the foldernames makes them play or not play (pause) with 50/50% probability.
+Have a mess around with adding ?s.
+
+d1 $ sound "{cp? [bd? [sn? hh?]] e? [rave2? rave? bd? bd?]}%7" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+But see how I've got all of 'em ? in the above live?
+This could also be expressed another way:
+
+d1 $ degradeBy 0.5 $ sound "{cp [bd [sn hh]] e [rave2 rave bd bd]}%7" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+The above is the same thing.
+A nice thing about that is you can choose the probability. It goes from 0.0 which plays all the time to 1.0 which never plays. Have a messaround with that:
+
+Very seldom:
+
+d1 $ degradeBy 0.975 $ sound "{cp [bd [sn hh]] e [rave2 rave bd bd]}%7" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+Very often:
+
+d1 $ degradeBy 0.125 $ sound "{cp [bd [sn hh]] e [rave2 rave bd bd]}%7" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+I also like to vary the tempo everything at which the sequence gets played like this:
+
+d1 $ slowspread density [0.5,1,1.5,2,3,4] $ degradeBy 0.125 $ sound "{cp [bd [sn hh]] e [rave2 rave bd bd]}%7" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+Higher density values play the sequence faster. slowspread spreads out the values. One value for each cycle. Mess with the list:
+
+d1 $ slowspread density [0.5,1,0.25,1.5,4,3,2] $ degradeBy 0.125 $ sound "{cp [bd [sn hh]] e [rave2 rave bd bd]}%7" # n (irand 8) # pan rand # gain (choose [0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,3,4,8,16]) # cut (choose[0,0,0,0,1])
+
+Very varied I'd say. A  lot of room for a lot of different things to happen.
+
+hush

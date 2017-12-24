@@ -1,0 +1,16 @@
+d1
+$ spreadChoose _slow [1,1.5,2,3,4]
+$ spreadChoose _fast [1..4]
+$ s (randcat["gat","gat*2","gat*4","gat*8","gat*11"])
+# up (discretise (1/3) $ slow 0.1 $ choose [0,3,5,7,8,11] - choose [0,12,24,36,48] / choose [1..3])
+# pan (slow 0.11 $ rand)
+# delay 1
+# delayfb 1
+# delayt (slow 0.12 $ scalex 0.0000001 0.0005 $ rand)
+# rel (slow 0.13 $ scalex 0.5 5 $ rand)
+# gain (slow 0.15 $ scale 0.75 1.5 $ rand)
+# accelerate (discretise (1/64) $ slow 0.14 $ scale (-1/32) 0 $ rand)
+# smear (slow 64 $ scale 0 0.01 $ sine)
+           
+import Sound.Tidal.SpectralTricks
+

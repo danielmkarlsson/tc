@@ -1,0 +1,26 @@
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+d1 $ (23787~>) $ slowchoose density [1,1,2] $ slowchoose slow [0.75..2.00] $ iter 8 $ slowchoose slow [0.75..1.00] $ slowchoose slow [0.5..1.0] $ degradeBy 0.55 $ stack [
+sound "808:7 odx 808bd:3 cp hc" #gain (slow 2.6 $ scale 1 2 $ rand) #pan (slow 2.1 $ scale 0 1 $ rand)  #cut "1" # attack "0" #release (slow 2.9 $ scale 0.2 1 $ rand) #cutoff (slow 2.4 $ scale 20 20000 $ rand),
+s "rave" #gain (slow 2.7 $ scale 0.1 2 $ rand)  #pan (slow 2.2 $ scale 0 1 $ rand) #cut "2" #n (choose([0..3]++[5..7]))# attack "0" #release (slow 3.0 $ scale 0 1 $ rand) #cutoff (slow 2.5 $ scale 20 20000 $ rand),
+s "rave2" #gain (slow 2.8 $ scale 0.5 3 $ rand)  #pan (slow 2.3 $ scale 0 1 $ rand) #cut "3" #n "0" #up (choose[-12,-9..12]) # attack "0" #release (slow 3.1 $ scale 0 1 $ rand) #cutoff (slow 2.5 $ scale 20 20000 $ rand)
+]
+
+m1 $ (23787~>) $ slowchoose density [1,1,2] $ slowchoose slow [0.75..2.00] $ iter 8 $ slowchoose slow [0.75..1.00] $ slowchoose slow [0.5..1.0] $ degradeBy 0.55 $ n "128"
+#cc0  (slow 0.10 $ scale 0 1 $ rand)
+#cc1  (slow 0.11 $ scale 0 1 $ rand)
+#cc2  (slow 0.12 $ scale 0 1 $ rand)
+#cc3  (slow 0.13 $ scale 0 1 $ rand)
+#cc4  (slow 0.14 $ scale 0 1 $ rand)
+#cc5  (slow 0.15 $ scale 0 1 $ rand)
+#cc6  (slow 0.16 $ scale 0 1 $ rand)
+#cc7  (slow 0.17 $ scale 0 0.1 $ rand)
+#cc8  (slow 0.18 $ scale 0 1 $ rand)
+#cc9  (slow 0.19 $ scale 0 1 $ rand)
+#cc10 (slow 0.20 $ scale 0 1 $ rand)
+
+cps (-1)
+cps 1

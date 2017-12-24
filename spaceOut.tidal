@@ -1,0 +1,8 @@
+let markOut :: Integer -> [Integer] -> [(Integer, Integer)]
+    markOut offset [] = []
+    markOut offset (x:xs) = (offset,offset+x):(markOut (offset+x) xs)
+    spaceArcs xs = map (\(a,b) -> (a%s,b%s)) $ markOut 0 xs
+      where s = sum xs
+    spaceOut xs p = slow (fromIntegral $ sum xs) $ stack $ map (\a -> compress a p) $ spaceArcs xs
+in
+d1 $ spaceOut [2,5,3,1] $ sound "bd*99" # gain (scale 0 1 tri1)

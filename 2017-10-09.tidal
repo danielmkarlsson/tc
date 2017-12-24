@@ -1,0 +1,37 @@
+d1
+$ spreadChoose _fast [1,1.1,1.1,1.3,1.4,1.5]
+$ spreadChoose _slow [3,3.1..9.1]
+$ sometimesBy 0.037 (0.75<~)
+$ sometimesBy 0.030 (0.5<~)
+$ sometimesBy 0.025 (0.25<~)
+$ sometimesBy 0.02 (fast 2)
+$ sometimesBy 0.015 (iter 8)
+$ sometimesBy 0.01 (spread _fast [1,1,1,1,1])
+$ stack [
+s "scc*9?"
+# pan (slow 0.18 $ rand)
+# n (slow 0.1 $ choose [725,226,825])
+# up (-4)
+# pan (slow 0.11 $ rand)
+# lpf (slow 0.14 $ scalex 20 20000 $ rand)
+# gain 2,
+s "rnb*9"
+# pan (slow 0.19 $ rand)
+# n (slow 0.1 $ choose [773,709,735]),
+s "srg*9?"
+# up (discretise (1/4) $ choose [-6..12])
+# pan (slow 16 $ saw)
+# rel (slow 0.12 $ scale 0 0.5 $ rand)
+# shape (slow 0.13 $ scalex 0.99999 0.25 $ rand)
+]
+# gain 1.9
+# comb (slow 16 $ scalex 0.0001 0.95 $ sine)
+# room (slow 16 $ scalex 0.0001 0.01 $ sine)
+# size (slow 16 $ scalex 0.0001 0.3 $ sine)
+# hbrick (slow 0.15 $ scalex 0.00001 0.01 $ rand)
+
+import Sound.Tidal.SpectralTricks
+
+
+
+

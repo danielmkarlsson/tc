@@ -1,0 +1,8 @@
+d1 $ slow 1.125 $ iter 4 $ degradeBy 0.5 $ s "bch*8" #n (slow 0.1 $ choose[1,2,3,4]) #pan (slow 0.11 $ scale 0.25 0.75 $ rand) #cut "1" #up (choose[-24,-21..0])
+
+m1 $ slow 1.125 $ iter 4 $ s "128*4?" #cc0 (slow 0.12 $ rand) #cc1 (slow 0.13 $ rand)
+
+d1 $ s "hc*7" #release "0.1" #nudge (slow 7 $ scale 0 0.125 $ sine1) #up "12" #pan (slow 9 $ sine1)
+
+bps (130/60)
+cps (-1)

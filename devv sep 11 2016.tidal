@@ -1,0 +1,5 @@
+m1 $ slow 2 $ randcat [note "a4",note "c3d4 g3 f4 a4", note "f4 a4", note "c4 ab3"] # nudge (slow 8 $ scale 0 1 sine1) # velocity (scale 0.25 0.75 $ rand)
+
+hush
+
+cps 1

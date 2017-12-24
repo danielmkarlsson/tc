@@ -1,0 +1,30 @@
+d1
+$ slow 1.37
+$ sometimesBy 0.45 (slow 2 . striate' 22 (1/2))
+$ every 55 (slow 4)
+$ every 34 (slow 3)
+$ every 21 (slow 2)
+$ every 13 (4.125~>)
+$ every 8 (3.25~>)
+$ every 5 (2.125~>)
+$ every 3 (1.25~>)
+$ every 2 (0.125~>)
+$ iter (slow 0.1 $ choose[1,1,1,1,1,2])
+$ spread slow [1,1]
+$ fast (slow 0.11 $ choose[1,1.25,1.5,1.75,2,2.25,2.5,2.75,3,3.25,3.5])
+$ s (randcat["bass1","bass1*2","bass1*4"])
+# up (slow 0.12 $ choose [0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26,28,29,31,33,35,36,38,40,41,43,45,47])
+# n (slow 0.13 $ choose[5,12,14])
+# room (slow 0.14 $ choose[0.125,1,1,1.25])
+# rel (slow 0.15 $ scale 0.01 1.2 $ rand)
+# size (slow 0.16 $ scale 0.05 1.5 $ rand)
+# att (slow 0.17 $ scale 0 0.75 $ rand)
+# lpf (slow 0.18 $ scale 200 20000 $ rand)
+# hpf (slow 0.19 $ scale 20 400 $ rand)
+# gain (slow 0.2 $ scale 1.25 1.75 $ rand)
+# pan (slow 0.21 $ rand)
+# nudge (slow 15 $ scale (-0.5) 3 $ sine)
+# begin (slow 16 $ scale 0 1.75 $ sine)
+
+
+d1 $ slow 1.37 $ sometimesBy 0.45 (slow 2 . striate' 22 (1/2)) $ every 55 (slow 4)$ every 34 (slow 3) $ every 21 (slow 2) $ every 13 (4.125~>) $ every 8 (3.25~>) $ every 5 (2.125~>) $ every 3 (1.25~>) $ every 2 (0.125~>) $ iter (slow 0.1 $ choose[1,1,1,1,1,2]) $ spread slow [1,1] $ fast (slow 0.11 $ choose[1,1.25,1.5,1.75,2,2.25,2.5,2.75,3,3.25,3.5]) $ s (randcat["bass1","bass1*2","bass1*4"]) # up (slow 0.12 $ choose [0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26,28,29,31,33,35,36,38,40,41,43,45,47]) # n (slow 0.13 $ choose[5,12,14]) # rel (slow 0.15 $ scale 0.01 1.2 $ rand) # att (slow 0.17 $ scale 0 0.75 $ rand) # lpf (slow 0.18 $ scale 200 20000 $ rand) # hpf (slow 0.19 $ scale 20 400 $ rand) # gain (slow 0.2 $ scale 1.25 1.75 $ rand) # pan (slow 0.21 $ rand) # nudge (slow 15 $ scale (-0.5) 3 $ sine) # begin (slow 16 $ scale 0 1.75 $ sine)

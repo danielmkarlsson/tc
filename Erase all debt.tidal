@@ -1,0 +1,21 @@
+let runnow d p = do now <- getNow
+                    d $ (nextSam now) ~> p
+runnow d1 $ slow 1.5 $ degradeBy 0.2 $ slowspread slow [0.45,0.5,0.6,0.9,1.2,1.6,3.3,4.3,5.4,6.5] $ s "db!8" # n "5" # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75]) # up (choose[36,24,12,0,-12]) #attack "0" # release (scale 0.05 1.5 $ rand)
+d1 silence
+runnow d2 $ slow 1.5 $ degradeBy 0.4 $ slowspread slow [0.5,0.6,0.9,1.2,1.6,3.3,4.3,5.4,6.5,7.7,9.0] $ s "303!8" # n "22" # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0]) # gain (choose[0.75,1,1.5,2.0]) # shape (choose[0.25,0.5,0.75]) # up (choose[36,24,12,0,-12]) #attack "0" # release (scale 0.05 2.5 $ rand)
+d2 silence
+runnow d3 $ slow 1.5 $ degradeBy 0.1 $ slowspread slow [0.6,0.9,1.2,1.6,3.3,4.3,5.4,6.5,7.7,9.0,10.4] $ s "808!8" # n (choose[2]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75]) # up (choose[0]) #attack "0" # release (scale 0.005 0.02 $ rand)
+d3 silence
+runnow d4 $ slow 1.5 $ degradeBy 0.3 $ slowspread slow [0.9,1.2,1.6,3.3,4.3,5.4,6.5,7.7,9.0,10.4,11.9] $ s "808!8" # n (choose[15]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0,1,1]) # gain (choose[0.65,0.85,1.25]) # shape (choose[0.25,0.5,0.75]) # attack "0.1" # hold "0" # release "0.1"
+d4 silence
+runnow d5 $ slow 1.5 $ degradeBy 0.1 $ slowspread slow [1.2,1.6,3.3,4.3,5.4,6.5,7.7,9.0,10.4,11.9,13.5] $ s "ac!8" # n (choose[2]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0,2]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75])
+d5  silence
+runnow d6 $ slow 1.5 $ degradeBy 0.2 $ slowspread slow [1.6,3.3,4.3,5.4,6.5,7.7,9.0,10.4,11.9,13.5,15.2] $ s "606!8" # n (choose[2]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0,3]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75]) # up "-1" # attack "0" # hold "0.1" # release  "0.1"
+d6 silence
+runnow d7 $ slow 1.5 $ degradeBy 0.3 $ slowspread slow [3.3,4.3,5.4,6.5,7.7,9.0,10.4,11.9,13.5,15.2,17.0] $ s "909!8" # n (choose[5]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0,4]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75]) # up "-1" # attack "0" # hold "0.1" # release  "0.1"
+d7 silence
+runnow d8 $ slow 1.5 $ degradeBy 0.4 $ slowspread slow [4.3,5.4,6.5,7.7,9.0,10.4,11.9,13.5,15.2,17.0,18.9] $ s "707!8" # n (choose[4]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0,5]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75]) # up "-1" # attack "0" # hold "0.1" # release  "0.1"
+d8 silence
+runnow d9 $ slow 1.5 $ degradeBy 0.5 $ slowspread slow [5.4,6.5,7.7,9.0,10.4,11.9,13.5,15.2,17.0,18.9,20.9] $ s "a!8" # n (choose[2]) # cutoff (scale 20 20000 $ rand) # pan rand # cut (choose[0,6]) # gain (choose[0.75,1,1.5]) # shape (choose[0.25,0.5,0.75]) # up "-1" # attack "0" # hold "0.1" # release  "0.1"
+d9 silence
+hush

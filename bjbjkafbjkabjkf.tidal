@@ -1,0 +1,13 @@
+d1 $ fast 19 $ s "srg"
+# gain (slow 0.1 $ scale 1 4 $ rand)
+# n (slow 0.11 $ choose [0..11])
+# lpf (slow 0.12 $ scalex 20 20000 $ rand)
+# rel (slow 0.13 $ scalex 0.1 4 $ rand)
+# up (slow 0.14 $ scalex 0.1 4 $ rand)
+
+cps 1
+
+d1 $ s "srg*4"
+# comb (slow 0.1 $ rand)
+# n (slow 0.11 $ choose [0..11])
+# rel 0.1

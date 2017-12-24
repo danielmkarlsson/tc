@@ -1,0 +1,11 @@
+d1
+$ foldEvery [2,3,4,5] (slow 2.5)
+$ superimpose ((5 <~) . (|*| speed "-3")  )
+$ s "sbu*32"
+# n "0"
+# speed (scale 0.5
+  5 $ slow 3 tri) # gain "0.5"
+# pan (slow 8 sine)
+# orbit "0"
+# room "0.1"
+# size (scale 0.1 0.9 $ slow 10 tri)

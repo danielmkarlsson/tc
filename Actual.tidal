@@ -1,0 +1,22 @@
+d1
+$ every 21 (500<~)
+$ every 17 (25<~)
+$ every 13 (fast 2)
+$ every 9 (spread _slow [1,1])
+$ every 5 (iter 2)
+$ stack [
+s "srg",
+s "mcb:9",
+s "sbu:1",
+someCyclesBy 0.5 (0.25<~)
+$ s "bch" # n (slow 0.1 $ choose [0..11])
+# lpf (slow 132 $ scale 20 2000 $ sine)
+]
+# delay (slow 137 $ scale 0 1 $ sine)
+# delayfb (slow 136 $ scale 0.25 1 $ sine)
+# delayt (slow 0.11 $ choose [1/8] * choose [1..19])
+# room (slow 134 $ scale 0 0.05 $ sine)
+# size (slow 135 $ scale 0.85 1 $ sine)
+# gain 1.8
+
+t2 (xfadeIn 4) $ s "prr:4*2" # orbit 1 # rel 0.19 #gain 0.75 # pan (slow 200 $ sine)

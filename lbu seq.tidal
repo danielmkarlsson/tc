@@ -1,0 +1,31 @@
+let wchoose values weights = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ spreadChoose density [1.5,3,6,12,24]
+$ spreadChoose slow[1,1.125..10]
+$ spread slow(replicate 24 1)
+$ s (randcat["lbu?", "sbu?"])
+# pan (slow 0.11 $ rand)
+# cutoff (slow 0.12 $ scale 20 20000 $ rand)
+# release (slow 0.13 $ scale 0 0.5 $ rand)
+# cut (slow 0.14 $ choose [0,1])
+# up (discretise(1/19)(slow 0.15 $ choose [-12,-9..0]))
+# n (discretise(1/29)(slow 0.16 $ choose [0,1,2,3,4,5,6]))
+# gain (slow 0.17 $ scale 0.5 2 $ rand)
+
+m1
+$ spreadChoose density [3,6,12,18]
+$ spreadChoose slow[1,1.125..10]
+$ spread slow(replicate 24 1)
+$ n "128?"
+#cc0 (slow 0.1 $ rand)
+#cc1 (slow 0.11 $ rand)
+#cc2 (slow 0.12 $ wchoose [8§,1][0,1])
+#cc3 (slow 0.13 $ wchoose [16,1][0,1])
+#cc4 (slow 0.14 $ rand)
+#cc5 (slow 0.15 $ rand)
+#cc6 (slow 0.16 $ rand)
+#cc7 (slow 0.17 $ rand)
+#cc8 (slow 0.18 $ rand)
+#cc9 (slow 0.19 $ rand)
+#cc10 (slow 0.20 $ rand)

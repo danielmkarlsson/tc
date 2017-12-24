@@ -1,0 +1,53 @@
+d1
+$ every 5 (2<~)
+$ every 4 (fast 2)
+$ stack[
+s "sha*7?"
+# n (discretise (1/38) $ slow 0.1 $ choose [0..14])
+# up (discretise (1/29) $ slow 0.11 $ choose [-6,-4.4,-3.2,-1.7,2.3])
+# pan (slow 64 $ scale 1 0 $ saw)
+# rel (slow 0.14 $ scale 0.4 4 $ rand),
+degradeBy 0.4
+$ s "cp*7"
+# rel 0.05
+# up (discretise (1/41) $ slow 0.11 $ choose [-16..6]+ choose [24])
+# hpf 2000
+# gain 1.25
+# pan (slow 63 saw),
+degradeBy 0.85
+$ s "srg*7"
+# accelerate (slow 0.12 $ scale 1 2 $ rand)
+# pan (slow 0.13 $ scale 0.25 0.75 $ rand)
+# gain 0.8
+# cut 2,
+s "808bd*7?"
+# pan (slow 2 $ saw)
+# rel 0.05
+# gain (slow 16 $ scale 0.75 1.75 $ saw)
+# up (discretise (1/14) $ slow 0.14 $ choose [-6..6])
+# n (discretise (1/13) $ slow 0.15 $ choose [0..24])
+]
+# delay (slow 128 $ scale 0 (1/16) $ sine)
+# delayfb 1
+# delayt (discretise (1/35) $ slow 0.16 $ choose [1/34.6,1/30.6,1/27.6] * choose [1/32,1/16,1/8,1/4,1/2])
+# room (slow 0.17 $ wchoose [50,1][0,1])
+# size 0.8
+
+m1
+$ every 5 (2<~)
+$ every 4 (fast 2)
+$ n "128*7?"
+# cc0 (slow 0.1 $ rand)
+# cc1 (slow 0.11 $ choose [0,1])
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush

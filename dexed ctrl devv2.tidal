@@ -1,0 +1,36 @@
+-- Run each line separately
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC -- This right here adds #cc127 capability.
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController -- See here how it's called ccallController.
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController -- See here how it's called ccallController.
+m3 <- midiStream devs "IAC Bus 1" 3 ccallController -- See here how it's called ccallController.
+m4 <- midiStream devs "IAC Bus 1" 4 ccallController -- See here how it's called ccallController.
+m5 <- midiStream devs "IAC Bus 1" 5 ccallController -- See here how it's called ccallController.
+
+
+
+
+-- m2 <- midiStream devs "IAC Bus 2" 2 synthController -- This is only good for the midinote stuffs.
+let hush = mapM_ ($ silence) [m1,m2,m3,m4,m5,d1,d2,d3,d4,d5,d6,d7,d8,d9] -- edit this list. It changes what hush means.
+solo = (>>) hush
+hush
+
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+m1 $ (111~>) $ degradeBy 0.2 $ slowchoose density [1,2,4,8] $ midinote "128" #cc0 (slow 0.10 $ scale 0 1 $ rand)
+m2 $ (222~>) $ degradeBy 0.5 $ slowchoose density [1,2,4,8] $ midinote "128" #cc1 (slow 0.11 $ scale 0 1 $ rand)
+m3 $ (333~>) $ degradeBy 0.4 $ slowchoose density [1,2,4,8] $ midinote "128" #cc2 (slow 0.12 $ scale 0 1 $ rand)
+m4 $ (444~>) $ degradeBy 0.6 $ slowchoose slow [0.25,0.5,1,2,4] $ (midinote $ randcat["78","79","81","83","85","86","88","91","95","97","103","107","109","110","117","119","121"]) #dur (slow 0.11$scale 0.5 1rand) #velocity (slow 0.1$scale 0.5 1rand)
+m5 $ (555~>) $ degradeBy 0.0 $ slowchoose density [1,2,4,8] $ midinote "128" #cc3 (slow 0.12 $ scale 0 1 $ rand)
+
+
+
+
+d1 $iter 2$slow 0.1$(s$randcat$"808":(parsePat.("808"++)<$>words "bd cy hc ht lc lt mc mt oh sd"))#n(irand 24)#cut(irand 9)#pan rand

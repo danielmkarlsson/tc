@@ -1,0 +1,22 @@
+d1
+$ (# nudge (slow 76 $ scale 0 2 $ sine))
+$ (# hpf (slow 65 $ scale 20 200 $ sine))
+$ fast (slow 0.21 $ choose [1,2,4]) 
+$ every 5 (iter 4)
+$ every 2 (slow $ slow 0.19 $ choose [1..4])
+$ slow (slow 0.16 $ choose[1,2])
+$ s "srg:5*8"
+# pan (slow 0.1 $ rand)
+# rel (slow 0.11 $ scale 0.05 0.75 $ rand)
+# lpf (slow 0.12 $ scale 400 20000 $ rand)
+# up (discretise (1/5) $ slow 0.13 $ choose [-12,-9,-6,-3,0,3,6,9,12])
+# shape (slow 0.14 $ scale 0 0.999 $ rand)
+# delay (slow 17 $ saw)
+# delayt (slow 0.15 $ choose[0.125] * choose[1/128,1/64,1/32,1/16,1/8,1/4,1/2,1,1.5])
+# delayfb (slow 16 $ saw)
+# n (discretise (1/3) $ slow 0.17 $ choose [0..11])
+# cut (slow 0.18 $ choose [0,1])
+# gain (slow 0.2 $ choose [2..4])
+
+d2 
+$ s "hc"

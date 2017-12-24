@@ -1,0 +1,9 @@
+git clone https://github.com/tidalcycles/Tidal.git
+cd Tidal 
+git checkout 0.9-dev
+cabal install
+cd ..
+git clone https://github.com/tidalcycles/tidal-midi.git
+cd tidal-midi
+git checkout 0.9-dev
+cabal install

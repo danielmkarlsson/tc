@@ -1,0 +1,11 @@
+d1 $ every 3 (density 2) $ degradeBy 0.1 $ slow 6 $ s "bass2*4~~bass2*2" # attack "0" #  hold "0" # release "0.5" # shape "0.999" # cutoff "300" # gain "3.25 2.75 2.75 2.75" # hcutoff (scale 20 2000 $ rand) # pan "1"
+d2 $ (0.25 <~) $ s "ac*2" # n "2" # gain "2.5 2.2" # pan "1"
+d3 $ degradeBy 0.125 $  density 2 $ s "{ac~~~ac~~~ac~~~ac*2~~~}%2" # n "3" # shape "0.99" # gain "1.5" # pan "1" # up (choose [0,0,12,24,48,48]) # cutoff (scale 20 1600 $ rand)
+d4 $ (0.25 <~) $ degradeBy 0.75 $ density 4 $ s "{ac~~~ac~~~~~ac~~~ac~~~~~ac~ac~~~ac~~~ac*2~~~~~~~}%2" # n "6" # gain (scale 0 1.5 $  rand) # end "0.5" # shape "0.9" # up (choose[-12,-24,-24,-36]) # cutoff "800" # pan "1"
+d5 $ density 4 $ degradeBy 0.75 $ s "808*2" # n (choose[0..24]) # gain "3.5" # up "-25" # pan "1" # hcutoff (scale 20 200 $ rand) # cut "7" # shape "0.75" # end "0.03"
+d6 $ degradeBy 0.75 $ density 2 $ (0.75 <~) $ s "a" # n "2" # gain "3" # hcutoff (scale 20 4000 $ rand)  # end "0.125 0.25" # up (choose[12,14,13,15,24]) # pan "1"
+d7 $ degradeBy 0.09 $ density 16 $ s "a"  # n "31"  # gain "0.2" # cut "5" # pan "1" # hcutoff (scale 20 5000 $ rand)
+d8 $ degradeBy 0.17 $ s "gabba*8" # hcutoff (scale 20 10000 $ rand) # gain "1.5" # pan "1"
+d9 $ striate' 128 (1/64) $ (4 <~) $ degradeBy 0 $ density 1 $ s "303" # n "9" # shape (scale 0.9 0.999 $  rand) # gain "0.75" # up (choose[-36,-24,-12,0,3,6,9,12,15,18,21,24,27,30,33,36]) # pan "0" # cutoff (scale 10000 20000 $ rand) # attack "0" # hold "2" # release "4"
+hush
+cps 1

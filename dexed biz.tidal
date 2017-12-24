@@ -1,0 +1,7 @@
+m1
+$ slow (slow 0.14 $ choose[1,1.5,2,2.5,3,3.5,4,4.5,5,6])
+$ fast (slow 0.1 $ choose[1,2,3,4,5,6,7,8])
+$ midinote (randcat["19","21","23","24","31","33","35","36","43","45","47","48","55","57","59","60","67","69","71","72"])
+# velocity (slow 0.11 $ scale 0.25 1 $ rand)
+# legato (slow 0.12 $ scale 0.25 1 $ rand)
+# dur (slow 0.13 $ scale 0.25 1 $ rand)

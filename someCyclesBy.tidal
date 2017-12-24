@@ -1,0 +1,5 @@
+let cyclerand n = Pattern $ \(s,e) -> [((s,e),(s,e),timeToRand $ fromIntegral $ (floor $ sam s) `mod` n)] -- a new random number each cycle, looping after n cycles
+
+let somecyclesBy x = when (test x) -- cycle-by-cycle version of sometimesBy
+      where test x c = (timeToRand $ fromIntegral c) < x
+```

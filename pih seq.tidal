@@ -1,0 +1,64 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ slow 2.5
+$ stack[
+s (randcat[
+"pih","pih*2","pih*3","pih*4","pih*5","pih*6","pih*7","pih*8"
+  ])
+# n (discretise (1/2) $ slow 0.1 $ choose [0..5])
+# rel (discretise (1/3) $ slow 0.11 $ scale 0.1 0.3 rand)
+# up (discretise (1/4) $ slow 0.12 $ choose [0,2,3,5,7,8,11,12,14,15,17,19,20,23,24,26,27,29])
+# pan (slow 36 $ sine),
+s (99<~ randcat[
+"pih","pih*2","pih*3","pih*4","pih*5","pih*6","pih*7","pih*8","pih*9"
+  ])
+# n (discretise (1/3) $ slow 0.13 $ choose [6..12])
+# rel (discretise (1/4) $ slow 0.14 $ scale 0.1 0.3 rand)
+# up (discretise (1/5) $ slow 0.15 $ choose [0,2,3,5,7,8,11,12,14,15,17,19,20,23,24,26,27,29,31])
+# pan (slow 35 $ sine),
+s (66<~ randcat[
+"pih","pih*2","pih*3","pih*4","pih*5","pih*6","pih*7","pih*8","pih*9","pih*10"
+  ])
+# n (discretise (1/4) $ slow 0.16 $ choose [13..18])
+# rel (discretise (1/5) $ slow 0.17 $ scale 0.1 0.3 rand)
+# up (discretise (1/6) $ slow 0.18 $ choose [0,2,3,5,7,8,11,12,14,15,17,19,20,23,24,26,27,29,31,32])
+# pan (slow 33 $ sine),
+s (33<~ randcat[
+"pih","pih*2","pih*3","pih*4","pih*5","pih*6","pih*7","pih*8","pih*9","pih*10","pih*11"
+  ])
+# n (discretise (1/5) $ slow 0.19 $ choose [13..18])
+# rel (discretise (1/6) $ slow 0.20 $ scale 0.1 0.3 rand)
+# up (discretise (1/7) $ slow 0.21 $ choose [0,2,3,5,7,8,11,12,14,15,17,19,20,23,24,26,27,29,31,32,35])
+# pan (slow 33 $ sine),
+degradeBy 0.5
+$ s "cp"
+# rel 0.05
+# hpf 400
+# gain 2
+]
+# nudge (slow 32 $ sine)
+
+m1
+$ slow 4
+$ n (randcat[
+"128","128/2","128/3"
+  ])
+# cc0 (slow 0.10 $ rand)
+# cc1 (slow 0.11 $ rand)
+# cc2 (slow 0.12 $ rand)
+# cc3 (slow 0.13 $ rand)
+# cc4 (slow 0.14 $ rand)
+# cc5 (slow 0.15 $ rand)
+# cc6 (slow 0.16 $ rand)
+# cc7 (slow 0.17 $ rand)
+# cc8 (slow 0.18 $ rand)
+# cc9 (slow 0.19 $ rand)
+# cc10 (slow 0.20 $ rand)
+# cc11 (slow 0.21 $ rand)
+# cc12 (slow 0.22 $ rand)
+# cc13 (slow 0.23 $ rand)
+# cc14 (slow 0.24 $ rand)
+# nudge (slow 16 $ sine)
+
+d1 $ degradeBy 0.5 $ fast 8 $ s "pih" # up (fmap fromIntegral $ toScale Scales.harmonicMinor $ choose [0..7]) # rel 0.2 # n 5

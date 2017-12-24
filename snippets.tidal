@@ -1,0 +1,29 @@
+d1 $ degradeBy 0.2 $ slowspread density [0.8, 2.5 .. 12.0] $ randcat[s "foo",s "foo",s "foo",s "stab"] # n (irand 476) # cutoff (scale 20 10000 $ rand) # shape (scale 0.0001 0.9999 $ rand) #  up (choose[-24,-12,0,12]) # pan rand # gain (scale 0.75 1.5 $ rand) #end (slow 18 $ scale 0.001 1 sine1) #hold (scale 0 10 $ rand) #release (slow 21 $ scale 0 1 sine1) # loop "1"
+hush
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d9 $ slowspread density [0.25, 0.5 .. 2] $ randcat [s "foo", s "foo*2", s "foo*3", s "foo*4", s "foo*5", s "foo*6", s "foo*7"] # n (slow 44 $ fmap (+1) $ run 26) # beginend (slow 5 $ scale 0.06 1.0 sine1) (choose[0.07,0.09 .. 0.64]) # loop "6" # attack "0.3" # hold (slow 7 $ scale 0.3 2.3 sine1) # release (slow 6 $ scale 0.6 2.6 sine1) # gain "1.1" # cutoff (scale 80 16000 $ rand) # shape "0.8" # pan (scale 0.25 0.75 $ rand) # up (choose[-3,0,3,6]) # cut (choose[0,1])
+
+
+d1 $ stack [
+  gain "1" # sound "hh(7,8)" # gain (e 6 8 $ "0.8 0.95"),
+  gain "1" # n (e 6 8 $ "0 2") # s "bd808" # gain (e 6 8 $ "0.8 1"),
+  every 16 ((degradeBy 0.25) . (# speed "0.85")) $ every 8 (const $ sound "sn:2(8,8)") $ n (e 3 8 $ "0 1 2") # s "sn"
+]
+
+let bpm b = cps (b/60)
+    tmod s e = (# nudge (scale 0 s $ fmap (**e) saw1))
+
+let tmod' s e = tmod (s*(1/(105/60))) e
+    mt s d i = slow s $ tmod' 0.5 3 $ density d $ i
+
+bpm 105
+
+d1 $ randspread density [0.5,1.0,1.5] $ s "cp" #pan (density 16 $ rand) # end (density 17 $ scale 0.1 1.0 $ rand) # loop (density 18 $ scale 10 30 rand) # cut "1"
+d2 $ degradeBy 0.2 $ slowspread density [0.5,6.5,3.1,4,6,0.25,0.34,0.28,0.63,0.79,1.34,1.67,1.96,2.53,3.65,4.76,5.63,6.98,7.1,7.63,8.5] $ s "bd" #pan (density 16 $ rand) # end (density 17 $ scale 0.1 1.0 $ rand) # loop (density 18 $ scale 10 30 rand) # cut "2"
+d3 $ degradeBy 0.3 $ slow 3.3 $ slowspread density [0.5,6.5,3.1,4,6,0.25,0.34,0.28,0.63,0.79,1.34,1.67,1.96,2.53,3.65,4.76,5.63,6.98,7.1,7.63,8.5] $ s "a" # n "56" #pan (density 16 $ rand) # end (density 17 $ scale 0.1 1.0 $ rand) # loop (density 18 $ scale 10 30 rand) # cut "3"
+
+hush
+
+let randspread f xs p = randcat $ map (\x -> f x p) xs

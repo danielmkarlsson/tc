@@ -1,0 +1,27 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "UltraLite mk3 Hybrid MIDI Port" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+
+let hush = mapM_ ($ silence) [m1,m2]
+solo = (>>) hush
+hush
+m1 $ note "[c0,cs0,d0,ds0,e0,es0]" # velocity "[1,1,1,1,1,1]"
+m1 $ note "[c0,cs0,d0,ds0,e0,es0]" # velocity (scale  0 1 $ rand)
+
+m1 $ stack[note "c0",
+note "cs0",
+note "d0" ,
+note "e0" ,
+note "e0" ,
+note "es0"
+] # velocity "[1.0, 0.1, 1.0, 0.5, 0.5, 0.5]"
+
+
+
+
+m2 $ note "[c0,cs0,d0,ds0,e0,es0]" # velocity "1"

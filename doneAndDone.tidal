@@ -1,0 +1,30 @@
+d1 
+$ sometimesBy (1/32) (striate' 9(4/7))
+$ sometimesBy (1/16) ((1/4)<~)
+$ sometimesBy (1/8) (iter 4)
+$ sometimesBy (1/4) (spread _fast(replicate 256 1))
+$ degradeBy 0.65
+$ fast (choose[1,1.125..16])
+$ unwrap (discretise (1/4) $ wchoose[1..8] 
+[s"amencutup",s"syn",s"txz",s"dx7",s"bass1",s"srr",s"sbu",s"rap"])
+# rel (slow 17 $ scale 0.01 2 $ sine)
+# cut (slow 0.1 $ wchoose [4,1] [1,0])
+# n (slow 0.11 $ choose [0..999])
+# gain (slow 0.12 $ scalex 8 9 $ rand)
+# up (discretise (1/2) $ slow 0.13 $ wchoose [1..20] [-19..(-3)])
+# loop 999
+# begin (slow 27 $ sine)
+# end (slow 7 $ scale 0.1 1 $ sine)
+# room (slow 0.14 $ wchoose [90,1] [0,0.001])
+# size (slow 11 $ scale 0.9 1 $ sine)
+# orbit 1
+# delay (slow 19 $ scale 0 1 $ sine)
+# delayfb (slow 17 $ scale 0.5 1 $ sine)
+# delayt (discretise (1/4) $ 1/47 
+* (choose[0,1,2,4]) 
+/ choose [0,2,3,5,7,8,11])
+# hpf (slow 15 $ scalex 20 400 $ sine)
+# hresonance (slow 0.15 $ scale 0 0.95 $ rand)
+# pan (discretise (1/8) $ slow 0.15 $ rand)
+# lpf (slow 26 $ scalex 400 20000 $ sine)
+# nudge (slow 37 $ scale 0 3 $ sine)

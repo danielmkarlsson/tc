@@ -1,0 +1,18 @@
+d1 
+$ spreadChoose _fast [1,2]
+$ stack [
+s "srg",
+s "mcb:9",
+s "sbu:1",
+someCyclesBy 0.5 (0.25<~)          
+$ s "bch" # n (slow 0.1 $ choose [0..20])
+# lpf (slow 267 $ scale 20 20000 $ sine)
+]
+# delay 1
+# delayfb 0
+# delayt (slow 0.1 $ choose [0.125] * choose [1..19])
+# room (slow 196 sine)
+# size (slow 96 sine)
+# gain 1.8
+
+d2 $ s "prr:4*2" # orbit 1 # rel 0.19 #gain 1.0 # pan (slow 200 $ sine)

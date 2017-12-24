@@ -1,0 +1,31 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "UM-ONE" 1 ccallController
+m2 <- midiStream devs "UM-ONE" 1 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9] -- edit this list. It changes what hush means.
+solo = (>>) hush
+hush
+
+m1
+$ slow (choose[1,2,4,6])
+$ density (choose[0.125,0.25,0.5,1,2,4,8])
+$ stack[
+(n $ randcat["0","2","3","5","7","8","11","36"]),
+(n $ randcat["12","14","15","17","18","23","38"]),
+(n $ randcat["24","26","27","29","31","35"])
+# cc41 (slow 0.10 $ scale 0 1 $ rand) -- Velocity
+# cc42 (slow 0.11 $ scale 0 1 $ rand) -- Modulator attack
+# cc43 (slow 0.12 $ scale 0 1 $ rand) -- Modulator decay
+# cc44 (slow 0.13 $ scale 0 1 $ rand) -- Carrier attack
+# cc45 (slow 0.14 $ scale 0 1 $ rand) -- Carrier decay
+# cc48 (slow 0.15 $ choose [0,0.04,0.12,0.15,0.18,0.22,0.25,0.28,0.29,0.32,0.32,0.35,0.38,0.41,0.45,0.48,0.51,0.54]) -- FM Algorithm
+]
+# dur (slow 0.16 $ scale 0 1 $ rand)
+# nudge (slow 128 $ scale 0 8 $ saw1)
+
+--
+m1 $ (choose[0..127])

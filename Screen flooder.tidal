@@ -1,0 +1,5 @@
+-- Screen flooder
+let replicator text1 = [putStr (text1) | x <- replicate 3000 text1]
+    flood text2 = sequence_(replicator text2)
+
+flood " Hello"

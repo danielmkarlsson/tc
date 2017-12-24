@@ -1,0 +1,7 @@
+d1 $ slowspread density [1,1.5,0.75,1.25] $ every 8 (density 2) $ sound "[gabba gabba, [metal*4]] arpy arpy:3" # pan rand
+
+d1 $ every 4 (|+| n (irand 20)) $ sound "[gabba gabba, [metal*4]] industrial pluck" |=| n "0" #pan rand
+
+d1 $ every 4 (|+| n (irand 20)) $ sound "[gabba gabba, [metal*4]] industrial pluck" |=| n "0" #pan (slow 0.1 $ rand)
+
+d1 $ slowspread density ([1, 2, 4]++[3, 1.5]) $ slowspread ($) [(# speed "1"), striate 2, rev, (# speed "2")] $ sound "[gabba gabba, [metal*4]]"

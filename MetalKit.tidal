@@ -1,0 +1,14 @@
+d1 $ degradeBy 0.1 $ randcat [s "mk*8",s "mk*8",s "mk*8",s "mk*8",s "mk*8",s "mk*8",s "mk*8",s "mk*8",s "mk*16"]  # gain (scale 1.0 2.5 $ rand) # n (choose[2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,17,17,17,17,17,17,17,42,45,46,47,48,49,50]) # pan (scale 0 1 $ rand)
+
+d1 $ degradeBy 0.7 $ randcat [s "bass2*6"]  # gain (scale 0.75 1.5 $ rand) # n (choose[3,3,3,7,17,17]) # pan (scale 0 1 $ rand) #shape "0.75" # gain "1.85"
+d2 $ degradeBy 0.9 $ randcat [s "gabba*6"]  # gain (scale 0.75 1.5 $ rand) # n (choose[3,3,3,7,17,17]) # pan (scale 0 1 $ rand) #shape "0.75" # gain "0.85"
+d3 $ degradeBy 0.4 $ randcat [s "mk*8",s "mk*6",s "mk*3"]  # gain (scale 0.75 2.5 $ rand) # n (choose[3,3,3,7,17,17]) # pan (scale 0 1 $ rand) #shape "0.75"
+d4 $ degradeBy 0.0 $ randcat [s "ga*8",s "ga*2",s "ga*3"]  # n (choose[1]) # pan (scale 0 1 $ rand) # up (choose[5,3,-1,-3,-5,-7,-9]) # gain (scale 1.0 1.75 $ rand) # cut "1"
+
+d4 $ s "ga*5" # up (choose [1..5]) # cut "1"
+d5 $ degradeBy 0.2 $ randcat [s "vp*3"]  # n (choose[0..37]) # pan (scale 0 1 $ rand) # gain (scale 1.75 3.0 $ rand) # cut "1"
+d6 silence
+cps 0.6
+hush
+
+d6 $ sound "vp:37/3" #  gain "3" # up "-20"

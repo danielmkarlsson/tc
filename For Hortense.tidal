@@ -1,0 +1,1 @@
+d1 $ s "bass*9" #n (slow 0.1 $ irand 8) #up (slow 0.11 $ choose [0,2,3,5,7,8,11]) #release (slow 0.12 $ scale 0.01 0.5 $ rand) #pan (slow 0.13 $ rand)

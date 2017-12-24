@@ -1,0 +1,52 @@
+d1
+$ iter 2
+$ degradeBy 0.33
+$ s (randcat["breaks125*2","breaks125*4","breaks125*6","breaks125*8","breaks125*12"])
+# n (irand 99)
+# cut 1
+# rel 0.125
+# up 3
+# begin (slow 0.1 $ rand)
+# gain 3
+# delay 0.01
+# delayt (slow 0.11 $ scale 0.0001 0.1 $ rand)
+# delayfb 1
+
+m1 silence
+
+m1
+$ iter 2
+$ degradeBy 0.33
+$ fast 8
+$ n (randcat["128","128*2","128*3","128*4","128*5","128*6","128*7","128*8","128*9","128*10","128*11","128*12","128*13"])
+# cc0 (discretise (1/4) $ slow 0.1 $ rand)
+# cc1 (discretise (1/5) $ slow 0.11 $ rand)
+# cc2 (discretise (1/6) $ slow 0.12 $ rand)
+# cc3 (discretise (1/7) $ slow 0.13 $ rand)
+# cc4 (discretise (1/8) $ slow 0.14 $ rand)
+# cc5 (discretise (1/9) $ slow 0.15 $ rand)
+# cc6 (discretise (1/10) $ slow 0.16 $ rand)
+# cc7 (discretise (1/11) $ slow 0.17 $ rand)
+# cc8 (discretise (1/12) $ slow 0.18 $ rand)
+# cc9 (discretise (1/13) $ slow 0.19 $ rand)
+# cc10 (discretise (1/14) $ slow 0.2 $ rand)
+# cc11 (discretise (1/15) $ slow 0.21 $ rand)
+# cc12 (discretise (1/16) $ slow 0.22 $ rand)
+# cc13 (discretise (1/17) $ slow 0.23 $ rand)
+# cc14 (discretise (1/18) $ slow 0.24 $ rand)
+# cc15 (discretise (1/19) $ slow 0.25 $ rand)
+# cc16 (discretise (1/20) $ slow 0.26 $ rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush
+hush

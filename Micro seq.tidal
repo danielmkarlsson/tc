@@ -1,0 +1,105 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "QUAD-CAPTURE" 1 ccallController
+m2 <- midiStream devs "IAC Bus 1" 1 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush
+hush
+
+cps 1.25
+
+m1
+$ degradeBy 0.33
+$ fast 8
+$ midinote (slow 1 $ discretise 1 $ randcat[68,69,70,71])
+# cc0 (discretise (1/296) $ slow 0.1 $ scale 0 0.4 $ rand) -- drumSynth 1 osc 1 pitch
+# cc1 (discretise (1/295) $ slow 0.11 $ scale 0.1 0.7 $ rand) -- drumSynth 1 Osc 1 decay
+# cc2 (discretise (1/294) $ slow 0.12 $ scale 0.1 1 $ rand) -- drumSynth 1 Osc 1 level
+# cc3 (discretise (1/293) $ slow 0.13 $ scale 0 1 $ rand) -- drumSynth 1 Osc2 Detune
+# cc4 (discretise (1/292) $ slow 0.14 $ scale 0.1 0.7 $ rand) -- drumSynth 1 Osc2 Decay
+# cc5 (discretise (1/291) $ slow 0.15 $ scale 0.1 1 $ rand) -- drumSynth 1 Osc2 Level
+# cc6 (discretise (1/290) $ slow 0.16 $ scale 0 1 $ rand) -- drumSynth 1 Filter Freq
+# cc7 (discretise (1/289) $ slow 0.17 $ scale 0 1 $ rand) -- drumSynth 1 Filter Resonance
+# cc8 (discretise (1/288) $ slow 0.18 $ scale 0 1 $ rand) -- drumSynth 1 Filter Sweep
+# cc9 (discretise (1/287) $ slow 0.19 $ scale 0 1 $ rand) -- drumSynth 1 Filter decay
+# cc10 (discretise (1/286) $ slow 0.20 $ scale 0 1 $ rand) -- drumSynth 1 Filter Type
+# cc11 (discretise (1/285) $ slow 0.21 $ scale 0 0 $ rand) -- drumSynth 1 Bend Amount
+# cc12 (discretise (1/284) $ slow 0.22 $ scale 0 1 $ rand) -- drumSynth 1 Bend Decay
+# cc13 (discretise (1/283) $ slow 0.23 $ scale 0 1 $ rand) -- drumSynth 1 Click
+# cc14 (discretise (1/282) $ slow 0.24 $ scale 0 0 $ rand) -- drumSynth 1 Noise
+# cc15 (discretise (1/281) $ slow 0.25 $ scale 0 0.4 $ rand) -- drumSynth 2 osc 1 pitch
+# cc16 (discretise (1/280) $ slow 0.26 $ scale 0.1 0.7 $ rand) -- drumSynth 2 Osc 1 decay
+# cc17 (discretise (1/279) $ slow 0.27 $ scale 0.1 1 $ rand) -- drumSynth 2 Osc 1 level
+# cc18 (discretise (1/278) $ slow 0.28 $ scale 0 1 $ rand) -- drumSynth 2 Osc2 Detune
+# cc19 (discretise (1/277) $ slow 0.29 $ scale 0.1 0.7 $ rand) -- drumSynth 2 Osc2 Decay
+# cc20 (discretise (1/276) $ slow 0.30 $ scale 0.1 1 $ rand) -- drumSynth 2 Osc2 Level
+# cc21 (discretise (1/275) $ slow 0.31 $ scale 0 1 $ rand) -- drumSynth 2 Filter Freq
+# cc22 (discretise (1/274) $ slow 0.32 $ scale 0 1 $ rand) -- drumSynth 2 Filter Resonance
+# cc23 (discretise (1/273) $ slow 0.33 $ scale 0 1 $ rand) -- drumSynth 2 Filter Sweep
+# cc24 (discretise (1/272) $ slow 0.34 $ scale 0 1 $ rand) -- drumSynth 2 Filter decay
+# cc25 (discretise (1/271) $ slow 0.35 $ scale 0 1 $ rand) -- drumSynth 2 Filter Type
+# cc26 (discretise (1/270) $ slow 0.36 $ scale 0 0 $ rand) -- drumSynth 2 Bend Amount
+# cc27 (discretise (1/269) $ slow 0.37 $ scale 0 1 $ rand) -- drumSynth 2 Bend Decay
+# cc28 (discretise (1/268) $ slow 0.38 $ scale 0 1 $ rand) -- drumSynth 2 Click
+# cc29 (discretise (1/267) $ slow 0.39 $ scale 0 0 $ rand) -- drumSynth 2 Noise
+# cc30 (discretise (1/266) $ slow 0.40 $ scale 0 0.4 $ rand) -- drumSynth 3 osc 1 pitch
+# cc31 (discretise (1/265) $ slow 0.41 $ scale 0.1 0.7 $ rand) -- drumSynth 3 Osc 1 decay
+# cc33 (discretise (1/264) $ slow 0.42 $ scale 0.1 1 $ rand) -- drumSynth 3 Osc 1 level
+# cc34 (discretise (1/263) $ slow 0.43 $ scale 0 1 $ rand) -- drumSynth 3 Osc2 Detune
+# cc35 (discretise (1/262) $ slow 0.44 $ scale 0.1 0.7 $ rand) -- drumSynth 3 Osc2 Decay
+# cc36 (discretise (1/261) $ slow 0.45 $ scale 0.1 1 $ rand) -- drumSynth 3 Osc2 Level
+# cc37 (discretise (1/260) $ slow 0.46 $ scale 0 1 $ rand) -- drumSynth 3 Filter Freq
+# cc38 (discretise (1/259) $ slow 0.47 $ scale 0 1 $ rand) -- drumSynth 3 Filter Resonance
+# cc39 (discretise (1/258) $ slow 0.48 $ scale 0 1 $ rand) -- drumSynth 3 Filter Sweep
+# cc40 (discretise (1/257) $ slow 0.49 $ scale 0 1 $ rand) -- drumSynth 3 Filter decay
+# cc41 (discretise (1/256) $ slow 0.50 $ scale 0 1 $ rand) -- drumSynth 3 Filter Type
+# cc42 (discretise (1/255) $ slow 0.51 $ scale 0 0 $ rand) -- drumSynth 3 Bend Amount
+# cc43 (discretise (1/254) $ slow 0.52 $ scale 0 1 $ rand) -- drumSynth 3 Bend Decay
+# cc44 (discretise (1/253) $ slow 0.53 $ scale 0 1 $ rand) -- drumSynth 3 Click
+# cc45 (discretise (1/252) $ slow 0.54 $ scale 0 0 $ rand) -- drumSynth 3 Noise
+# cc46 (discretise (1/251) $ slow 0.55 $ scale 0 0.4 $ rand) -- drumSynth 4 osc 1 pitch
+# cc47 (discretise (1/252) $ slow 0.56 $ scale 0.1 0.7 $ rand) -- drumSynth 4 Osc 1 decay
+# cc48 (discretise (1/253) $ slow 0.57 $ scale 0.1 1 $ rand) -- drumSynth 4 Osc 1 level
+# cc49 (discretise (1/252) $ slow 0.58 $ scale 0 1 $ rand) -- drumSynth 4 Osc2 Detune
+# cc50 (discretise (1/251) $ slow 0.59 $ scale 0.1 0.7 $ rand) -- drumSynth 4 Osc2 Decay
+# cc51 (discretise (1/250) $ slow 0.60 $ scale 0.1 1 $ rand) -- drumSynth 4 Osc2 Level
+# cc52 (discretise (1/249) $ slow 0.61 $ scale 0 1 $ rand) -- drumSynth 4 Filter Freq
+# cc53 (discretise (1/248) $ slow 0.62 $ scale 0 1 $ rand) -- drumSynth 4 Filter Resonance
+# cc54 (discretise (1/247) $ slow 0.63 $ scale 0 1 $ rand) -- drumSynth 4 Filter Sweep
+# cc55 (discretise (1/246) $ slow 0.64 $ scale 0 1 $ rand) -- drumSynth 4 Filter decay
+# cc56 (discretise (1/245) $ slow 0.65 $ scale 0 1 $ rand) -- drumSynth 4 Filter Type
+# cc57 (discretise (1/244) $ slow 0.66 $ scale 0 0 $ rand) -- drumSynth 4 Bend Amount
+# cc58 (discretise (1/243) $ slow 0.67 $ scale 0 1 $ rand) -- drumSynth 4 Bend Decay
+# cc59 (discretise (1/242) $ slow 0.68 $ scale 0 1 $ rand) -- drumSynth 4 Click
+# cc60 (discretise (1/241) $ slow 0.69 $ scale 0 0 $ rand) -- drumSynth 4 Noise
+# cc61 (discretise (1/240) $ slow 0.70 $ scale 0 0.5 $ rand) -- drumSynth 1 wavewrap
+# cc62 (discretise (1/239) $ slow 0.71 $ scale 0 0.5 $ rand) -- drumSynth 2 wavewrap
+# cc63 (discretise (1/238) $ slow 0.72 $ scale 0 0.5 $ rand) -- drumSynth 1 wavewrap
+# cc65 (discretise (1/237) $ slow 0.73 $ scale 0 0.5 $ rand) -- drumSynth 2 wavewrap
+# cc66 (discretise (1/236) $ slow 0.74 $ scale 0 1 $ rand) -- drumSynth 1 pan
+# cc67 (discretise (1/235) $ slow 0.75 $ scale 0 1 $ rand) -- drumSynth 2 pan
+# cc68 (discretise (1/234) $ slow 0.76 $ scale 0 1 $ rand) -- drumSynth 3 pan
+# cc69 (discretise (1/233) $ slow 0.77 $ scale 0 1 $ rand) -- drumSynth 4 pan
+
+m1 silence
+
+m2
+$ degradeBy 0.33
+$ fast 8
+$ midinote (slow 1 $ discretise 1 $ randcat[68,69,70,71])
+# cc0 (discretise (1/55) $ slow 0.78 $ scale 0 1 $ rand) -- Imager band 1
+# cc1 (discretise (1/54) $ slow 0.79 $ scale 0 1 $ rand) -- Imager band 2
+# cc2 (discretise (1/53) $ slow 0.80 $ scale 0 1 $ rand) -- Imager band 3
+# cc3 (discretise (1/52) $ slow 0.81 $ scale 0 1 $ rand) -- Imager band 4
+# cc4 (discretise (1/251) $ slow 0.82 $ scale 0 0.6 $ rand) -- karplus wet
+# cc5 (discretise (1/250) $ slow 0.83 $ scale 0.75 1 $ rand) -- karplus feedback
+# cc6 (discretise (1/249) $ slow 0.84 $ scale 0 1 $ rand) -- karplus filter
+# cc7 (discretise (1/248) $ slow 0.85 $ choose [0,1]) -- karplus time link
+# cc8 (discretise (1/47) $ slow 0.86 $ choose [0,1]) -- karplus active
+# cc9 (discretise (1/46) $ slow 0.87 $ choose [0,1]) -- karplus stereo
+# cc10 (discretise (1/245) $ slow 0.88 $ scale 0 1 $ rand) -- karplus time left
+# cc11 (discretise (1/244) $ slow 0.89 $ scale 0 1 $ rand) -- karplus time right

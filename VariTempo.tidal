@@ -1,0 +1,12 @@
+d1 $ slowspread density [1.0,1.5 .. 2.5] $ sound "ce*16" # n "0" # pan (5824 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])) # up (choose[0,0.5,2,2.5,3,5,7,9,11]) # gain (scale 0.5 0.6 $ rand)
+d2 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "ce" # n "1" # pan (3725 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])) # up (choose[3,5,7,9,11,0,0.5,2,2.5]) # gain (scale 0.5 0.6 $ rand)
+d3 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "ce" # n "1" # pan (7945 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])) # up (choose[7,9,11,0,0.5,2,2.5,3,5]) # gain (scale 0.5 0.6 $ rand)
+d4 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "ce" # n "2" # pan (9637 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])) # up (choose[11,0,0.5,2,2.5,3,5,7,9]) # gain (scale 0.5 0.6 $ rand)
+
+hush
+cps 0.125
+
+d5 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "808*16" # n "15" # gain (choose [0.3,0.8]) # pan (1024 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]))
+d6 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "808*16" # n "7" # gain (choose [0.5,1.0]) # pan (8476 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]))
+d7 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "808*16" # n "9" # gain (choose [0.3,0.8]) # pan (2784 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]))
+d8 $ slowspread density [1.0, 1.5 .. 2.5] $ sound "808*16" # n "3" # gain (choose [0.75,1.0]) # pan (4896 <~ (choose[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]))

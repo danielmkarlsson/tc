@@ -1,0 +1,19 @@
+d1
+$ slow 1.5
+$ s "srg*16?"
+# rel (slow 15 $ scale 2 0.1 $ sine)
+# delay 1
+# delayfb 1
+# delayt (discretise (1/4) $ slow 0.1 $ choose [1/16]
+/ choose [4..48])
+# comb (slow 16 $ scale 0.7 0.995 $ rand)
+# gain (slow 16 $ scale (1/16) 2 $ rand)
+# cut (slow 0.11 $ choose [0,1])
+# nudge (slow 8 $ scale 0 1.5 $ sine)
+# pan (slow 19 $ saw)
+# hpf (slow 11 $ scalex 200 20 $ rand)
+# speed (slow 17 $ scale (1/32) 3 $ rand)
+# n (slow 0.13 $ choose [0,6,11])
+# freeze (slow 0.12 $ choose [0,1])
+
+import Sound.Tidal.SpectralTricks

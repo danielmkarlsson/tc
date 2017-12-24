@@ -1,0 +1,26 @@
+d1
+$ stack[
+degradeBy (1/4)
+$ s "srg"
+# begin 1
+# end 8
+# speed (-1) --play backwards
+# lpf 10000
+# hpf 200
+# n (slow 0.13 $ choose [0..9])
+# cut 1
+# att (slow 0.11 $ choose [0.1,0.1,0.8])
+# hold 0.2 --comment
+# rel (slow 0.12 $ scalex 0.1 0.8 $ rand),
+fast 2
+$ (111<~)
+$ degradeBy (1/4)
+$ s "sbu"
+# cut (slow 0.1 $ choose [0,2])
+# lpf (discretise (1/8) $ slow 17 $ scalex 20 20000 $ rand),
+(222<~)
+$ degradeBy (1/4)
+$ s "bch"
+# cut 3
+# att (slow 16 $ scale 0 1 $ sine)
+]

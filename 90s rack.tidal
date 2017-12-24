@@ -1,0 +1,22 @@
+-- Run each line separately
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC -- This right here adds #cc127 capability.
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController -- See here how it's called ccallController.
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+-- m2 <- midiStream devs "IAC Bus 2" 2 synthController -- This is only good for the midinote stuffs.
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9] -- edit this list. It changes what hush means.
+solo = (>>) hush
+hush
+
+m1 $ slowchoose density [1,2,3,4,6,6,6,8,9,12]
+$ slow 1.125
+$ iter 1
+$ degradeBy 0.125
+$ midinote (randcat["57","60","62","63","67","68","71"])
+#cc0 (slow 0.1 $ scale 0 1 $ rand)
+#velocity (slow 0.11 $ scale 0 2 $ rand)
+#dur (slow 0.12 $ rand)

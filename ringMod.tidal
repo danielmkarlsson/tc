@@ -1,0 +1,33 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+-- define ring modulator frequency parameter
+let rmfreq = make' VF rmfreq_p
+    rmfreq_p = F "rmfreq" Nothing
+
+
+d2
+$ spreadChoose density [0.75,1..3]
+$ spreadChoose iter [1,2..8]
+$ s "jvbass*8?"
+# n (slow 0.1 $ run 10)
+# pan (slow 0.11 $ rand)
+# cut (slow 0.13 $ wchoose [5,1] [0,1])
+# up (slow 0.14 $ choose [-6,5.5..18])
+# release (slow 0.17 $ scale 0.3 3 $ rand)
+# cutoff (slow 0.15 $ scale 2000 20000 $ rand)
+# hcutoff (slow 0.18 $ scale 20 1000 $ rand)
+# gain (slow 0.16 $ scale 0.5 2 $ rand)
+
+
+let rmfreq = make' VF rmfreq_p
+    rmfreq_p = F "rmfreq" Nothing
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d2 $ foldEvery [5,7] (0.25 <~)
+  $ sometimes (juxBy 0.5 (iter 4))
+  $ stack [
+    sometimes (density 2) $ s "ifdrums? ~ ifdrums? ifdrums?" # accelerate "-3" # cutoff "1000" # gain "0.9",
+    rarely (const $ s "~") $ s "~ jvbass*4" # n (run 8) # rmfreq (slow 4 $ (scale 20 1500 $ sine1)) # speed "0.75" # room "0.707" # size "0.7" # orbit "1" # cut "1" ,
+    chop 58 $ iter 4 $ sometimesBy 0.1 (density 2) $ s "ifdrums*8?" # n (wchoose [10,1] [4,5]) # hcutoff "500" # speed "1.5" # delay "0.3" # delayfeedback "0.3" # gain "0.8" # orbit "2"
+  ] # shape (slow 2 $ (scale 0 0.5 $ sine1))

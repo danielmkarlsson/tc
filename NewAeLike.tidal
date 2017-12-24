@@ -1,0 +1,7 @@
+d1 $ (459~>) $ slowspread slow ([0.1,0.2,0.4] ++ [0.05,0.1..0.8] ++ [0.1,1.5]) $ s "tech" #n (choose([0,2] ++ [5..11])) #speed "2" #delay (slowspread slow [1..9] $ scale 0.5 1 $ sine1) #delaytime (slowspread slow [2..10] $ scale 0.005 0.1 $ saw1) #delayfeedback (choose[0.5,1,1,1,1]) #pan (slow 99 $ saw1) #gain (slowspread slow [2..17] $ scale 1 4 $ sine1) #cutoff (slow 98 $ scale 20 20000$sine1) # nudge (slow 99 $ scale 0 1 $ saw1) #shape (slow 0.1 $ scale 0.1 0.9 $ rand)
+
+m1 $ slowspread slow ([1..9]++[8..2]) $ (459~>) $ slowspread slow ([0.1,0.2,0.4] ++ [0.05,0.1..0.8] ++ [0.1,1.5]) $ n "128"
+#cc0 (scale 0 1 $ rand)
+#cc1 (slow 0.99$scale 0 1 $ rand)
+#cc2 (slow 0.98$scale 0 1 $ rand)
+#cc3 (slow 0.97$scale 0 1 $ rand)

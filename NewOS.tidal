@@ -1,0 +1,11 @@
+d1 $ s "odx*8"
+d1 $ stack[s "odx" # pan "0", s "cp" # pan "1"]
+m1 $ midinote "40 52 56 57 59 60 63 66 67 69 71 72"
+let hush = mapM_ ($ silence) [d1,m1]
+solo = (>>) hush
+hush
+
+d1 $ sound "arpy:0(3,8)" # speed "2"
+t1 (interpolateIn 4) $ sound "arpy:0(3,8)" # speed "4"
+
+t1 (interpolateIn 4) $ sound "arpy:0(3,8)" # speed "3"

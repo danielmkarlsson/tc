@@ -1,0 +1,6 @@
+d2 $ stack [sometimesBy 0.2 ((0.1 <~) . stut 8 0.1 3) $ every 1 (|/| speed "2") $ foldEvery [6,8] (|*| speed "2") $ sound "pm(8,5)" # speed "1.25 1.5 2.0 1.2 3.0" # pan (slow 12 $ sine1),
+degradeBy 0.3 $ every 1 (|*| speed "4") $ sound "pm(8,5)" # speed "1.25 1.5 2.0 1.2 3.0" # pan (slow 16 $ sine1),
+sometimesBy 0.3 (degrade) $ foldEvery [6,8] (|*| speed "3") $ sound "pm(8,5)" # speed "1.25 1.5 2.0 1.2 3.0" # pan (slow 8 $ sine1)
+]# room "0.25" # size "0.3"
+
+d1 $ slowchoose density [0.125,0.25..99] $ slowchoose (\x -> stut x 0 3) [2..24] $ s (randcat ["odx", "cp", "hc"])

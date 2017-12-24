@@ -1,0 +1,36 @@
+d1 $ s "moog" #cut "1" #attack "2" #up "2"
+
+d1 $ sound "bd {bd bd bd ~}%1"
+d1 $ sound "bd [bd!3 ~]/4"
+d1 $ sound "bd <bd bd bd ~>"
+
++{- | `toScale` lets you turn a pattern of notes within a scale (expressed as a
+ +list) to note numbers.  For example `toScale [0, 4, 7] "0 1 2 3"` will turn
+ +into the pattern `"0 4 7 12"`.  It assumes your scale fits within an octave,
+ +to change this use `toScale' size`.  Example:
+ +`toscale' 24 [0,4,7,10,14,17] (run 8)` turns into `"0 4 7 10 14 17 24 28"`
+ +-}
+
+toScale [0, 4, 7] "0 1 2 3"`
+
+
+cps (-1)
+cps 1
+
+d1 $degradeBy 0.5$slow 0.1$ sound "cp odx hc bd 808"#n(irand 99)#release"0.1"
+
+d1 $slow 0.5$ seqPLoop[ 
+(0,8, s "hc*2?odx"),
+(2,8, s "odx*2?~"),
+(4,8, s "~ cp?")
+]
+
+d1 $ seqP [
+  (0, 128, sound "bd bd*2"),
+  (8, 128, sound "hh*2 [sn cp] cp future*4"),
+  (16, 128, sound (samples "arpy*8" (run 16)))
+]
+
+
+cps (-1)
+cps 1

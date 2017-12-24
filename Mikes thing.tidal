@@ -1,0 +1,20 @@
+d1
+$ stack[
+sometimesBy (1/8) (iter 2)
+$ fast 4
+$ spaceOut [1,0.99..0.01]
+$ fast (choose [2,4,4,4,4])
+$ s (randcat["sbu","gab","pmb","clp","srg","tuu:4","bch:2"])
+# cut (slow 0.1 $ choose [0,0,0,1])
+# pan (slow 0.11 $ scale 0 0.5 $ rand)
+# nudge (slow 14 $ scale 0 3 $ sine),
+sometimesBy (1/9) (iter 4)
+$ fast 2
+$ (278<~)
+$ spaceOut [1,0.98..0.02]
+$ fast (choose [2,2,2,2,4])
+$ s (randcat["sbu","gab","pmb","clp","srg","tuu:4","bch:2"])
+# cut (slow 0.12 $ choose [0,0,0,2])
+# pan (slow 0.13 $ scale 0.5 1 $ rand)
+# nudge (slow 19 $ scale 0 3 $ sine)
+]

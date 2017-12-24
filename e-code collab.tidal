@@ -1,0 +1,7 @@
+d1
+$ stack[
+s "clp*9"
+# nudge (slow 9 $ scale 0 3 $ sine)
+# hpf (slow 5 $ scale 9999 20 $ sine)
+# pan (slow 7 $ sine)
+]

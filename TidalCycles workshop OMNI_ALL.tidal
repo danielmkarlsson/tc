@@ -1,0 +1,184 @@
+-- This is a comment. Anything after the double dash gets ignored by TidalCycles. Use Comments! They are good for remembering and for sharing code with others.
+
+{-
+This is also a comment. This one can run over multiple lines or even between bits of code.
+-}
+
+-- Let's start like we would on any start of the day when we want to make music with TidalCycles.
+-- Start SuperCollider.
+-- Evaluate SuperDirt.start in SuperCollider.
+-- Start Atom.
+-- Make a new file.
+-- Save it as anything you like with .tidal at the end. This lets Atom know you want to make Tidal code.
+hush -- Run this line to stop sound.
+d1 $ sound "gabba" -- d1 is a stream or a stem or a track.
+hush
+d1 $ sound "gabba:1"
+hush
+-- gabba is the name of a folder. The :1 part lets us play the second file in that folder. No worries if you use a higher number than the available amount of files when messing around. TidalCycles just wraps around. So, in this case, gabba:1 and gabba:5 make the same sound.
+-- A quick n' dirty way to check what folders, with how many files in them, are available to us is to check SuperCollider's PostWindow.
+
+d1 $ sound "gabba cp" -- Make a sequence of many different folders.
+d1 $ sound "gabba:2 cp 808cy:6"
+hush -- Notice how evaluting a stream with the same name as a stream that is already running (i.e. d1) replaces what we hear.
+d1 $ sound "gabba:3 cp ~"
+hush -- ~ (Tilde) gives you a pause.
+d1 $ sound "gabba 808cy ~" -- Multiple streams are possible.
+d2 $ sound "hc hc ~ hc" -- Evalute or run each line separately.
+d3 $ sound "db chin ~ print clak" -- There are nine streams. d9 is max.
+hush
+d1 $ sound "gabba cp" -- All of the samples inside of a pattern get squashed into a single cycle.
+d1 $ sound "gabba cp hc cp drum:2 clak print" -- These patterns all loop over the same amount of time.
+d1 $ sound "gabba:1 cp hc cp drum:3 clak print:2 feel:6 hc odx:2 feel"  -- This one is especially crowded.
+hush
+-- The amount of events you add to a pattern in this way will always be distributed evenly within a single cycle.
+
+{-
+If you haven't already, it's time to:
+HAVE A MESSAROUND
+-}
+
+d1 $ sound "gabba ~"
+d2 $ sound "~ cp"
+d1 silence -- This is like hush or mute for just this one stream. Notice how d2 kept on truckin´ there.
+hush
+d1 $ sound "gabba ~ ~"
+d2 $ sound "~ cp ~"
+d3 $ sound "~ ~ 808cy"
+d4 $ sound "hc hc:2 hc hc"
+solo $ d4 $ sound "hc hc:2 hc hc" -- Use this to solo a stream. All other streams are silenced.
+hush
+d1 $ sound "[gabba:1 cp hc:3] 808cy:7"
+hush -- Square braces let you group more events into one step.
+d1 $ sound "[gabba cp clak] [hc print:3 hc:4 hc]"
+hush  -- Here the cycle is divided by two with 3 events in the first half of the cycle and 4 events in the second half of the cycle.
+d1 $ sound "[gabba:2 gabba:1] [print:8 [cp [clak clak] hc] 808cy:6]"
+hush -- Nesting is also possible and can warp your mind!
+d1 $ sound "[hc hc hc, cp clak cp clak]"
+hush -- Polyrhythms are possible and are groovy. Two streams in one here.
+d1 $ sound "[808cy, gabba drum, hc hc hc, cp clak cp clak]"
+hush -- Layer as many polyrhythms as you want.
+
+{-
+Oh my glob! So much fun/complexity is possible already so go ahead and:
+HAVE ANOTHER MESSAROUND
+-}
+
+cps 1 -- cps means cycles per second. Change this to change the global tempo. Low tempos may give unexpected results (inexact). Extremely high tempos which approach infinity will cause playback of samples to cease since your computer will not be able to do it. SuperCollider is SuperGreat though so it can play stuff SuperFast no probs.
+
+d1 $ sound "[[cp drum cp] clak, [gabba gabba cp] drum hc, 808cy]"
+hush -- An example of combining square braces and polyrhythms.
+d1 $ sound "gabba*2"
+hush -- Multiply an event.
+d1 $ sound "gabba gabba"
+hush -- This is the equivalent to the above line expressed in a different way.
+d1 $ sound "gabba/2"
+hush -- Divide an event. This gets played every 2nd cycle.
+d1 $ sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2"
+hush -- These can also be applied to groups.
+d1 $ rev (sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2")
+hush -- Play the pattern in reverse.
+d1 $ every 4 (rev) (sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2")
+hush -- Every 4th cycle gets played in reverse.
+d1 $ slow 3 $ sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2"
+hush -- Slow down a pattern.
+d1 $ density 4 $ sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2"
+hush -- Speed up a pattern.
+d1 $ slow 0.25 $ sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2"
+hush -- slow speeds stuff up below 1 so this is equivalent to the above density line.
+d1 $ density 0.25 $ sound "[drum db hc]*2 [db [[clak hc] hc] 808cy]/2"
+hush -- density slows stuff down below 1 so this is equivalent to the above slow line.
+d1 $ sound "cp*4" # gain "0.75"
+hush -- Turn down the volume. Most of these # parameters go from 0.0 to 1.0
+d1 $ sound "cp*4" # gain "0.5"
+hush -- This is very soft because amplitude really needs to be expressed exponentially to make any sense but here it's linear so, too bad, we have to make do with this the way it is for now. Fiddle around with the gain values until you get what you want.
+d1 $ sound "cp*4" # gain "1 0.8 0.5 0.7"
+hush -- Effects parameters can be also be sequenced.
+d1 $ sound "cp*4" # gain "1 0.8 0.5 0.7" # pan "0.25 0.5 1.0 0.0"
+hush -- More than one effect can be applied to a sequence.
+d1 $ sound "cp*4" # gain "1 0.8 0.5 0.7" # pan "0.25 0.5 1.0 0.0" # speed "1 2 -1 -0.75"
+hush -- speed is a special parameter in that It's range is larger than 0.0 to 1.0 and it also accepts negative values which play the sounds backwards.
+d1 $ sound "moog*4" # gain "0.6" # pan "0.25 0.5 1.0 0.0" # speed "[1, 0.5, 1.5, 2]"
+hush -- Play a sample at multiple speeds simultaneously. This gives us a chord.
+d1 $ sound "moog*4" # pan "0.25 0.5 1.0 0.0" # speed "1 0.5 1.5 2"  # cut "1"
+hush -- This moog sample is long. cut lets us stop playback of a sample when a new one starts playing. You can have any number of cut channels. Different streams can share the same cut channel (that way streams will cut each other). Also "0" means do not cut. Sequence cut channels!
+
+{-
+Wowee! A bunch of new things have been learnt so it's time to:
+HAVE ANOTHER MESSAROUND
+-}
+
+d1 $ sound "moog*7" # up "0 5 8 2 11 7 3" # cut "1"
+hush -- As we may have noticed from messing around  speed is tricky to use when we want to make melodies. up lets us describe speed changes in twelve parts per octave. It's like the keys on a piano.
+d1 $ sound "moog*7" # up "0 5 8.25 2.125 11.5 7 3.5" # cut "1"
+hush -- A subset of the people on earth will be excited to learn that up accepts floats. These are the notes _in between_ the keys on the piano. Much excites for Team MicroTonalists!
+d1 $ sound "odx(2,7)" # cut "1" -- Euclidean rhythms. In this example 3 samples are distributed as evenly as possible over the space of 7 subdivisions of a cycle.
+d2 $ sound "cp(3,7,3)" # cut "2"
+hush -- The third parameter rotates the pattern so it starts on a different step. This makes sense to use when you want more than one pattern to have the same Euclidean rhythm but not the same starting point (rotation).
+d1 $ slowspread density [1,2 .. 7] $ sound "gabba cp clak hc" # cut "1"
+hush -- slowspread applies one value of density to each cycle. Use the .. shortcut in lists. Very handy and playable on-the-fly.
+d1 $ slowspread density [1,2,3] $ slowspread slow [0.5, 1.25, 2.3, 3.2] $ sound "gabba cp clak hc" # cut "1"
+hush -- Interestingly (mindbendingly!) both slow and density can be slowspread at the same time. If you have an unequal amount of terms for the slowspread density and the slowspread slow you get a very high degree of variation. Two independent sequences for multiplication and/or division. Also: You can have any number of slowspread density and slowspread slow running on a stream! BOOM!!!
+
+d1 $ s "{hh gabba cp hc clak drum db cp hc}%4"
+hush -- Use this curly brackets and % + number way of making an infinitely extendable sequence. This sequencer gets it's meter or subdivisions of the cycles from the number right after the %. The time between events is constant and controlled by that number. Higher numbers makes it faster because it means more subdivisions of the cycle. Add as much stuff inside the pattern as you want. No squishing together here.
+
+{-
+Geez Louise! These things can maybe be hard to really get a feel for just from hearing about them so:
+HAVE ANOTHER MESSAROUND
+-}
+
+d1 $ s "gabba" # n "1"
+hush -- $ sound can be expressed as just $ s. You can sequence the file numbers with # n
+-- If weirdness and not sure why; Try $ sound instead. The functionality of $ s may not be entirely built to completion as of yet. TidalCycles is under continues development
+
+d1 $ s "gabba*2" # n (choose[0,1,2,3])
+hush -- Use choose to randomly choose from a list of values.
+d1 $ s "gabba*4" # n (choose[0,1,2,3]) # cutoff (scale 200 2000 $ rand)
+hush -- cutoff = lowpass filter.
+-- Use scale to randomly choose values between maximum and minimum values.
+d1 $ s "gabbalouder*8" # n (choose[0,1,2,3]) # cutoff (scale 200 20000 $ rand) # pan (slow 4 $ scale 0 1 $ sine1)
+hush -- Use sine1 to move smoothly back and forth within the specified range. slow 4 $ before scale lets us apply sine1 over 4 cycles.
+
+{-
+To add your own samples:
+Open SuperCollider, Click on File, Open user support directory, downloaded-quarks, Dirt-Samples, and there you have it.
+
+You can swap out any or all of the samples. Name the folders anything you like. Just keep in mind that maybe you want short folder names because DANCEFLOOR, RAVE, CODE, FASTER!!!
+
+You will at some point want to record your music as a file. Go into SuperCollider. Click the Capital R in the lower right corner. Start recording. After you're done codezing, stop recording in the same place. The file will show up in a folder called SuperCollider Recordings.
+
+One last thing:
+It is interesting to note that #gain above 1.0 will give you compression!
+You can think of compression as a kind of magnifying glass. Also compression can autoMagically move things from the background to the foreground in a mix depending on how things add up in a mix at a particular moment in time. Neato!
+
+Keep learning all of the things at tidalcycles.org and also _please_ sign up for the Slack under the Community tab.
+
+Direct link to the signup page: http://live-code-slack.herokuapp.com/
+
+Everyone is superFriendly on the chat, I promise, so ask anything, all the time. Hope to see you there in the #tidal channel.
+
+TidalCycles can do alot more things:
+• MIDI
+• OSC
+• Control SuperCollider SynthDefs
+• Connect to Unity
+• Connect to Processing
+• Multi-laptop
+• Multichannel
+• Loads more SuperAwesomeGreat stuff!
+-}
+
+-- RundPingis DryRun (messaround together, communally)
+-- Copy previous line.
+-- Edit the copy on the line below.
+-- Make small, fast, clearly audible changes.
+-- Stick to just the one stream, d1. Remember there are plenty of ways to make _alot_ happen with just one stream.
+-- This way the audience, which has never seen anything like this, can have a shot at following along.
+
+d1 $ s "gabba*2" -- First line.
+d1 $ s "gabba*4" -- Clearly audible change here in the second line with just one char changed.
+hush
+
+d1 $ s "thankYou*1000"
+-- Thank you so much for attending the workshop.

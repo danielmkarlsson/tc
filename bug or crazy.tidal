@@ -1,0 +1,34 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+let hush = mapM_ ($ silence) [m1,d1]
+solo = (>>) hush
+m1 $ slowspread slow [1,1.01 .. 2] $ n "128*8"
+# cc0  (density 1.0 $ scale 0.0 1.0 $ rand) -- feedback
+# cc1  (density 1.1 $ scale 0.0 1.0 $ rand) -- grain size
+# cc2  (density 1.2 $ scale 0.0 1.0 $ rand) -- density
+# cc3  (density 1.3 $ scale 0.0 1.0 $ rand) -- octave
+# cc4 (density 1.4 $ choose [0,1]) -- filter frequency
+# cc5 (density 1.5 $ scale 0.0 1.0 $ rand) -- mix
+hush
+
+d1 $ (0.1 ~>) $ slowspread density [2,2,2.5,3,4] $ slowspread slow [1,1.1 .. 14] $ s "odx*8 cp hc gabba"
+# cutoff (density 1.0 $ scale 20 20000 $ rand)
+# pan (density 1.1 $ scale 0.0 1.0 $ rand)
+# shape (density 1.2 $ scale 0.0 1.0 $ rand)
+# gain (density 1.4 $ scale 1.0 2.0 $ rand)
+# cut "1"
+# end "0.3"
+
+m1 $ slowspread density [2,2,2,2.5,3,4] $ slowspread slow [1,1.1 .. 14] $ n "[c0*8, cs0*8, d0*4, ds0, e0, es0]" # velocity ( density 1.4 scale 0 1 $ rand)
+
+m1 $ stack[note "c0",
+note "cs0",
+note "d0" ,
+note "e0" ,
+note "e0" ,
+note "es0"
+]

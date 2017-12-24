@@ -1,0 +1,13 @@
+d1
+$ spread iter [1,2,3]
+$ spreadChoose density [0.5,0.75..1.75]
+$ degradeBy 0.125
+$ stack[
+s "cal*8",
+s "prr*8",
+s "odx*8",
+s "808bd*8"#n(slow)]
+# gain (slow 0.1 $ scale 0.75 1.5 $ rand)
+# pan (slow 0.11 $ rand)
+# up (slow 0.12 $ choose [-6,0,6])
+# release (slow 0.14 $ scale 0.125 1.5 $ rand)

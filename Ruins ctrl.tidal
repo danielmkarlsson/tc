@@ -1,0 +1,75 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+m3 <- midiStream devs "IAC Driver Bus 1" 3 ccallController
+m4 <- midiStream devs "IAC Driver Bus 1" 4 ccallController
+
+let hush = mapM_ ($ silence) [m1,m2,m3,m4,d1]
+solo = (>>) hush
+hush
+m1 $ slow 32 $ slowspread density [1,2,3,4,3,2,1,0.75,0.5,0.75,0.5,0.25,0.5,0.75] $ n "128*8"
+# cc0 (density 1.0 $ scale 0.0 1.0 $ rand)  -- feedback                [Soundhack Bubbler]
+# cc1 (density 1.1 $ scale 0.0 1.0 $ rand)  -- grain size
+# cc2 (density 1.2 $ scale 0.0 1.0 $ rand)  -- density
+# cc3 (density 1.3 $ scale 0.0 1.0 $ rand)  -- octave
+# cc4 (density 1.4 $ choose [0,1])          -- filter frequency
+# cc5 (density 1.5 $ scale 0.0 1.0 $ rand)  -- mix
+# cc6 (density 1.6 $ scale 0.0 1.0 $ rand)  -- high room size         [Multiband FreeVerb]
+# cc7 (density 1.7 $ scale 0.0 1.0 $ rand)  -- high damp
+# cc8 (density 1.8 $ scale 0.0 1.0 $ rand)  -- low room size
+# cc9 (density 1.9 $ scale 0.0 1.0 $ rand)  -- low damp
+# cc10 (density 2.0 $ scale 0.0 1.0 $ rand) -- wet
+# cc11 (density 2.1 $ scale 0.0 1.0 $ rand) -- width                  [S1 Imager]
+# cc12 (density 2.2 $ scale 0.0 1.0 $ rand) -- 0_Freq_A               [DTBLKFX]
+# cc13 (density 2.3 $ scale 0.0 1.0 $ rand) -- 0_Freq_B
+# cc14 (density 2.4 $ scale 0.0 1.0 $ rand) -- 0_Amp
+# cc15 (density 2.5 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 0_Fx
+# cc16 (density 2.6 $ scale 0.0 1.0 $ rand) -- 0_Value
+# cc17 (density 2.7 $ scale 0.0 1.0 $ rand) -- 1_Freq_A
+# cc18 (density 2.8 $ scale 0.0 1.0 $ rand) -- 1_Freq_B
+# cc19 (density 2.9 $ scale 0.0 1.0 $ rand) -- 1_Amp
+# cc20 (density 3.0 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 1_Fx
+# cc21 (density 3.1 $ scale 0.0 1.0 $ rand) -- 1_Value
+# cc22 (density 3.2 $ scale 0.0 1.0 $ rand) -- 2_Freq_A
+# cc23 (density 3.3 $ scale 0.0 1.0 $ rand) -- 2_Freq_B
+# cc24 (density 3.4 $ scale 0.0 1.0 $ rand) -- 2_Amp
+# cc25 (density 3.5 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 2_Fx
+# cc26 (density 3.6 $ scale 0.0 1.0 $ rand) -- 2_Value
+# cc27 (density 3.7 $ scale 0.0 1.0 $ rand) -- 3_Freq_A
+# cc28 (density 3.8 $ scale 0.0 1.0 $ rand) -- 3_Freq_B
+# cc29 (density 3.9 $ scale 0.0 1.0 $ rand) -- 3_Amp
+# cc30 (density 4.0 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 3_Fx
+# cc31 (density 4.1 $ scale 0.0 1.0 $ rand) -- 3_Value
+# cc32 (density 4.2 $ scale 0.0 1.0 $ rand) -- 4_Freq_A
+# cc33 (density 4.3 $ scale 0.0 1.0 $ rand) -- 4_Freq_B
+# cc34 (density 4.4 $ scale 0.0 1.0 $ rand) -- 4_Amp
+# cc35 (density 4.5 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 4_Fx
+# cc36 (density 4.6 $ scale 0.0 1.0 $ rand) -- 4_Value
+# cc37 (density 4.7 $ scale 0.0 1.0 $ rand) -- 5_Freq_A
+# cc38 (density 4.8 $ scale 0.0 1.0 $ rand) -- 5_Freq_B
+# cc39 (density 4.9 $ scale 0.0 1.0 $ rand) -- 5_Amp
+# cc40 (density 5.0 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 5_Fx
+# cc41 (density 5.1 $ scale 0.0 1.0 $ rand) -- 5_Value
+# cc42 (density 5.2 $ scale 0.0 1.0 $ rand) -- 6_Freq_A
+# cc43 (density 5.3 $ scale 0.0 1.0 $ rand) -- 6_Freq_B
+# cc44 (density 5.4 $ scale 0.0 1.0 $ rand) -- 6_Amp
+# cc45 (density 5.5 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 6_Fx
+# cc46 (density 5.6 $ scale 0.0 1.0 $ rand) -- 6_Value
+# cc47 (density 5.7 $ scale 0.0 1.0 $ rand) -- 7_Freq_A
+# cc48 (density 5.8 $ scale 0.0 1.0 $ rand) -- 7_Freq_B
+# cc49 (density 5.9 $ scale 0.0 1.0 $ rand) -- 7_Amp
+# cc50 (density 6.0 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79])               -- 7_Fx
+# cc51 (density 6.1 $ scale 0.0 1.0 $ rand) -- 7_Value
+
+m2 $ n "128*128" # cc52 (slow 32 $ scale 0.0 1.0 $ sine1) {- buff rice fade -} # cc1 (slow 34 $ scale 0.0 1.0 $ sine1)
+m3 $ (24~>) $ n "128/16" # cc53 (density 64 $ scale 1.0 0.0 $ rand) {- buff rice value -} # cc54 (density 65 $ scale 0.0 1.0 $ rand)
+m4 $ (8~>) $ n "128/16" # cc53 (density 64 $ scale 0.0 1.0 $ rand) -- buff rice value
+hush
+cps -1
+cps 1
+hush
+24-16

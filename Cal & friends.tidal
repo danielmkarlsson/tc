@@ -1,0 +1,14 @@
+d1
+$ every 7 (slow 1.5)
+$ every 5 (slow 2.5)
+$ every 3 (fast 2)
+$ every 2 (fast 1.5)
+$ spread fast [1,1,1,1,1,1,1,1,1]
+$ degradeBy 0.4
+$ slow (choose [0.5,0.6,0.7,0.8,0.9])
+$ slow (choose [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])
+$ s (randcat["prr","sbu","808bd","click"])
+# release (slow 0.1 $ scale 0.01 0.5 $ rand)
+# n (slow 0.11 $ choose [1,2,3,4,5,6,7,8,9,10])
+# up (slow 0.12 $ choose [-6,0,6,12])
+# nudge (slow 99 $ sine)

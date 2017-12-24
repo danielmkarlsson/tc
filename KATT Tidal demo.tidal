@@ -1,0 +1,4 @@
+d1 $ degradeBy 0.19 $ density 162.9 $ s "ha ce ha" # n "3 4 34" # pan (scale 0.25 0.75 $ rand) # up "-2.25 -0.5 -3.75" # gain (choose[0.1,0.5,1,2]) # nudge (slow 255 $ scale 0 1 sine1) # cut (choose[1,2]) # attack (slow 13 $ scale 0 1 sine1) # hold (slow 14 $ scale 0 1 sine1) # release (slow 17 $ scale 0 1 sine1)
+d2 $ degradeBy 0.18 $ (16<~) $ density 163 $ s "ha ha ce ha" # n "3 4 34 56" # pan (scale 0.25 0.75 $ rand) # up "-2.25 -0.5 -3.75 -4.25" # gain (choose[0.1,0.25,0.5,1,2]) # nudge (slow 256 $ scale 0 1 sine1) # cut (choose[1,2]) # attack (slow 26 $ scale 0 1 sine1) # hold (slow 56 $ scale 0 1 sine1) # release (slow 16 $ scale 0 1 sine1)
+cps 1.02
+hush

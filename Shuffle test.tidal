@@ -1,0 +1,37 @@
+d1
+$ sometimesBy 0.45 (slow 4)
+$ sometimesBy 0.25 (slow 2)
+$ degradeBy 0.25
+$ (s $ shuffle 8 "house house:4 house:5 house:3 rap:1? rap:94? 808bd:7 srg:1 sbu:4")
+# cut (slow 0.1 $ wchoose [4,1][1,0])
+# size 0.8
+# room "0 0 0 0 0 0 0 0.25"
+# pan (slow 0.13 $ scale 0.15 0.85 $ rand)
+# delay (slow 37 $ scale 0 0.2 $ tri)
+# delayt (discretise (1/8) $ choose [1/520] / choose [1,2,4] * choose [2,4,8,16,32,64,128])
+# delayfb (slow 26 sine)
+# lpf (slow 14 $ scale 2000 20000 $ sine)
+# gain (slow 94 $ scale 2 4 $ sine)
+# hpf (slow 0.11 $ wchoose [8,1][20,2000])
+# up (slow 0.12 $ wchoose [20,10,1][0,-6,-12])
+# nudge (slow 64 $ scale (-0.5) 3 $ saw)
+
+m1
+$ degradeBy 0.125
+$ (n $ shuffle 8 "128 128 128 128 128? 128? 128 128")
+# cc0 (slow 0.1 $ scale 0 1 $ rand)
+# cc1 (discretise (1/4) $ slow 0.11 $ scale 0 1 $ rand)
+# cc2 (slow 0.12 $ scale 0 1 $ rand)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)

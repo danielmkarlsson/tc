@@ -1,0 +1,30 @@
+d1
+$ sometimesBy 0.6 (spreadChoose _fast [1,1.2,1.4,1.8,2.4])
+$ sometimesBy 0.55 (spread _slow [1,1])
+$ sometimesBy 0.5 (slow 1.25)
+$ s (randcat["srg","sbu*2","tuu*3","gab*4","bch*5","pmb*6",
+"srr*7","syn*8","ltt*9","bss*10","ser*11","gic*12","prr*13"])
+# n (run (slow 0.1 $ choose [0..31] + choose [1..31]))
+# cut (slow 0.11 $ choose [0,1])
+# pan (slow 0.12 $ rand)
+# up (discretise (1/2) $ slow 0.13 $ scale (-12) 12 $ rand)
+# delay (slow 0.17 $ scale 0 0.25 $ rand)
+# delayfb (slow 79 $ sine)
+# delayt (discretise (1/2) $ slow 0.14 
+$ choose [1/13,1/17,1/20]/ choose [1..12])
+# rel (discretise (1/2) $ slow 0.16 $ scale 0.1 6 $ rand)
+# gain (slow 0.27 $ scalex 1 4 $ rand)
+# hpf (slow 0.18 $ scalex 20 200 $ rand)
+# lpf (slow 0.19 $ scalex 2000 20000 $ rand)
+# bandq (slow 0.2 $ scalex 0.125 1 $ rand)
+# bandf (slow 0.21 $ scalex 200 2000 $ rand)
+# binshift (slow 0.22 $ scale 0 0.25 $ rand)
+# scram (slow 0.23 $ scale 0 0.5 $ rand)
+# nudge (slow 32 $ scale 0 1.7 $ rand)
+# smear (slow 0.24 $ scale 0 0.5 $ rand)
+# lbrick (slow 16 $ saw)
+# loop (slow 0.25 $ choose [1..16])
+# end (slow 0.26 $ scale 0.5 1 $ rand)
+
+import Sound.Tidal.SpectralTricks
+

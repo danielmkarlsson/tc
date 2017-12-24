@@ -1,0 +1,102 @@
+-- This is a comment. Anything after the double dash gets ignored by TidalCycles. Use Comments!
+{-
+This is also a comment. This one can run over multiple lines or even between bits of code.
+-}
+-- Start SuperCollider.
+-- Evaluate SuperDirt.start in SuperCollider.
+-- Start Atom.
+-- Make a new file.
+-- Save it as anything you like with .tidal at the end. This lets Atom know you want to make Tidal code.
+hush -- Run this line to stop sound.
+d1 $ sound "gabba" -- d1 is a stream or a stem or a track.
+hush
+d1 $ sound "gabba:1" -- gabba is folder. The :1 part lets us play the second file in that folder.
+hush
+d1 $ sound "gabba cp" -- Make a sequence of many different folders. Notice d1 is replaced.
+hush
+d1 $ sound "gabba cp 808cy" -- Notice d1 is replaced.
+hush
+d1 $ sound "gabba cp 808cy" -- multiple streams are possible.
+d2 $ sound "hc hc hc hc" -- evalute or run each line separately.
+d3 $ sound "sine db chin print clak" -- there are nine streams. d9 is max.
+hush
+d1 $ sound "gabba cp" -- All of the samples inside of a pattern get squashed into a single cycle.
+d1 $ sound "gabba cp hc cp drum clak print" -- These patterns all loop over the same amount of time.
+d1 $ sound "gabba cp hc cp drum clak print feel hc odx feel" -- this one is especially crowded.
+hush
+-- The more steps you add to a pattern, the faster it goes to fit them all in. No matter how many samples you put in a pattern in this way, they will always be distributed evenly within a single cycle.
+d1 $ sound "gabba"
+d2 $ sound "clak"
+d1 silence -- this is like hush or mute for just this one track.
+hush
+d1 $ sound "gabba cp 808cy"
+solo $ d2 $ sound "hc hc hc hc" -- Use this to solo a stream. All other streams are silenced.
+hush
+d1 $ sound "[gabba cp hc] 808cy" -- Square braces let you group more events into one step.
+d1 $ sound "[gabba cp clak] [hc print hc hc]" -- The cycle is divided by two with 3 events in first half of the cycle and 4 events in the second half of the cycle.
+hush
+d1 $ sound "[gabba gabba] [print [cp [clak clak] hc] 808cy]" -- Nesting is possible and can warp your mind.
+hush
+d1 $ sound "[gabba gabba gabba, cp clak cp clak]" --Polyrhythms are possible and are groovy. Two streams in one here.
+hush
+d1 $ sound "[808cy, gabba drum, hc hc hc, cp clak cp clak]" --Layer as many polyrhythms as you want.
+hush
+cps 1 -- cps means cycles per minute. Change this to change the global tempo. Low tempos may give unexpected results (inexact).
+d1 $ sound "[drum drum drum, [cp cp] clak, print [hc [feel clak] feel print], 808cy]" --An example of combining square braces and polyrhythms.
+hush
+d1 $ sound "gabba*2" -- Multiply an event.
+hush
+d1 $ sound "gabba gabba" -- This is the equivalent to the above line expressed in a different way.
+hush
+d1 $ sound "gabba/2" -- Divide an event. This gets played every 2nd cycle.
+hush
+d1 $ sound "[gabba gabba]/2 [print [cp [clak clak]/2 hc] 808cy]/3" -- These can also be applied to groups.
+hush
+d1 $ rev (sound "[gabba gabba]/2 [print [cp [clak clak]/2 hc] 808cy]/3") -- Play the pattern in reverse.
+hush
+d1 $ every 4 (rev) (sound "[gabba gabba]/2 [print [cp [clak clak]/2 hc] 808cy]/3") -- Play the pattern in reverse every 4th cycle.
+hush
+d1 $ slow 4 $ sound "hc print clak drum odx" -- Slow down a pattern
+hush
+d1 $ density 4 $ sound "hc print clak drum odx" -- Speed up a pattern
+hush
+d1 $ slow 0.25 $ sound "hc print clak drum odx" -- slow speeds stuff up below 1 so this is equivalent to the above density line
+hush
+d1 $ density 0.25 $ sound "hc print clak drum odx" -- density slows stuff down below 1 so this is equivalent to the above slow line.
+hush
+d1 $ sound "cp*4" # gain "0.5" -- Turn down the volume. Most of these # parameters go from 0.0 to 1.0
+hush
+d1 $ sound "cp*4" # gain "0.25" -- This is very soft because amplitude really needs to be expressed exponentially to make any sense but this is linear so too bad, we have to make do with this way for now.
+hush
+d1 $ sound "cp*4" # gain "1 0.8 0.5 0.7" -- Effects parameters can be also be sequenced
+hush
+d1 $ sound "cp*4" # gain "1 0.8 0.5 0.7" # pan "0.25 0.5 1.0 0.0" -- More than one effect can be applied to a sequence
+d1 $ sound "cp*4" # gain "1 0.8 0.5 0.7" # pan "0.25 0.5 1.0 0.0" # speed "1 2 -1 -0.75" -- speed is a special parameter. It's range is larger than 0.0 to 1.0 and it also accepts negative values.
+hush
+d1 $ sound "moog*4" # gain "0.6" # pan "0.25 0.5 1.0 0.0" # speed "[1, 0.5, 1.5, 2]" -- Play a sample at multiple speeds simultaneously. This gives us a chord.
+hush
+d1 $ sound "moog*4" # pan "0.25 0.5 1.0 0.0" # speed "1 0.5 1.5 2"  # cut "1"-- This moog sample is long. cut lets us stop playback of a sample when a new one starts playing.
+hush
+d1 $ sound "moog*7" # up "0 5 9 2 11 7 3" # cut "1" -- speed is tricky to use when we want to make melodies. up lets us describe speed changes in twelve parts per octave. It's like the keys on a piano.
+d1 $ sound "moog*7" # up "0 5 9.25 2.125 11.5 7 3.5" # cut "1" -- A subset of the people on earth will be excited to learn that up accepts floats. These are the notes _in between_ the keys on the piano.
+hush
+d1 $ sound "gabba(3,7)" # cut "1" # cutoff (slow 8 $ scale 20 20000 sine1) -- Euclidean rhythms. In this example 3 samples are played over the space of 7 subdivisions of a cycle.
+hush
+d1 $ slowspread density [1,2 .. 7] $ sound "gabba cp clak hc" # cut "1" # cutoff (density 8 $ scale 20 20000 sine1) -- slowspread applies one value of density to each cycle. Use the .. shortcut in lists. Very handy and playable on-the-fly.
+d1 $ slowspread density [1,2,3] $ slowspread slow [0.5, 1.25, 2.3, 3.2] $ sound "gabba cp clak hc" # cut "1" # cutoff (density 8 $ scale 20 20000 sine1) -- Interestingly (mindbendingly!) both slow and density can be slowspread at the same time. If you have an unequal amount of terms for the slowspread density and the slowspread slow you get a very high degree of variation. Two independent sequences for multplication and/or division.
+hush
+d1 $ s "{hh gabba cp hc clak drum}%2" -- Use this curly brackets and % way of making an infinitely extendable sequencer. This sequencer gets it's meter or subdivisions of the cycles from the number right after the %. The time between events is constant. Higher numbers makes it faster because more subdivisions of the cycle.
+hush
+
+d1 $ s "gabba" # n "1" -- sound can be expressed as just s. You can sequence the file numbers with # n
+hush
+d1 $ s "gabba" # n (choose[0,1,2,3,4]) -- Use choose to randomly choose from a list of values for n
+hush
+d1 $ s "gabba" # n (choose[0,1,2,3,4]) # cutoff (scale 200 2000 $ rand)-- Use scale to randomly choose values between maximum and minimum values
+hush
+
+{-
+Keep learning all of the things at tidalcycles.org and then please sign up for the Slack under the Community tab. Everyone is superFriendly on the chat I promise so ask anything all the time. Hope to see you there. Thank you so much for attending the workshop.
+-}
+
+d1 $ s "thankYou*1000"

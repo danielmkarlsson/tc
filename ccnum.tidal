@@ -1,0 +1,15 @@
+d1 $ sound "cp bd gabba rave2" #pan (choose[0,0.25..0.75])
+hush
+m1 $ n "128" #  cc0 (scale 0.0 1.0 $ rand)
+m1 $ n "128" # cc0 (scale (ccN 64) (ccN 127) $ rand)
+
+--- Scale MIDI CC values between 0.0, 1.0
+-- ccN :: (Int a) -> a
+ccN n = n / 127
+
+
+ccNum 60
+d1 $ density 8 $ s "rave2" # up (choose[-12,-11.5..12]) #pan (choose[0,0.25..0.75]) # cutoff (slow 64 $ scale 20 20000 sine1)
+hush
+
+speed (slow 4 $ scale 1 1.5 sine1)

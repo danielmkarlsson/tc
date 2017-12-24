@@ -1,0 +1,8 @@
+d1 $ sound "{numbers:1/16~~}%9" # pan "0.3"
+d2 $ sound "{numbers:2/16~~~}%10" # pan "0.6"
+d3 $ sound "{numbers:3/16~~~~}%11" # pan "0.4"
+d4 $ sound "{numbers:4/16~~~~~}%12" # pan "0.9"
+d5 $ sound "{numbers:5/16~~~~~~}%12" # pan "0.1"
+d6 $ sound "{numbers:6/16~~~~~~~}%13" # pan "0.8"
+d7 $ sound "{numbers:7/16~~~~~~~~}%14" # pan "0.2"
+d8 $ sound "{numbers:8/16~~~~~~~~~}%15" # pan "0.7"

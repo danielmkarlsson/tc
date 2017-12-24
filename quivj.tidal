@@ -1,0 +1,6 @@
+d1
+$ fast (choose [1,1.25..4])
+$ s (randcat ["sbu","srg"])
+# n (slow 0.1 $ choose [0..9])
+# rel 0.5
+# gain (discretise (1/2) $ slow 0.11 $ scalex 0.9 2 $ rand)

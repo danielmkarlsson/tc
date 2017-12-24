@@ -1,0 +1,17 @@
+bps (170/120)
+
+d2 $ foldEvery [3,4] (0.25 ~>) $
+every 8 (|=| accelerate "-0.5 0.5") $
+every 6 (rip' 0 1 8 0.125 0.125) $
+rarely (stut' 1 (0.125*3) (|*| speed "1.25")) $
+every 9 ((slow 4) . (striate' 8 (1/10))) $
+stack [
+runWith 4 (density 2) $ iter 4 $ jux rev $
+off 0.25 (|+| n "<1 3 5 2>") $ struct "x(3,8) *2" $ n "<0 1 4>" # sound "[jung1 jung6 jung4]/8"
+|=| unit "c" |=| speed "8",
+degrade $ runWith 2 (density 2) $
+off (0.25*3) (|+| n "<4 2 3>") $ stack [sound "alstab" # n "<0 1 2>" |=| cut "3" |=| gain "1.2" # shape "0.1" |=| up "[-12 -15]/8",
+sound "alk" # n "<0 1 2>" |=| cut "4",
+gtfo $ off (0.125*3) (|+| n "{1 2 3}%16") $
+foldEvery [2,3] (slow 2) $
+struct "x([3 5]/2,8)" $ sound "als" |=| cut "-1" ] ]

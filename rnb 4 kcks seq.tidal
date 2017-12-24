@@ -1,0 +1,90 @@
+cps 2
+
+d1
+$ slow 2
+$ fast (discretise (1/8) $ slow 0.11 $ choose[13,25,32])
+$ stack[
+slow 1
+$ s "rnb"
+# rel 0.2
+# begin (slow 176 $ scale 0 0.075 $ sine)
+# gain (slow 180 $ scale 0 1.4 $ sine)
+# nudge (slow 164 $ scale 0 0.7 $ sine)
+# hpf (slow 165 $ scale 20 20000 $ sine)
+# pan (slow 166 $ sine),
+slow 1.1
+$ s "rnb"
+# rel 1
+# begin (slow 177 $ scale 0 0.075 $ sine)
+# gain (slow 181 $ scale 0 0.9 $ sine)
+# nudge (slow 167 $ scale 0 1.1 $ scale 0 0.7 $ sine)
+# hpf (slow 168 $ scale 20 20000 $ sine)
+# pan (slow 169 $ sine)
+# n 2,
+slow 1.2
+$ s "rnb"
+# rel 0.5
+# begin (slow 178 $ scale 0 0.3 $ sine)
+# gain (slow 182 $ scale 0 1.1 $ sine)
+# nudge (slow 170 $ scale 0 1.2 $ scale 0 0.7 $ sine)
+# hpf (slow 171 $ scale 20 20000 $ sine)
+# pan (slow 172 $ sine)
+# n 3,
+slow 1.3
+$ s "rnb"
+# rel 1
+# begin (slow 179 $ scale 0 0.075 $ sine)
+# gain (slow 183 $ scale 0 1 $ sine)
+# nudge (slow 173 $ scale 0 1.3 $ scale 0 0.7 $ sine)
+# hpf (slow 174 $ scale 20 20000 $ sine)
+# pan (slow 175 $ sine)
+# n 4,
+degradeBy 0.95
+$ slow (choose[0.25,0.5])
+$ s (randcat["rnb/8"])
+# gain (slow 0.2 $ scale 0.5 2 $ rand)
+# rel (slow 0.18 $ rand)
+# nudge (slow 186 $ scale 0 1.3 $ scale 0 1 $ sine)
+# pan (slow 172 $ sine)
+# n 59
+# up (discretise (1/32) $ slow 0.21 $ choose[-6,-3,0,3,6])
+]
+
+d2
+$ degradeBy 0.99
+$ fast (choose[0.125,0.25,0.5])
+$ stack[
+s "rnb"
+# n 59
+# nudge (slow 48 $ scale 0 0.19 $ sine)
+# pan 0,
+s "rnb"
+# n 59
+# nudge (slow 48 $ scale 0 0.18 $ sine)
+# pan 1
+]
+# gain 2
+# rel 2
+
+m1
+$ n "128*99"
+# cc0 (slow 328 $ sine)
+# cc1 (slow 393 $ sine)
+# cc2 (slow 354 $ sine)
+# cc3 (slow 334 $ sine)
+# cc4 (slow 79 $ sine)
+# cc5 (slow 345 $ sine)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush
+hush
+
+cps 2

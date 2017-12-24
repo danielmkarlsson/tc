@@ -1,0 +1,26 @@
+d1              
+$ sometimesBy 0.07 (3.125<~)
+$ sometimesBy (1/5)
+(spread _slow [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+$ degradeBy (1/4)
+$ spreadChoose _fast [1..9]
+$ iter "2 3 4 5 6 7 8"
+$ s (randcat[
+"yry*8","gic*7","dmf*6","sbu*5","bad*4","esc*4","seq*3"
+])
+# n (discretise (1/7) $ slow 0.1 $ choose [0..300])
+# gain (slow 0.11 $ scalex 0.5 3 $ rand)
+# up (discretise (1/16) $ slow 0.12 $ scale (-6) 6 $ rand)
+# pan (slow 12 $ saw)
+# comb (slow 0.13 $ choose [0,0,0,0,0,0,0,0,0,0,0,
+0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
+# lpf (discretise (1/9) $ slow 13 $ scale 20 20000 $ saw)
+# hpf (slow 14 $ scale 400 20 $ saw)
+# rel (slow 15 $ scale 0.3 3 $ saw)
+# nudge (slow 19 $ scale 0 3 $ sine)
+# shape (slow 27 $ scale 0 0.25 $ saw)
+# delay (discretise (1/17) $ slow 0.14 $ choose [0,0.1,0.2,0.3,0.4,0.5])
+# delayfb (discretise (1/18) $ slow 0.15 $ choose [0,0,1])
+# delayt (discretise (1/19) $ slow 0.16 $ choose [1..9] 
+/ choose [1..10] / choose [1..11] / choose [1..12])
+

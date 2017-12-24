@@ -1,0 +1,24 @@
+d1
+$ slow 1.75
+$ spreadChoose _slow [5,4,3,2,1,(1/2),(1/3),(1/4),(1/5),(1/6),(1/7),(1/8),(1/9),(1/10),(1/11),(1/12)]
+$ s (randcat
+["<sbg sbg:1 sbg:4 sbg:7 sbg:8>","<sbg:1 sbg:4 sbg:7 sbg:8 sbg:9>","<sbg:4 sbg:7 sbg:8 sbg:9 sbg:10>",
+"<sbg:7 sbg:8 sbg:9 sbg:10 sbg:11>","<sbg:8 sbg:9 sbg:10 sbg:12 sbg:13>","<sbg:9 sbg:10 sbg:12 sbg:13 sbg:14>",
+"<sbg:10 sbg:12 sbg:13 sbg:14 sbg:15>","<sbg:12 sbg:13 sbg:14 sbg:15 sbg:16>","<sbg:13 sbg:14 sbg:15 sbg:16 sbg:18>",
+"<sbg:13 sbg:14 sbg:15 sbg:17 sbg:19>","<sbg:14 sbg:15 sbg:17 sbg:19 sbg:5>","<sbg:15 sbg:17 sbg:19 sbg:5 sbg:20>",
+"<sbg:17 sbg:19 sbg:5 sbg:20 sbg:21>","<sbg:19 sbg:5 sbg:20 sbg:21 sbg:22>","<sbg:5 sbg:20 sbg:21 sbg:22 sbg:23>",
+"<sbg:20 sbg:21 sbg:22 sbg:23 sbg:24>","<sbg:21 sbg:22 sbg:23 sbg:24 sbg:25>","<sbg:22 sbg:23 sbg:24 sbg:25 sbg:26>",
+"<sbg:23 sbg:24 sbg:25 sbg:26 sbg:27>","<sbg:24 sbg:25 sbg:26 sbg:27 sbg:28>","<sbg:25 sbg:26 sbg:27 sbg:28 sbg:29>"])
+# gain (slow 0.11 $ scalex 0.9 1.1 $ rand)
+# up (slow 0.12 $ wchoose [1,2,3,4,5,6,7,8,9,10][0,3,6,9,12,15,18,21,24,-3])
+# hpf (slow 0.13 $ scalex 20 1000 $ rand)
+# accelerate (slow 0.14 $ scale (-0.025) 0.025 $ rand)
+# rel (slow 16 $ scale 1.5 8 $ sine)
+
+
+d1 
+$ s "cp"
+# orbit 1
+# delay 1
+# delayfb 1
+# delayt (slow 0.14 $ 1/512 * wchoose (reverse [1..64]) [1..64])

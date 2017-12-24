@@ -1,0 +1,17 @@
+bps (15/60)
+
+let runnow d p = do now <- getNow
+                    d $ (nextSam now) ~> p
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,m1,m2,m3,m4]
+solo = (>>) hush
+hush
+
+runnow m1 $ slowspread slow [0.5, 1.0 .. 4] $ (111<~) $ density 4 $ randcat [note "{a0}%4",note "{b0}%8",note "{c0}%3",note "{d0}%12",note "{e0}%4",note "{f0}%8",note "{gs0}%6",note "{a1}%8",note "{b1}%3",note "{c1}%12",note "{d1}%8",note "{e1}%8",note "{f1}%2",note "{gs1}%8",note "{a2}%6",note "{b2}%2",note "{c2}%4",note "{d2}%8",note "{e2}%8",note "{f2}%8",note "{gs2}%8",note "{a3}%8",note "{b3}%12",note "{c3}%8",note "{d3}%12",note "{e3}%12"] # velocity (scale 0.2 1.0 $ rand) # velocity (scale 0.1 1.0 $ rand)
+
+runnow m2 $ slowspread slow [0.5, 1.0 .. 4] $ (222<~) $ density 4 $ randcat [note "{a0}%8",note "{b0}%4",note "{c0}%8",note "{d0}%4",note "{e0}%3",note "{f0}%4",note "{gs0}%6",note "{a1}%12",note "{b1}%3",note "{c1}%12",note "{d1}%8",note "{e1}%8",note "{f1}%8",note "{gs1}%6",note "{a2}%2",note "{b2}%2",note "{c2}%4",note "{d2}%8",note "{e2}%8",note "{f2}%8",note "{gs2}%8",note "{a3}%8",note "{b3}%8",note "{c3}%4",note "{d3}%12",note "{gs3}%8"] # velocity (scale 0.2 1.0 $ rand) # velocity (scale 0.1 1.0 $ rand)
+
+runnow m3 $ slowspread slow [0.5, 1.0 .. 4] $ (333<~) $ density 4 $ randcat [note "{a0}%4",note "{b0}%8",note "{c0}%4",note "{d0}%6",note "{e0}%7",note "{f0}%8",note "{gs0}%8",note "{a1}%8",note "{b1}%4",note "{c1}%12",note "{d1}%4",note "{e1}%6",note "{f1}%3",note "{gs1}%4",note "{a2}%8",note "{b2}%12",note "{c2}%8",note "{d2}%4",note "{e2}%8",note "{f2}%3",note "{gs2}%4",note "{a3}%12",note "{b3}%6",note "{c3}%8",note "{d3}%6",note "{gs3}%8"] # velocity (scale 0.2 1.0 $ rand) # velocity (scale 0.001 1.0 $ rand)
+
+
+$ (0.06125 <~)

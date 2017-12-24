@@ -1,0 +1,113 @@
+bgold:
+
+let randomList sn len = map (ceiling . (* sn) . timeToRand) [1..len]
+
+let cycleSines sn len = seqP $ map (\(a,b,c) -> (fromIntegral a, fromIntegral b, slow (fromIntegral c) sine)) $ zip3 x0 x1 r
+       where x0 = take (length r - 1) $ scanl (+) 0 r
+             x1 = scanl1 (+) r
+             r = randomList sn len
+
+so `cycleSines 16 100` will give you a series of sines with a `slow` in the range 1..16, and repeat for 100 sine cycles, which in this case is about to cycle count 850 (because of the random lengths). (edited)
+
+[20:57]
+Note that due to the way "random" numbers work, this will give the same exact sequence each time you use the same `sn` and `len`.  If you want to mix things up you can change up the `[1..len]` in randomList
+
+
+[20:59]
+`let randomList' sn len k = map (ceiling . (* sn) . timeToRand . (+ k)) [1..len]` would give a different result for different `k`
+
+* [further footnote, `sine` starts its cycle at its midpoint, 0.5, if you want the waves to "reset" their cycle at 0.0 I think you can just rotate it, replacing `sine` with `0.25 ~> sine`]
+
+
+[21:09]
+** [[further further footnote: making `len` too large (~10000?) may cause Tidal to use all your CPU and become unresponsive]]
+
+yaxu:
+
+I ended up with a potentially useful pattern `randStruct n` where `n` is the number of contiguous events to randomly fit into a cycle
+
+let randArcs :: Int -> Pattern [Arc]
+    randArcs n = do rs <- mapM (\x -> (pure $ (toRational x)/(toRational n)) <~ rand) [0 .. (n-1)]
+                    let rats = map toRational rs
+                        total = sum rats
+                        pairs = pairUp $ accum 0 $ map ((/total)) rats
+                    return $ pairs -- seqP $ map (\(a,b) -> (a,b,"x")) pairs
+                      where pairUp [] = []
+                            pairUp xs = (0,head xs):(pairUp' xs)
+                            --
+                            pairUp' [] = []
+                            pairUp' (a:[]) = []
+                            pairUp' (a:b:[]) = [(a,1)]
+                            pairUp' (a:b:xs) = (a,b):(pairUp' (b:xs))
+                            --
+                            accum _ [] = []
+                            accum n (a:xs) = (n+a):(accum (n+a) xs)
+    randStruct n = splitQueries $ Pattern f
+      where f (s,e) = mapSnds' fromJust $ filter (\(_,x,_) -> isJust x) $ as
+              where as = map (\(s',e') -> ((s' + sam s, e' + sam s),
+                                          subArc (s,e) (s' + sam s, e' + sam s),
+                                          "x")
+                             ) $ thd' $ head $ arc (randArcs n) (sam s, nextSam s)
+
+this has a sort of @calum_gunn feel to it
+
+d1 $ stack [
+struct (randStruct 4) $ sound "arpy",
+sound "cp"
+]
+
+this is trying hard to do what @danielmkarlsson wants but there are bugs
+
+d1 $ substruct (slow 8 $ randStruct 4) $ sound "arpy*8" # gain (scale 0.5 1 sine) # up (choose [0,7,12])
+
+a bit better:
+
+d1 $ substruct (slow 8 $ randStruct 4) $ sound "arpy*8" # gain (scale 0.5 1 sine) # up (discretise 1 $ choose [0,7,12])
+
+hmm
+
+d1 $ substruct (randStruct 2) $ sound "txz1*8" # gain (scale 0.5 1 sine) # up (discretise 1 $ choose [0,7,12,2])
+
+
+import Sound.Tidal.Time
+
+import Sound.Tidal.Utils
+
+import Data.Maybe
+
+let randArcs :: Int -> Pattern [Arc]
+    randArcs n = do rs <- mapM (\x -> (pure $ (toRational x)/(toRational n)) <~ rand) [0 .. (n-1)]
+                    let rats = map toRational rs
+                        total = sum rats
+                        pairs = pairUp $ accum 0 $ map ((/total)) rats
+                    return $ pairs -- seqP $ map (\(a,b) -> (a,b,"x")) pairs
+                      where pairUp [] = []
+                            pairUp xs = (0,head xs):(pairUp' xs)
+                            --
+                            pairUp' [] = []
+                            pairUp' (a:[]) = []
+                            pairUp' (a:b:[]) = [(a,1)]
+                            pairUp' (a:b:xs) = (a,b):(pairUp' (b:xs))
+                            --
+                            accum _ [] = []
+                            accum n (a:xs) = (n+a):(accum (n+a) xs)
+    randStruct n = splitQueries $ Pattern f
+      where f (s,e) = mapSnds' fromJust $ filter (\(_,x,_) -> isJust x) $ as
+              where as = map (\(n, (s',e')) -> ((s' + sam s, e' + sam s),
+                                               subArc (s,e) (s' + sam s, e' + sam s),
+                                               n)
+                             ) $ enumerate $ thd' $ head $ arc (randArcs n) (sam s, nextSam s)
+    compressTo (s,e) p = compress (cyclePos s, e-(sam s)) p
+    substruct' :: Pattern Int -> Pattern a -> Pattern a
+    substruct' s p = Pattern $ \a -> concatMap (\(a', _, i) -> arc (compressTo a' (inside (1/toRational(length (arc s (sam (fst a), nextSam (fst a))))) (rotR (toRational i)) p)) a') (arc s a)
+
+d1
+$ slow 256
+$ substruct' (randStruct 32)
+$ s "bass3*100"
+# gain (scale 0 1 $ 0.25 ~> sine)
+# up (discretise (1/2) $ slow 0.1 $ choose [0,2,3,5,7,8,11] + choose [0,12,24,36])
+# n (discretise (1/3) $ slow 0.11 $ choose [5,7,9,13,19])
+# pan (discretise (1/5) $ slow 0.12 $ scale 0 1 $ rand)
+
+d2 $ s "cp/4"

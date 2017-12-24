@@ -1,0 +1,17 @@
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+d1 $ slowchoose density [0.5,1,2]
+$ slow 0.15
+$ s "sy sy?"
+#n (slow 0.1 $ choose [0..907])
+#pan (slow 2 rand)
+#cutoff (slow 0.1 $ scale 20 20000 $ rand)
+#up (choose[-24..0])
+#release (slow 0.11 $ scale 0.01 0.2 $ rand)
+#gain (slow 0.12 $ scale 1 2 $ rand)
+#delay "0.1"
+#delayfeedback "1"
+#delaytime (slow 2 $ scale 0.01 0.0001 $ saw1)

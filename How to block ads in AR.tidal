@@ -1,0 +1,30 @@
+cps 1
+d1 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "ar*8 cp", s "ar*6 cp", s "ar*4 cp", s "ar*2 cp"] # n (density 37 $ choose[0,1..7]) # attack "0" # hold "0" # release "0.15" # gain (density 44 $ choose[0,0,0.25]) # pan (density 38 $ rand) # up "-19"
+d2 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread slow [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "sh9*8 gab", s "sh9*4 gab", s "sh9*2 gab"] # n (density 39 $ choose[0,1..7]) # attack "0" # hold "0" # release "0.15" # gain (density 45 $ choose[0,0,1.5]) # pan (density 40 $ rand)
+d3 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "808*8 sh9", s "808*4 sh9", s "sh9*2 gab"] # n (density 41 $ choose[1,2,3,4,5,7,8,9]) # attack "0" # hold "0" # release "0.5" # gain (density 46 $ choose[0,0.75]) # pan (density 42 $ rand)
+d4 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "707*8 pds", s "707*4 pds", s "707*2 pds"] # n (density 43 $ choose[0,1..30]) # attack "0" # hold "0" # release "0.15" # gain (density 47 $ choose[0,0,1.5]) # pan (density 44 $ rand)
+d5 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "909*8 bass2", s "909*4 bass2", s "909*2 bass2"] # n (density 45 $ choose[0,1..15]) # attack "0" # hold "0" # release "0.15" # gain (density 48 $ choose[0,0,1.25]) # pan (density 46 $ rand)
+d6 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "amencutup*8 bd", s "amencutup*4 bd", s "amencutup*2 bd"] # n (density 47 $ choose[0,1..31]) # attack "0" # hold "0" # release "0.25" # gain (density 49 $ choose[0,1.25]) # pan (density 48 $ rand) # up (choose[0,3,6,12])
+solo $ d7 $ slow 2 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "626*8 gabba", s "626*4 gabba", s "626*2 gabba"] # n (density 49 $ choose[1,2 .. 8]) # attack "0" # hold "0" # release "0.4" # gain (density 50 $ choose[0,0,0.4]) # pan (density 50 $ rand)
+d8 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "101*8 odx", s "101*4 odx", s "101*2 odx"] # n (density 51 $ choose[0,1..14]) # attack "0" # hold "0" # release "0.15" # gain (density 51 $ choose[0,0,1.85]) # pan (density 52 $ rand) # cutoff (density 43 $ scale 20 20000 $ rand) #  up (density 44 $ choose[0,-12])
+d9 $ slow 4 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $ randcat [s "303*8 feel", s "303*4 feel", s "303*2 feel"] # n (density 53 $ choose[0,1..29]) # attack "0" # hold "0" # release "0.15" # gain (density 52 $ choose[0,0,1.85]) # pan (density 54 $ rand) # cutoff (density 42 $ scale 20 20000 $ rand)
+m1 $ slow 1 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread density [1,1,1,1,1,1,1,1,1,1,1,1,1.1] $  randcat [n "128*8 128", n "128*4 128", n "128*2 128"] #cc127 (density 56 $ scale 0 0.75 $ rand) #cc126 (density 2 $ scale 0 1 $ rand) #cc125 (density 3 $ scale 0.5 1 $ rand) #cc124 (density 4 $ scale 0 0.5 $ rand) #cc123 (density 5 $ scale 0.5 1 $ rand) #cc122 (density 6 $ scale 0.5 1 $ rand) #cc121 (density 7 $ scale 0 0.75 $ rand) #cc120 (density 8 $ scale 0 1 $ rand) #cc119 (density 9 $ scale 0 1 $ rand) #cc118 (density 10 $ scale 0 1 $ rand) #cc115 (density 11 $ scale 0 1 $ rand) #cc114 (density 12 $ scale 0 1 $ rand) #cc112 (density 13 $ scale 0 1 $ rand) #cc111 (density 14 $ scale 0 1 $ rand) #cc110 (density 15 $ scale 0 1 $ rand) #cc109 (density 16 $ scale 0 1 $ rand) #cc108 (density 17 $ scale 0 0 $ rand) #cc107 (density 18 $ scale 0 1 $ rand) #cc106 (density 19 $ scale 0 1 $ rand) #cc105 (density 20 $ scale 0 1 $ rand) #cc104 (density 21 $ scale 0 1 $ rand) #cc103 (density 22 $ choose [0,0,1]) #cc102 (density 23 $ choose [0,1]) #cc101 (density 24 $ choose [0,1]) #cc100 (density 25 $ choose [0,1]) #cc99 (density 26 $ scale 0 1 $ rand) #cc98 (density 27 $ choose [0,1]) #cc97 (density 28 $ choose [0,1]) #cc96 (density 29 $ choose [0,0.25]) #cc95 (density 30 $ scale 0 1 $ rand) #cc94 (density 31 $ scale 0 0.5 $ rand) #cc93 (density 32 $ scale 0 1 $ rand) #cc92 (density 33 $ choose [0,0,1]) #cc91 (density 34 $ choose [0,1,1]) #cc90 (density 35 $ choose [0,1]) #cc89 (density 36 $ scale 0 1 $ rand) #cc90 (density 36 $ scale 0 1 $ rand) #cc89 (density 37 $ scale 0.25 0.75 $ rand) #cc87 (density 38 $ choose [0,1]) #cc86 (density 39 $ choose [0,1,1]) #cc85 (density 40 $ choose [0,1,1]) #cc84 (density 41 $ scale 0 0.1 $ rand) #cc83 (density 42 $ choose [0,1,1,1,1,1,1,1]) #cc82 (density 43 $ choose [0,0.01 .. 0.15])
+m1 silence
+m1 $ (0.0 <~) $ degradeBy 0.0 $ slow 1 $ slowspread density [1,1,4,7,9,3,6,8,3,4] $ slowspread slow [1,1,1,1,1,1,1,1.1] $  randcat [n "128*8 128", n "128*4 128", n "128*2 128"] #cc127 "0" #cc126 "0" #cc125 "0" #cc124 "0" #cc123 "0" #cc122 "0" #cc121 "0" #cc120 "0" #cc119 (density 9 $ scale 0 1 $ rand) #cc118 "0" #cc115 "0" #cc114 "0" #cc112 "0" #cc111 "0" #cc110 "0" #cc109 "0" #cc108 "0" #cc107 "0" #cc106 "0" #cc105 "0" #cc104 "0" #cc103 "0" #cc102 "0" #cc101 "0" #cc100 "0" #cc99 "0" #cc98 "0" #cc97 "0" #cc96 "0" #cc95 "0" #cc94 "0" #cc93 "0" #cc92 "0" #cc91 "0" #cc90 "0" #cc89 "0" #cc90 "0" #cc89 "0" #cc87 "0" #cc86 "0" #cc85 "0" #cc84 "0" #cc83 "0" #cc82 "0"
+
+m1 $ n "128" #cc82 (density 43 $ choose [0,0.1])
+hush
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,m1]
+solo = (>>) hush
+hush

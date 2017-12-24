@@ -1,0 +1,2 @@
+d1 $ iter 8 $ density 8 $ s (randcat["hc", "cp", "odx"]) #attack"0"#release"0.25" #gain "1.2" #pan (slow 0.1rand)
+m1 $ iter 8 $ n (choose[0, 2, 3, 5, 7, 8, 11]) #cc0 rand

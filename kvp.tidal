@@ -1,0 +1,46 @@
+cps 1
+
+d1
+$ fast 0.5
+$ fast (discretise (1/32) $ slow 0.19 $ choose [1..11])
+$ s (stack ["bass1","808bd","cp/7?"])
+# n (discretise (1/32) $ slow 0.2 $ choose [2,3,15])
+# pan (discretise (1/32) $ slow 0.21 $ scale 0.5 0.875 rand)
+# rel (discretise (1/32) $ slow 0.22 $ scale 0.075 1 $ rand)
+# gain (slow 32 $ scale 0 1.5 saw)
+# speed (slow 32 $ scale 1 1.125 saw)
+# hpf (discretise (1/32) $ slow 0.23 $ scale 20 250 $ rand)
+# nudge (discretise (1/2048) $ slow 0.24 $ rand)
+
+d2
+$ fast 0.125
+$ fast (discretise (1/16) $ slow 0.11 $ choose [1..11])
+$ s (stack ["bass1","808bd","cp/7?"])
+# n (discretise (1/16) $ slow 0.12 $ choose [2,3,15])
+# pan (discretise (1/16) $ slow 0.13 $ scale 0 0.375 rand)
+# rel (discretise (1/16) $ slow 0.14 $ scale 0.075 1 $ rand)
+# gain (slow 16 $ scale 0 1.5 saw)
+# speed (slow 16 $ scale 1 1.125 saw)
+# hpf (discretise (1/16) $ slow 0.15 $ scale 20 250 $ rand)
+# nudge (discretise (1/2048) $ slow 0.18 $ rand)
+
+d2 silence
+
+m1 silence
+
+m1
+$ slow 12
+$ fast (discretise (1/8) $ slow 0.11 $ choose [1..11])
+$ n "128"
+# cc0 (discretise (1/8) $ slow 0.12 $ scale 0 0.5 rand) --room wet
+# cc1 (discretise (1/8) $ slow 0.13 $ rand)
+# cc2 (discretise (1/8) $ slow 0.14 $ rand)
+# cc3 (discretise (1/8) $ slow 0.15 $ rand)
+# cc4 (discretise (1/8) $ slow 0.16 $ scale 0 0.5 rand) --room low
+# cc5 (discretise (1/8) $ slow 0.17 $ rand)
+# cc6 (discretise (1/8) $ slow 0.18 $ rand)
+# cc7 (discretise (1/8) $ slow 0.19 $ rand)
+# cc8 (discretise (1/8) $ slow 0.20 $ rand)
+# cc9 (discretise (1/8) $ slow 0.21 $ rand)
+# cc10 (discretise (1/8) $ slow 0.22 $ scale 0.75 1 rand) --feedback
+# cc11 (discretise (1/8) $ slow 0.23 $ scale 1 1 rand)

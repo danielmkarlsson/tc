@@ -1,0 +1,9 @@
+m1 $ slow 2 $ randcat [note "a7",note "c3 d5 g6 f7 a4", note "f6 a5", note "c5 ab6"] # nudge (slow 8 $ scale 0 1 sine1) # velocity (scale 1 1 $ rand) # dur "2"
+
+hush
+
+cps 1
+
+let hush = mapM_ ($ silence) [m1]
+solo = (>>) hush
+hush

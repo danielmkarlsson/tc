@@ -1,0 +1,72 @@
+d1 $ degradeBy 0.7 $ sound "a*11" # n (irand 61)  # pan (scale 0.0 0.49 $ rand)
+d2 $ (8 <~) $ degradeBy 0.7 $ sound "a*11" # n (irand 60)  # pan (scale 0.51 1.0 $ rand)
+d3 $ (32 <~) $ degradeBy 0.7 $ sound "a*11" # n (irand 62) # cut "3" # pan (scale 0.3 0.7 $ rand)
+
+hush
+d1 $ s "ac"
+d1 $ slow 8 $ striate 120 $ sound "rw" # cut "1"
+d1 $ slow 65 $ jux (# speed "0.5") $ striate' 64 (1/8) $ sound "rw"
+
+d1 $ slow 64 $ striate' 128 (1/8) $ sound "rw" # speed "0.5" # pan rand
+
+
+d1 $ juxBy 0.125 (density 1) $ sound "in in:1"
+
+d1 $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+   # shape ((/ 2) <$> sinewave2)
+
+d1 $ slow 12 $ sound (brak "{[rw*1~rw*3~, rw*3~, rw*2~~~], rw*3~~"}%9) # cut "1" # speed "0.5" # pan (density 8 $ rand)
+
+d2 $ slow 12 $ sound (brak "[in*1~~~in*3~~~~~, in*3~~~, in*2~~~~~~], in*3~~~~~~") # cut "1" # speed "0.5" # pan "1"
+
+d1 silence
+
+
+
+
+
+
+
+
+
+
+hush
+
+
+
+
+
+
+
+
+
+
+hush
+
+
+d3 silence
+d4 silence
+
+d1 $ density 0.15 $ striateL' 1 0.25 6  $ iter 16 $ sound "rw? a:64? a:3? cp?, rw*2? a:56?" # cut "1" # pan (scale 0.25 0.5 $ rand) # speed "1.0"
+d2 $ density 0.99 $ striateL' 1 0.25 6 $ iter 17 $ sound "rw? a:64? a:3? cp? ~?, rw*3? ~? a:35?"  # cut "2" # pan (scale 0.5 0.75 $ rand) # speed "1.0"
+
+
+d5 $ degradeBy 0.15 $ slowspread density [0.25,0.5,1,2,4] $ striateL' 3 0.25 6 $ randcat[s "rw*2 rw rw*3",s "rw*5 rw rw*3",s "rw*4 rw3 rw*7",s "808*14 808*5 808*17"] # cut "1" # pan (density 8 $ scale 0.25 0.5 $ rand) # speed "0.75" # begin (density 7 $ scale 0 4 $ rand) # end (density 9 $ scale 0 4 $ rand) # loop "200" # attack (density 19 $ scale 0 4 $ rand) # release (density 23 $ scale 0 4 $ rand) # gain (density 46 $ scale 0 3 $ rand) # n (irand 30)
+d6 $ degradeBy 0.15 $ slowspread density [0.1251,2,4,6,8] $ (378<~) $ striateL' 2 0.125 7 $ randcat[s "rw*2 rw rw*3",s "rw*5 rw rw*3",s "rw*4 rw3 rw*7",s "808*14 808*5 808*17"] # cut "2" # pan (density 8 $ scale 0.75 0.5 $ rand) # speed "0.75" # begin (density 6 $ scale 0 4 $ rand) # end (density 10 $ scale 0 4 $ rand) # loop "200" # attack (density 16 $ scale 0 4 $ rand) # release (density 24 $ scale 0 4 $ rand) # gain (density 46 $ scale 0 3 $ rand) # n (irand 30)
+d7 $ randcat [s "ac",s "ac*2",s "ac*3",s "ac*4",s "ac*5",s "ac*6"] # gain "2" # cut "1" # n (irand 7) # up (choose[0,-12])
+cps 0.25
+d6 silence
+
+
+
+d1 $ slow 16 $ jux (rev) $ striate' 32 (1/16) $ sound "rnb"
+d1 $ slow 32 $ jux ((# speed "0.5") . rev) $ striate' 32 (1/16) $ sound "rnb"
+d1 $ juxBy 0.5 (density 2) $ sound "rnb*40 sn:1" # cut  "1"
+d1 $ sound "bd*2 [bd [sn sn*2 sn] sn]" # shape ((/ 2) <$> sinewave1) $ slow 85
+d1 $ sound (brak "rnb? rnb*2? rnb*3? rnb*4? rnb*5? rnb*6? rnb*7? rnb*8? rnb*9 rnb*10? rnb*11? rnb*12? rnb*13? rnb*14? rnb*15? rnb*16? rnb*17? rnb*18? rnb*19? rnb*20? rnb*21? rnb*22? rnb*23? rnb*24? rnb*25? rnb*26?")  # cut  "1"
+
+
+
+d1 $ sound (pick <$> "rnb*6 rnb*2 rnb*3 rnb" <*> slow 4 "0 1 2 3 4 5 6") # cut  "1"
+d1 $ striate' 900 (1/16) $ sound (pick <$> "rnb" <*> slow 700 "0 1 2 3 4") # speed "0.7" # pan "0.0"
+d2 $ slow 85 $ striate' 901 (1/16) $ sound "rnb" # speed "0.7" # pan "1.0"

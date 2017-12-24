@@ -1,0 +1,16 @@
+d1 $ degradeBy 0.85 $ sound "odx([5 3 6]/3,7,3)" # cutoff (slow 18 $ scale 200 20000 sine1) # pan (slow 20 $ scale 0 1 sine1) # gain (slow 28 $ scale 1 3 sine1) # attack "0" # release (density 42 $ scale 0.125 0.25 rand)
+d2 $ (378<~) $ degradeBy 0.85 $ sound "cp([5 3 6]/3,7,2)" # cutoff (slow 19 $ scale 200 20000 sine1) # pan (slow 21 $ scale 0 1 sine1) # gain (slow 29 $ scale 1 3 sine1)  # attack "0" # release (density 43 $ scale 0.05 0.5 rand)
+d3 $ (278<~) $ degradeBy 0.85 $ sound "hc([5 3 6 4]/4,7,1)" # cutoff (slow 22 $ scale 200 20000 sine1) # pan (slow 23 $ scale 0 1 sine1) # gain (slow 30 $ scale 1 3 sine1)
+d4 $ (849<~) $ degradeBy 0.85 $ sound "808oh([5 3 6 4]/4,7,4)" # cutoff (slow 23 $ scale 200 20000 sine1) # pan (slow 24 $ scale 0 1 sine1) # gain (slow 31 $ scale 1 3 sine1) # attack "0" # release (density 44 $ scale 0.1 0.3 rand)
+d5 $ (103<~) $ degradeBy 0.85 $ sound "808sd:6([5 3 6 4 2]/5,7,5)" # cutoff (slow 24 $ scale 200 20000 sine1) # pan (slow 25 $ scale 0 1 sine1) # gain (slow 32 $ scale 1 3 sine1) attack "0" # release (density 45 $ scale 0.075 0.4 rand)
+d6 $ (753<~) $ degradeBy 0.85 $ sound "909([5 3 6 4 2]/5,7,6)" # cutoff (slow 26 $ scale 200 20000 sine1) # pan (slow 27 $ scale 0 1 sine1) # gain (slow 33 $ scale 1 3 sine1) # attack "0" # release (density 46 $ scale 0 1 rand)
+d7 $ (936<~) $ degradeBy 0.85 $ sound "ho([5 3 6 4 2 1]/6,7,7)" # cutoff (slow 34 $ scale 200 20000 sine1) # pan (slow 35 $ scale 0 1 sine1) # gain (slow 36 $ scale 1 3 sine1) # attack "0" # release "0.075"
+d8 $ (635<~) $ degradeBy 0.85 $ sound "hardcore:11([5 3 6 4 2 1]/6,7,8)" # cutoff (slow 37 $ scale 200 20000 sine1) # pan (slow 38 $ scale 0 1 sine1) # gain (slow 39 $ scale 1 3 sine1)
+d9 $ (498<~) $ degradeBy 0.85 $ sound "hardcore:17([5 3 6 4 2 3 1]/7,7,9)" # cutoff (slow 40 $ scale 200 20000 sine1) # pan (slow 41 $ scale 0 1 sine1) # gain (slow 42 $ scale 1 3 sine1)
+m1 $ slow 2 $ degradeBy 0.8 $ slowspread density [1,2,3,6,12,8,12,4,12,2,8,1,3,4,2,0.5] $ randcat [n "0",n "2",n "3",n "5",n "7",n "8",n "11"] # dur "0.125"
+
+hush
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,m1]
+solo = (>>) hush
+hush

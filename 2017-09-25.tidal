@@ -1,0 +1,22 @@
+d1
+$ degradeBy 0.125
+$ sometimesBy (1/15) (fast 1.125)
+$ sometimesBy (1/11) (fast 1.5)
+$ s (randcat["srg*8","sbu*9","sbu*7"])
+# speed (slow 0.1 $ scale (-2) 2 $ rand)
+# pan (slow 31 $ saw)
+# n (slow 0.11 $ irand 20)
+# comb (slow 0.12 $ scale 0 1 $ rand)
+# smear (slow 9 $ scalex 0 0.5 $ sine)
+# rel 0.15
+# gain (slow 25 $ scalex 4 2 $ sine)
+# hpf (slow 14 $ scale 20 200 $ sine)
+# delay (slow 21 $ scalex 0.25 1 $ sine)
+# delayfb (slow 19 $ scalex 0.75 1 $ sine)
+# delayt (slow 27 $ scalex (1/32) (1/8) $ sine)
+# nudge (slow 32 $ scale 0 3 $ sine)
+# att (slow 33 $ scale 0 0.75 $ sine)
+# accelerate (slow 0.13 $ scale 0 0.125 $ rand)
+
+import Sound.Tidal.SpectralTricks
+

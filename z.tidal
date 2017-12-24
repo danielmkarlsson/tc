@@ -1,0 +1,23 @@
+
+
+
+
+
+
+hush
+
+d1 $ slow 19 $ sound "[cp a:61*4] [a:61*5 a:61*7]" # pan "0" # gain (scale 0.75 1.0 $ rand)
+d2 $ slow 12 $ sound "[cp a:61*7] [a:61*3 [a:61*2 [a:61 a:61] a:61*4] a:61*3]" # pan "1" # gain (scale 0.5 1.0 $ rand)
+d3 $ slow 13 $ sound "[a:21*2 a:21*3]" # pan (rand) # gain (scale 0.1 1.0 $ rand)
+d4 $ slow 11 $ sound "[a:368*6]" # pan (rand) # cut "1" # gain (scale 0.5 1.0 $ rand)
+d5 $ slow 3 $ sound "[a:19*7 [cp a:360*5]]" # pan (rand) # gain (scale 0.5 1.0 $ rand) # cut "3"
+d6 $ slow 7 $ sound "[a:13*7 a:13*5] [cp a:61*3]" # pan (rand) # gain (scale 0.5 1.0 $ rand) # cut "4"
+d7 $ slow 9 $ sound "[a:30*3]" # gain 0.9 # cut "5"
+
+d1 silence
+d2 silence
+d3 silence
+d4 silence
+d5 silence
+d6 silence
+d7 silence

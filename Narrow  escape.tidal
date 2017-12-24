@@ -1,0 +1,7 @@
+m1 $ slow 4 $ (678<~) $ randcat[note "~~-36"] # velocity"0.01" # dur "0.1"
+m2 $ slow 32 $ (456<~) $ randcat[note "-12"] # dur "1" # velocity"0.01" # dur "0.5"
+m3 $ degradeBy 0.0 $ density 8 $ (456<~) $ randcat[note "-36",note "-34",note "-33",note "-31",note "-29",note "-28",note "-25"] # dur (slow 64 $ scale 0.001 0.02 sine1) # velocity (slow 139 $ scale 0.01 1.0 sine1)
+
+d1 $ slow 2 $ s "a" # n (choose[1,2,3,4,11,15]) #end (choose[0.01,0.001]) # up (choose[12,24,36]) #gain "2"
+d2 $ slow 2 $ degradeBy 0.6 $ s "303" # n (choose[2,22]) # up (choose[-12,-24,-36]) # cutoff (scale 20 5000 $ rand) # cut "2" # gain "2"
+d3 $ (0.125<~) $ s "bass2*2" # cutoff "500" # gain "2" # attack "0" # release  "0.05" # up "-12"

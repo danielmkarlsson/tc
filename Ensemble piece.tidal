@@ -1,0 +1,25 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+m1
+$ degradeBy 0.45
+$ sometimesBy 0.5 (0.125<~)
+$ slow 1
+$ spreadChoose _slow [1,1.5,2,2.5,3,3.5]
+$ spreadChoose _fast [1..4]
+$ n (choose[0,2,3,5,7,8,11]
+- choose [0,12,24,36,48]
++ choose [0,12,24]
+* choose [0,1,2])
+# dur (slow 0.1 $ scale 0.125 1 $ rand)
+# velocity (slow 0.11 $ scale 0.25 1 $ rand)
+# cc127 (slow 0.12 $ rand)
+# cc126 (slow 0.13 $ choose [0,1])

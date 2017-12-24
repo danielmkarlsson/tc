@@ -1,0 +1,1 @@
+m1 $ degradeBy 0.0 $ slowspread density [2,4,3,2,1,4,6,3,9,6,2,9,6,4,8,1,24,36,48,18,16] $ randcat [n "0", n "2", n "3", n "5", n "7", n "8", n "11", n "12", n "14"] # cc41 (scale 0.0 1.0 $ rand) # cc42 (scale 0.0 1.0 $ rand) # cc43 (scale 0.0 1.0 $ rand) # cc44 (scale 0.0 1.0 $ rand) # cc45 (scale 0.0 1.0 $ rand) # cc48 (scale 0.125 1.0 $ rand) # dur (scale 0.125 1.0 $ rand)

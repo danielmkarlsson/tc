@@ -1,0 +1,11 @@
+let runnow d p = do now <- getNow
+                    d $ (nextSam now) ~> p
+runnow d1 $ slowspread slow [0.1, 0.3 .. 2] $ s"ac" # n "2" # cut (choose[0,0,1]) # cutoff (scale 20 20000 $ rand) # pan rand
+runnow d2 $ slowspread slow [0.1, 0.4 .. 1.8] $ s"808" # n (choose[4,5,6]) # cut (choose[0,0,5]) # cutoff (scale 20 20000 $ rand) # pan rand # gain "1.2"
+runnow d3 $ slowspread slow [0.2, 0.3 .. 2] $ s"ac" # n "3" # cut (choose[0,0,2]) # cutoff (scale 20 20000 $ rand) # pan rand
+runnow d4 $ slowspread slow [0.3, 0.6 .. 1.5] $ s"303" # n "3" # cut (choose[0,0,3]) # cutoff (scale 20 20000 $ rand) # pan rand # up(choose[0,-12,-6,0,-12,-6,0,-12,-6,0,-12,-6,0,-12,-6,0,-12,-6,0,-12,-6,0,-12,-6,-3,-9])
+runnow d5 $ slowspread slow [0.1, 0.5 .. 1.75] $ s"808" # n "3" # cut (choose[0,0,4]) # cutoff (scale 20 20000 $ rand) # pan rand
+runnow d6 $ slowspread slow [0.1, 0.2 .. 0.8] $ s"808" # n (choose[7,8,9]) # cut (choose[0,0,6]) # cutoff (scale 20 20000 $ rand) # pan rand # gain "1.2" # attack "0" # hold "0.1" # release "0.5"
+runnow d7 $ slowspread slow [1, 2 .. 12] $ s "vo" # cut (choose[0,0,7]) # cutoff (scale 20 20000 $ rand) # pan rand # gain "1.2" # attack "0" # hold "0.1" # release "0.5"
+
+hush

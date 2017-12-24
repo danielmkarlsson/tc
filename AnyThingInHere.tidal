@@ -1,0 +1,51 @@
+d1
+$ stack[ sometimesBy 0.0625 (slow 8 . striate' 256 (1/2))
+$ foldEvery [2,5,6,7,11] (_fast 1.5)
+$ every 4 (spread _slow [1,1,1,1,1,1,4])
+$ iter "1 3 5 7 9"
+$ fast (choose [1,0.875,0.75,0.625,0.5,0.375,0.25,0.125])
+$ every 5 (0.125<~)
+$ every 7 (0.25<~)
+$ every 9 (0.375~>)
+$ every 11 (0.5~>)
+$ every 13 (0.625~>)
+$ every 15 (0.75~>)
+$ every 17 (0.875~>)
+$ every 19 (1~>)
+$ s (randcat[
+"foo/2","foo/3","foo*6","foo*5","foo*4","foo*3","foo*2","foo",
+"breaks125/2","breaks125/3","breaks125*6","breaks125*5","breaks125*4","breaks125*3","breaks125*2","breaks125",
+"breaks157/2","breaks157/3","breaks157*6","breaks157*5","breaks157*4","breaks157*3","breaks157*2","breaks157"
+])
+# unit "c"
+# n (discretise (1/3) $ slow 0.1 $ choose [0..26])
+# gain (slow 0.16 $ scale 1.75 3 $ rand)
+# cut 1
+# pan (slow 0.11 $ scale 0.25 0.75 $ rand)
+# hpf (slow 0.17 $ scale 20 120 $ rand)
+# speed 0.75
+# begin (discretise (1/4) $ slow 0.12 $ choose[0,0.125,0.25,0.5])
+# end (discretise (1/3) $ slow 0.13 $ choose[0.75,1,1.125,1.25,1.5])
+# loop 19
+# nudge (slow 64 $ scale (-0.5) 1 $ saw)
+# att 0
+# hold 2
+# rel 3
+# delay (slow 0.14 $ scale 0 0.75 $ rand)
+# delayt (slow 0.15 $ scale 0 0.0625 $ rand)
+# delayfb 1
+# pan (slow 0.20 $ scale 0.25 0.75 $ rand),
+sometimesBy 0.75 (slow 8 . striate' 128 (1/2))
+$ s "rave"
+# cut 2
+# n (slow 0.1 $ choose [0..26])
+# gain 1.25
+# pan (slow 0.21 $ scale 0.25 0.75 $ rand),
+s (randcat[
+"gabba","gabba*2","gabba*3","gabba*4","gabba*5","gabba*6","gabba*7","gabba*8","gabba*9","gabba*10","gabba*11","gabba*12","gabba*13"
+])
+# n (discretise (1/5) $ (choose[0,1]))
+# rel 0.05
+# gain 1.9
+# up (slow 0.18 $ choose[0..36])
+]

@@ -1,0 +1,46 @@
+Derivation
+This is a derivate work. It uses another piece of music as its source material. Using various forms of analysis I created a kind of inversion of the original. The original became a filter that I could use to create other material. In my inversion exists any variation that the original is not at that given time. From that material I then selected outcomes that I felt were favorable and assembled a library. The contents of this library where then reassembled in an order other than that of the original.
+
+To perceive and to respond
+We have consciousness. With it we may choose to experience many different things. We can set our senses ablaze with an ever increasing amount of extremely potent sensory inputs. We are capable of profound feats of inference from even the slightest flicker of an input to our highly attuned senses. Imagination assists sight in viewing scenes at great distances. There, at that point where imagination is assisting our hearing, exists a field of great interest to me.
+
+Ta bort Limits
+
+Solo blir istället Bookable Solo Acts
+
+Ta bort:
+
+The following solo acts are all bookable.
+
+See collaborations for bookable collaborations.
+
+LiveCoding
+I am interested in this phenomena. I regard it is an inevitable outcome as we unravel what it means to use a computer to make music. How do we reach a means of expression which is idiomatic when using this instrument? LiveCoding exists as a way for me to explore questions of this nature while at the same time encouraging others to increase computer literacy in the broadest sense.
+
+TidalCycles - intruduction workshop -> introduction
+
+- Compositions - Solo - Collaborations - Resources - Contact - Top (på alla utom den översta)
+
+Katt Hernandez/Daniel M Karlsson
+Violin and electronics duo. Improvised music focusing on textures, timbral transformations, densities, dynamics, interplay and juxtaposition of elements.
+
+The Schematics
+The Schematics is a quartet which brings together acoustic, electronic and digital sources.
+Katt Hernandez - Violin
+Ludvig Elblaus - Electronics
+Erik Blennow Calälv - BassClarinet
+Daniel M Karlsson - Guitar & Electronics
+
+http://www.theschematics.se/ - Spotify - iTunes -> Dom här länkarna (och alla andra som leder utanför sidan behöver öppna i nya fönster).
+
+TidalCycles
+https://tidalcycles.org/
+
+SuperCollider
+http://supercollider.github.io/
+
+Mimer Impulse Responses
+This is a set of four stereo impulse responses I recorded inside Mimer which is Norbergfestival's largest stage.
+
+Micro Modular Patches
+A small collection of patches available for your perusal.

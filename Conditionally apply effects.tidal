@@ -1,0 +1,4 @@
+d1
+$ sometimesBy (1/32) (# comb (slow 16 $ scale 0.7 0.995 $ rand))
+$ slow 1.5
+$ s "clp*16?"

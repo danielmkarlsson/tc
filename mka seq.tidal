@@ -1,0 +1,38 @@
+d1
+$ spread density [1,1,1]
+$ spreadChoose slow [1,1.125..2]
+$ spreadChoose density [0.75,1..1.5]
+$ stack[
+(99<~(s "mka*11?"))
+#cut (slow 0.1 $ choose [0..3])
+#pan (slow 0.11 $ rand)
+#cutoff (slow 0.12 $ scale 20 20000 $ rand)
+#gain (slow 0.13 $ scale 0.75 1.5 $ rand)
+#up (slow 0.14 $ choose [-1.5,-1.375..1.5])
+#n (slow 0.15 $ discretise(1/3)$choose[0,1])
+#release (slow 19 $ scale 0 4 $ sine1),
+(66<~(s "mka*11?"))
+#cut (slow 0.16 $ choose [0..3])
+#pan (slow 0.17 $ rand)
+#cutoff (slow 0.18 $ scale 20 20000 $ rand)
+#gain (slow 0.19 $ scale 0.75 1.5 $ rand)
+#up (slow 0.20 $ choose [-1.5,-1.375..1.5])
+#n (slow 0.21 $ discretise(1/4)$choose[2..4])
+#release (slow 29 $ scale 0.3 1 $ sine1),
+(33<~(s "mka*11?"))
+#cut (slow 0.22 $ choose [0..3])
+#pan (slow 0.23 $ rand)
+#cutoff (slow 0.24 $ scale 20 20000 $ rand)
+#gain (slow 0.25 $ scale 0.75 1.5 $ rand)
+#up (slow 0.26 $ choose [-1.5,-1.375..1.5])
+#n (slow 0.27 $ discretise(1/4)$choose[5,6])
+#release (slow 39 $ scale 0.3 1 $ sine1)
+]
+
+pattern = slow 0.5 $ every 3 (0.25 <~) $ whenmod 10 8 p2 $ p1
+  where
+    p1 = sound "stomp*4" # speed "0.75" # n (irand 10) # gain "1.1" # cut "1"
+    p2 = const $ degradeBy 0.25 $ sound "jazz*4" # n (irand 10) # pan rand # speed (scale 0.5 2 rand) # room "0.9" # size "0.9" # gain "0.9" # hcutoff "1000" # orbit "1"
+
+d1 $ pattern
+d2 $ slow 2 $ sound "bass1:5" # cut "2" # cutoff "4500" # gain "1.2"

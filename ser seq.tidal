@@ -1,0 +1,91 @@
+d1
+$ slow (discretise (1/4) $ choose[0.75,1,2,4,8])
+$ stack [
+every 6 (15~>)
+$ every 4 (8~>)
+$ fast 1.5
+$ every 3 (fast 2)
+$ every 5 (346<~)
+$ every 9 (spread _slow [1,1,1])
+$ degradeBy 0.0625
+$ fast (discretise (1/6) $ slow 0.1 $ choose [1,2,3,4])
+$ s (randcat["ser","ser*2","ser*3","ser*4","prr","prr*2","prr*3","prr*4","808bd","808bd*2","808bd*3","808bd*4"])
+# pan (slow 0.11 $ rand)
+# n (discretise (1/3) $ slow 0.12 $ choose [6,7,8,9,10,11,12,14,15,16,17,18,19])
+# rel (discretise (1/4) $ slow 0.14 $ choose[0.05,0.1,0.2,0.4,0.8,1.6,3.2])
+# gain (slow 0.15 $ scale 0.25 1.25 $ rand)
+# up (discretise (1/5) $ slow 0.13 $ choose[0,12])
+# delay (slow 38 sine)
+# delayt (discretise (1/7) $ slow 0.16 $ choose[0.03125,0.0625,0.125,0.25,0.5,1] * 0.03125)
+# delayfb (slow 25 sine)
+# nudge (slow 37 $ scale 0 0.5 $ sine)
+# lpf (slow 39 $ scale 200 20000 $ sine),
+every 12 (0.125~>)
+$ sound "rnb:62"
+# gain 8
+# rel 0.3
+# nudge (slow 32 sine),
+degradeBy 0.25
+$ slow 1.25
+$ every 13 (0.125~>)
+$ sound "rnb:13"
+# gain 8
+# rel 0.2
+# nudge (slow 32 $ scale 0 0.75 $ sine),
+degradeBy 0.125
+$ slow 1.133
+$ every 15 (0.125~>)
+$ sound "rnb:10"
+# gain 6
+# rel 0.15
+# nudge (slow 32 $ scale 0 0.4 $ sine)
+# pan (slow 0.19 $ rand),
+degradeBy 0.15
+$ slow 2.6
+$ every 7 (0.15~>)
+$ sound "rnb:19"
+# gain 8
+# rel 0.5
+# nudge (slow 43 $ scale 0 0.66 $ sine)
+# pan (slow 0.21 $ rand),
+s "hc*5"
+# rel 0.00625
+# gain (scale 0.5 2.5 $ rand)
+# hpf 4000
+# nudge (slow 33 $ scale 0 1.5 $ sine)
+]
+
+m1 $ n "128*2"
+# cc0 (discretise (1/2) $ slow 0.1 $ rand)
+# cc1 (discretise (1/3) $ slow 0.11 $ rand)
+# cc2 (discretise (1/5) $ slow 0.12 $ rand)
+# cc3 (discretise (1/2) $ slow 0.13 $ rand)
+# cc4 (discretise (1/3) $ slow 0.14 $ rand)
+# cc5 (discretise (1/5) $ slow 0.15 $ choose [0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79])
+# cc6 (discretise (1/2) $ slow 0.16 $ rand)
+# cc7 (discretise (1/3) $ slow 0.17 $ rand)
+# cc8 (discretise (1/5) $ slow 0.18 $ rand)
+# cc9 (discretise (1/2) $ slow 0.19 $ rand)
+# cc10 (discretise (1/3) $ slow 0.20 $ choose [0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79])
+# cc11 (discretise (1/5) $ slow 0.21 $ rand)
+# cc12 (discretise (1/2) $ slow 0.22 $ rand)
+# cc13 (discretise (1/3) $ slow 0.23 $ rand)
+# cc14 (discretise (1/5) $ slow 0.24 $ rand)
+# cc15 (discretise (1/2) $ slow 0.25 $ choose [0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79])
+# cc16 (discretise (1/3) $ slow 0.26 $ rand)
+# cc17 (discretise (1/5) $ slow 0.27 $ rand)
+# cc18 (discretise (1/2) $ slow 0.28 $ rand)
+# cc19 (discretise (1/3) $ slow 0.29 $ rand)
+# cc20 (discretise (1/5) $ slow 0.30 $ wchoose[2,1][1,0])
+# cc21 (discretise (1/2) $ slow 0.31 $ wchoose[1,2][0,0])
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush

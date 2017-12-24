@@ -1,0 +1,38 @@
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e) -- evaulate this whole block together w/ Cmd+Enter
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+cps (-1)
+cps 1
+
+d1 $ slow 0.1 $ stack[ -- Cmd+Enter anywhere inside this block to make the boogaloo happen
+s "pm9b" #speed (slowspread slow [1..29] $ scale (-1) 1 $ tri1)
+#pan (slow 0.1 $ rand) #gain "0.8",
+s "mcb?"
+#gain (slow 200 $ scale 0 2 $ sine1)
+#n (15 <~ (discretise (1/200) $ slow 0.11 $ choose[0..4]))
+#cut "1" #bandf (slow 0.12 $ scale 200 20000 rand)
+#bandq (slow 0.13 $ scale 0 1 rand)
+#pan (slow 0.14 $ scale 0.2 0.8 rand)
+#attack "0"
+#release (slow 0.15 $ scale 0.05 1.7 rand),
+slow 4 $ every 32(density 2) $ every 15(9 <~) $ s "mcb"
+#n "9"
+#cut "2"
+#gain "1.25",
+slow 8 $ s "pmb"
+#n (slow 0.16 $ choose [11,14])
+#attack "0"
+#release (slow 0.21 $ scale 0.3 3 $ rand)
+#up(slow 0.17 $ choose [0,-12])
+#pan (slow 0.18 $ rand),
+degradeBy 0.75 $ s "mcb"
+#n "11"
+#pan (slow 0.19 rand)
+#shape (slow 0.2 $ scale 0 0.8 $ rand)
+#up (choose[-24..0])
+#attack "0"
+#release "0.2"
+#gain (slow 0.22 $ scale 0.8 1.2 $ rand)
+]

@@ -1,0 +1,27 @@
+m1 $ (0.1 <~) $ slowspread density [0.03072,0.06125,0.125,0.25,0.5,1,2] $ randcat [n "128", n "128*2", n "128*2", n "128*2", n "128*2", n "128*4", n "128*4"] # cc1 (density 2 $ scale 0.1 1.0 $ rand) {-RoomMix-} # cc2 (density 3 $ scale 0.1 1.0 $ rand) {-RoomDecay-} # cc3 (density 4 $ scale 0.0 0.25 $ rand) {-drive-} # cc4 (density 5 $ choose [0,0.04,0.07,0.1,0.13,0.16,0.19,0.23,0.26,0.35,0.38,0.41,0.45,0.48,0.51,0.54,0.57,0.60,0.63,0.67,0.70,0.73,0.76,0.79]) {-FFT_type_0-} # cc5 (density 6 $ scale 0.0 1.0 $ rand) {-FFT_FrqA_0-} # cc7 (density 8 $ scale 0.0 1.0 $ rand) {-FFT_FrqB_0-} # cc8 (density 9 $ scale 0.0 1.0 $ rand) {-FFT_Amp_0-} # cc9 (density 10 $ scale 0.0 1.0 $ rand) {-FFT_Value_0-} # cc10 (density 11 $ scale 0.0 1.0 $ rand) {-FFT_Value_0-}
+m1 silence
+d1 $ (111 <~) $ degradeBy 0.95 $ slowspread density [0.25,0.5,1,2,3,8,1.5,4.5,9,6,7.5,12,3] $ s "303" # n "12" # gain "1" # cut "1" # up (choose[-14,-12,-11,-9,-8,-5]) # end "0.1" #attack"0.2" # release "1" # n (density 67 $ choose[1,2,3,4,5,6,7,8,9,10]) # gain "1.1" # shape "0.3"
+d2 $ (222 <~) $ degradeBy 0.8 $ slowspread density [0.5,0.75,1,2,3,8,4,1.5,4.5,9,6,7.5,12,3,0.25,16] $ s "a*1" # n "63" # up (choose[-12,-11 .. 26]) # gain (density 79 $ scale 0.2 3 $ rand) #cut (density 45 $ choose[0,1])
+d3 $ (333 <~) $ degradeBy 0.7 $ slowspread density [0.5,1,2,3,1.5,4.5,6,7.5] $ slow 4 $ randcat [s "808", s "808*2", s "808/2"] # n(density 32 $ irand 300) # cut "2" # end (scale 0.5 1.5 $ rand) # loop "9" # pan (scale 0.5 1 $ rand)
+d4 $ (444 <~) $ degradeBy 0.45 $ slowspread density [0.75,1,2,3,1.5,4.5,6,7.5,9] $ slow 8 $ randcat [s "ac", s "cp/2", s "bd*2"] # n(density 13 $ irand 4) # cut "3" # end (scale 0.25 0.5 $ rand) # loop "11" # pan (density 78 $ scale 0.0 1 $ rand) # gain "1.4"
+d5 $ (555 <~) $ degradeBy 0.9 $ slowspread density [0.125,0.25,0.5,1,2,3,1.5,4.5,6,7.5,9,10.5,12] $ randcat [s "stab", s "stab/2", s "stab*2", s "stab*3"] # n(density 19 $ irand 22) # cut "4" # end (scale 0.125 0.25 $ rand) # loop "5" # pan (density 98 $ scale 0.0 1 $ rand)  # up (choose[-2,0,1,3,4,7]) #cutoff "2000"
+d6 $ (666 <~) $ degradeBy 0.97 $ s "rave2" # n (choose [0,2,3,4,5]) # up (choose[-13,-12,-1,0,2,3,5,7,8,11,12]) # attack (scale 0 1 $ rand) # release (scale 0 1 $ rand) # end (scale 0.5 1.5 $ rand) # loop (scale 0 30 $ rand) # cut "5" #cutoff "2000"
+d7 $ (777 <~) $ degradeBy 0.91 $ s "rave" # n (density 4 $ choose [1,2,7]) # attack (scale 0 1 $ rand) # release (scale 0 1 $ rand) # end (scale 0.5 1.5 $ rand) # loop (scale 0 30 $ rand) # cut "5" #cutoff (density 7 $ choose[1250,2500,5000,10000,20000])
+
+solo $ d1 $ density 1 $ s "ac*2? ac ac*3? cp"# n "0" # gain "16" # end "0.125" #pan (density 16 $ choose[0,1]) # cut "1"
+m1 $ (0.1 <~) $ n "128*2" # cc8 (density 6 $ scale 0.0 1.0 $ rand)
+
+cps = 0.125
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5]
+solo = (>>) hush
+hush
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,m1]
+solo = (>>) hush
+hush
+
+m1 $ n "128*2" # cc10 "1.0"
+
+--complete list of acceptable values for mono dtblkfx in AM
+0,0.04,0.07,0.1,0.13,0.16,0.19,0.23,0.26,0.35,0.38,0.41,0.45,0.48,0.51,0.54,0.57,0.60,0.63,0.67,0.70,0.73,0.76,0.79

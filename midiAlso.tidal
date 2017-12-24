@@ -1,0 +1,34 @@
+d1
+$ degradeBy 0.99
+$ s "dx7*6"
+# n (slow 0.1 $ choose [0..99])
+# rel 0.1
+# pan (slow 0.11 $ rand)
+
+m1 
+$ degradeBy 0.99
+$ n "0*6"
+#cc0 (slow 0.1 $ rand)
+#cc1 (slow 0.11 $ rand)
+#cc2 (slow 0.12 $ rand)
+#cc3 (slow 0.13 $ rand)
+#cc4 (slow 0.14 $ rand)
+#cc5 (slow 0.15 $ rand)
+
+import Sound.Tidal.MIDI.Context
+
+import Sound.Tidal.MIDI.Stream
+
+import Sound.Tidal.MIDI.Synth
+
+import Sound.Tidal.MIDI.CC
+
+devs <- midiDevices
+
+displayOutputDevices >>= putStrLn
+
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]

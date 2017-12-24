@@ -1,0 +1,13 @@
+m1 $ slowspread slow ([7,9..19]++[18,16..8]) $ n "128"
+#cc0  (density 1.0 $ scale 0 1 $ rand)
+#cc1  (density 1.1 $ scale 0 1 $ rand)
+#cc2  (density 1.2 $ scale 0 1 $ rand)
+#cc3  (density 1.3 $ scale 0 1 $ rand)
+#cc4  (density 1.4 $ scale 0 1 $ rand)
+#cc5  (density 1.5 $ scale 0 1 $ rand)
+#cc6  (density 1.6 $ scale 0 1 $ rand)
+#cc7  (density 1.7 $ scale 0 1 $ rand)
+#cc8  (density 1.8 $ scale 0 1 $ rand)
+#cc9  (density 1.9 $ scale 0 1 $ rand)
+#cc10 (density 2.0 $ scale 0 1 $ rand)
+#cc11 (density 2.1 $ scale 0 1 $ rand)

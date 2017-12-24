@@ -1,0 +1,43 @@
+d1
+$ slow "<8 4 6 12>"
+$ striate "<16 32 64>"
+$ s "jfm*4"
+# n (slow 0.1 $ choose [0..39])
+# speed (slow 0.11 $ randcat ["[0.9,1.23232]", "[0.378,0.85]","[1,0.5]","[1,0.75]"])
+# orbit "0"
+# room (scale 0.1 0.5 $ slow 3 rand)
+# size (scale 0.1 0.9 $ slow 4 $ rand)
+# delay (scale 0.4 0.8 $ slow 5 rand)
+# delayt (discretise (1/2) $ scalex 0.001 0.1 $ (discretise (1/3) $ slow 6 rand + choose [1,1.25..3]))
+# delayfb (slow 0.12 $ choose [0,1])
+# lpf (slow 0.13 $ scalex 20 20000 $ rand)
+
+let inverse 0 = 1
+    inverse 1 = 0
+
+do
+  let pat = "{1 0 0 1 0 ~ ~}%8"
+  d1 $ smash 4 [3,2,1] $ stack [
+    rarely (stut' 16 (0.125/4) (|*| gain 0.9)) $ (1<~) $
+      rarely (stut' 8 (0.125/2) ((|*| speed 1.05) . (|*| gain "0.9"))  )  $
+      s "~ sbu [~ sbu] ~" # speed "16",
+    gain (inverse <$> pat) # s "sbu" # speed "2" # shape "0.5" # cut "88" # rel "0.2" # coarse "4",
+    gain (pat) # s "jfm"  # n (discretise (1/4) $ slow 1.2 $ irand 40) # cut "1"
+      # accelerate (discretise (1/3.5) $ scale (-4) 4 $ slow 73 $ rand) # speed (discretise (1/3.5) $ slow 33 $ choose[0.5,1,2]),
+    gain (inverse <$> pat) # s "jfm" # n (discretise (1/3) $ slow 1.1 $ irand 30) # cut "2"
+      # accelerate (discretise (1/4.5) $ scale (-4) 4 $ slow 88 $ rand) # speed "1"
+      # speed (discretise (1/4.5) $ slow 72 $ choose [0.5,1,2])]
+      # orbit "0"
+      # room (discretise (1/2) $ scale 0 0.5 $ slow 72 rand)
+      # size (discretise (1/2) $ scale 0 1 $ slow 818 rand)
+      # delay (discretise (1/2) $ scale 0.5 0.9 $ slow 881 rand)
+      # delayt (discretise (1/2) $ scale 0.001 0.5 $ slow 177 rand)
+      # delayfb (discretise (1/2) $ scale 0.6 0.99 $ slow 221 rand)
+      # lpf (discretise (1/2) $ scale 100 5000 $ slow 736 rand)
+
+
+hush
+
+(10 + 5) * 3
+
+5 * 3 + 10

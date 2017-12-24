@@ -1,0 +1,12 @@
+d1 $ slowspread density [2.5,2,2] $ slowspread iter [3,3,2,1] $ slowspread slow [0.5,0.5,025]
+$ sound "[odx, gabba, cp? hc(3,7), house:5*2 house:5? jvbass/3]"
+#pan (slow 2rand)
+#up (slow 3$choose[-9..9])
+#gain "4"
+#delay "0.25"
+#delayfeedback "0.75"
+#delaytime (slow 4 $ scale 0.00001 0.01 $ rand)
+#nudge (slow 15 $ scale (-0.5) 2 $ sine1)
+#hcutoff (slow 39 $ scale 600 20 $ rand)
+#shape "0.95"
+#cut (choose[0,0,0,0,0,0,0,0,1])

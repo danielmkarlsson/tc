@@ -1,0 +1,7 @@
+m1 $ density 0.625 $ randcat [note "-12 7 3 5 2", note "2 -12 5 11 3", note "3 8 7 2 5", note "5 2 8 -12 11", note "7 11 -12   3 2", note "8 12 7 5 3", note "11 8 5 7 3", note "12 3 5 8 2"] # velocity (scale 0.1 1.0 $ rand) # nudge (slow 48 $ scale 0 1 sine1)
+
+m1 $ density 0.225 $ randcat [note "0",note "0",note "0",note "2",note "3",note "5"] # velocity (scale 0.1 1.0 $ rand) # nudge (slow 64 $ scale 0 1 sine1)
+m1 $ density 0.137 $ randcat [note "2",note "2",note "2",note "3",note "5",note "7"] # velocity (scale 0.1 1.0 $ rand) # nudge (slow 63 $ scale 0 1 sine1)
+m1 $ density 0.329 $ randcat [note "3",note "3",note "3",note "5",note "7",note "8"] # velocity (scale 0.1 1.0 $ rand) # nudge (slow 62 $ scale 0 1 sine1)
+m1 $ density 0.213 $ randcat [note "5",note "5",note "5",note "7",note "8",note "11"] # velocity (scale 0.1 1.0 $ rand) # nudge (slow 61 $ scale 0 1 sine1)
+hush

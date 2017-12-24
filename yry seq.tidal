@@ -1,0 +1,26 @@
+d1
+$ spreadChoose _fast [1..9]
+$ stack[
+s "<yry ~ ~ ~ yry ~ ~>" #pan (slow 0.1 $ rand) # rel 0.3,
+s "<yry:1 ~ yry:1 ~ yry:1 ~>" #pan (slow 0.11 $ rand),
+s "<yry:2 ~ ~yry:2 ~ ~ ~ yry:2 ~ ~ ~ ~ ~>" #pan (slow 0.12 $ rand),
+s "<yry:3 ~ yry:3 ~ yry:3 ~ ~ >" #pan (slow 0.13 $ rand),
+s "<yry:4 ~ ~ ~ yry:4 ~ yry:4 ~>" #pan (slow 0.14 $ rand),
+s "<yry:5 ~ yry:5 ~ ~ ~ yry:5 ~ ~ ~ ~>" #pan (slow 0.15 $ rand),
+s "<yry:6 ~ ~ yry:6 ~ yry:6 ~>" #pan (slow 0.16 $ rand),
+s "<yry:7 ~ ~ ~ yry:7 ~ ~ yry:7 ~ ~ ~>" #pan (slow 0.17 $ rand),
+s "<yry:8 ~ ~ yry:8 yry:8 ~ ~ ~ ~>" #pan (slow 0.18 $ rand),
+s "<yry:9 ~ ~ ~ yry:9 ~ yry:9 ~ ~ ~>" #pan (slow 0.19 $ rand),
+s "<yry:10 ~ ~ ~ ~ ~ ~ yry:10 ~ ~ ~ yry:10>" #pan (slow 0.2 $ rand),
+s "<yry:11 ~ ~ ~ ~ ~ yry:11 ~ yry:11 ~ ~ ~>" #pan (slow 0.21 $ rand),
+s "<yry:12 ~ ~ yry:12 ~ ~ ~ yry:12 ~ ~ ~ ~ ~>" #pan (slow 0.22 $ rand),
+s "<yry:13 ~ ~ ~ yry:13 ~ ~ ~ yry:13 ~ ~ ~ ~ ~>" #pan (slow 0.23 $ rand),
+s "<yry:14 ~ ~ ~ yry:14 ~ ~ ~ ~ yry:14 ~ ~ ~ ~ ~>" #pan (slow 0.24 $ rand),
+s "<yry:15 ~ ~ ~ ~ ~ yry:15 ~ ~ ~ ~ ~ yry:15 ~ ~ ~>" #pan (slow 0.25 $ rand),
+s "<bass1>"
+# rel 0.3
+# up (slow 0.1 $ choose [1,-0.75,-0.5,-0.25,0,0.25,0.5,0.751,1])
+# n (slow 0.11 $ choose [2,3,4,12,15,20,22])
+# pan (slow 0.12 $ scale 0.25 0.75 $ rand)
+# gain (slow 0.13 $ scale 1 1.3 $ rand)
+]
