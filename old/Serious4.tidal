@@ -1,0 +1,11 @@
+d1 $ degradeBy 0.05 $ density 8.00000 $ (100 <~) $ s "ha" # speed (slow 16048 $ scale 2.16 0.63 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10152 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d2 $ degradeBy 0.06 $ density 8.25001 $ (200 <~) $ s "ha" # speed (slow 16047 $ scale 3.15 0.62 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10153 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d3 $ degradeBy 0.07 $ density 8.50002 $ (300 <~) $ s "ha" # speed (slow 16046 $ scale 4.14 0.61 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10154 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d4 $ degradeBy 0.08 $ density 8.75003 $ (400 <~) $ s "ha" # speed (slow 16045 $ scale 2.13 0.60 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10155 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d5 $ degradeBy 0.09 $ density 9.00004 $ (500 <~) $ s "ha" # speed (slow 16044 $ scale 3.12 0.59 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10156 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d6 $ degradeBy 0.10 $ density 9.25005 $ (600 <~) $ s "ha" # speed (slow 16043 $ scale 4.11 0.58 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10157 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d7 $ degradeBy 0.11 $ density 9.50006 $ (700 <~) $ s "ha" # speed (slow 16042 $ scale 2.10 0.57 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10158 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d8 $ degradeBy 0.12 $ density 9.75007 $ (800 <~) $ s "ha" # speed (slow 16041 $ scale 3.09 0.56 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10159 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+d9 $ degradeBy 0.13 $ density 10.00008 $ (900 <~) $ s "ha" # speed (slow 16040 $ scale 4.08 0.55 sine1) # attack "1" # hold "0.25" # release "0.2" # pan (scale 0 1 $ rand) # hcutoff (slow 10160 $ scale 1000 50 sine1) # begin "0.2" # end "0.6" # gain "0.7"
+cps 1
+hush

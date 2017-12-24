@@ -1,0 +1,34 @@
+let (freq, _) = pF "freq" (Just 440)
+    (hr1, _) = pF "hr1" (Just 1.0)
+    (hr2, _) = pF "hr2" (Just 1.0)
+    (hr3, _) = pF "hr3" (Just 1.0)
+    (hr4, _) = pF "hr4" (Just 1.0)
+    (mi2, _) = pF "mi2" (Just 1.0)
+    (mi3, _) = pF "mi3" (Just 1.0)
+    (mi4, _) = pF "mi4" (Just 1.0)
+    (fb, _) = pF "fb" (Just 1.0)
+    (e1, _) = pF "e1" (Just 1.0)
+    (e2, _) = pF "e2" (Just 1.0)
+    (e3, _) = pF "e3" (Just 1.0)
+    (e4, _) = pF "e4" (Just 1.0)
+    (c1, _) = pF "c1" (Just 1.0)
+    (c2, _) = pF "c2" (Just 1.0)
+    (c3, _) = pF "c3" (Just 1.0)
+    (c4, _) = pF "c4" (Just 1.0)
+    (dt, _) = pF "dt" (Just 1.0)
+
+d1
+$ slow 2.5
+$ degradeBy 0.25
+$ fast (wchoose [8,7,6,5,4,3,2,1] [(1/128),(1/64),(1/32),(1/16),(1/8),(1/4),(1/2),1])
+$ freq (randcat["8","8 9","8 9 12 14.25","8 9 12 14.2 16 18 19 24","8 9 12 14.2 16 18 19 24 27 28.5"] * (wchoose [16,8,4,2,1] [1,2,4,8,16]) * 5)
+# e4 (slow 0.13 $ scale 0 1 $ rand) # c4 (slow 0.17 $ scale (-3) (3) $ rand) # hr4 (wchoose [1,2,3][1,2,4]) # mi4 (slow 0.21 $ choose [1,2]) 
+# e3 (slow 0.14 $ scale 0 1 $ rand) # c3 (slow 0.18 $ scale (-2) (3) $ rand) # hr3 (wchoose [1,2,3][1,2,4]) # mi3 (slow 0.22 $ choose [1,2])  
+# e2 (slow 0.15 $ scale 0 1 $ rand) # c2 (slow 0.19 $ scale (-3) (3) $ rand) # hr2 (wchoose [1,2,3][1,2,4]) # mi2 (slow 0.23 $ choose [1,2])  
+# e1 (slow 0.16 $ scale 0 1 $ rand) # c1 (slow 0.20 $ scale (-4) (3) $ rand) # hr1 (wchoose [1,2,3][1,2,4]) # fb (scalex 0.00001 8 $ rand)
+# dt 0.125
+# sustain (wchoose [1,2,4,8,16][64,32,16,8,4])
+# sound "phaseMod"
+# gain (slow 0.1 $ scalex 0.75 1 $ rand)
+# pan (slow 0.11 $ rand)
+# lpf (slow 0.12 $ scalex 20 20000 $ rand)

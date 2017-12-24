@@ -1,0 +1,29 @@
+let wchoose values weights = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ every 8 (fast 0.5)
+$ spreadChoose fast [1,2,4]
+$ spreadChoose slow [1,3,6,9,12]
+$ s "click*8"
+# n (slow 0.1 $ choose [2,3])
+# pan (slow 0.11 $ rand)
+# release (slow 0.12 $ scale 0.05 1.5 $ rand)
+# gain (slow 0.13 $ scale 0.5 3 $ rand)
+# lpf (slow 0.14 $ scale 20 20000 $ rand)
+# hpf (slow 0.15 $ scale 20 200 $ rand)
+# up (slow 0.16 $ choose [-24,-18,-12,-6,0,6,12,18,24])
+# nudge (slow 0.17 $ wchoose [0,0.5,1][16,8,1])
+
+m1
+$ every 8 (fast 0.5)
+$ n "128*2?"
+#cc0 (slow 0.18 $ rand)
+#cc1 (slow 0.19 $ rand)
+#cc2 (slow 0.20 $ rand)
+#cc3 (slow 0.21 $ wchoose [0,1][1,4])
+#cc4 (slow 0.22 $ rand)
+#cc5 (slow 0.23 $ rand)
+#cc6 (slow 0.24 $ rand)
+#cc7 (slow 0.25 $ rand)
+
+m1 silence

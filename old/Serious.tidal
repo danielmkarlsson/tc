@@ -1,0 +1,11 @@
+d1 $ degradeBy 0.05 $ slow 1.00000 $ (100 <~) $ s "ha*2" # speed (slow 2048 $ scale 2.16 0.33 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 152 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d2 $ degradeBy 0.06 $ slow 1.00001 $ (200 <~) $ s "ha*3" # speed (slow 2047 $ scale 3.15 1.32 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 153 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d3 $ degradeBy 0.07 $ slow 1.00002 $ (300 <~) $ s "ha*4" # speed (slow 2046 $ scale 2.14 0.31 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 154 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d4 $ degradeBy 0.08 $ slow 1.00003 $ (400 <~) $ s "ha*5" # speed (slow 2045 $ scale 3.13 1.30 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 155 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d5 $ degradeBy 0.09 $ slow 1.00004 $ (500 <~) $ s "ha*6" # speed (slow 2044 $ scale 2.12 0.29 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 156 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d6 $ degradeBy 0.10 $ slow 1.00005 $ (600 <~) $ s "ha*7" # speed (slow 2043 $ scale 3.11 1.28 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 157 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d7 $ degradeBy 0.11 $ slow 1.00006 $ (700 <~) $ s "ha*8" # speed (slow 2042 $ scale 2.10 0.27 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 158 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d8 $ degradeBy 0.12 $ slow 1.00007 $ (800 <~) $ s "ha*9" # speed (slow 2041 $ scale 3.09 1.26 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 159 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+d9 $ degradeBy 0.13 $ slow 1.00008 $ (900 <~) $ s "ha*10" # speed (slow 2040 $ scale 2.08 0.25 sine1) # attack "1" # release "0.1" # pan (scale 0 1 $ rand) # hcutoff (slow 160 $ scale 2500 80 sine1) # begin "0.1" # end "0.3" # gain "0.75"
+cps 0.6
+hush

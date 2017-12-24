@@ -1,0 +1,12 @@
+d1 $ density 2 $ (65 <~) $ degradeBy 0.495 $ randcat [s "a(3,11)%1",s "a(4,11)%2",s "a(5,11)%3",s "a(6,11)%6"] # n (choose[4,7,13,17,36]) # up (choose[-1,-3,-6,-8,-9,-12,-14, 2, 3, 5]) # pan (scale 1.0 0.0 $ rand) # gain "1 1 2 1 0.5 1 " # shape "0.59" #  end "0.5"
+d2 $ density 3 $ (27 <~) $ degradeBy 0.970 $ randcat [s "{ac(3,11,3)}%2",s "{ac(4,11,3)}%3"] # n "3" # up (choose[-12]) # gain "0.25 0.5 1 2 3" # pan (scale 1.0 0.0 $ rand) # cut (choose[2,3,4,6,7,8,9]) # end "0.5"
+d3 $ slow 2 $ (97 <~) $ degradeBy 0.855 $ randcat [s "{bass2(3,11,5)}%2", s "{bass2(4,11,7)}%2",s "{bass2(5,11,9)}%2"] # n "3" # up (choose[-12]) # gain "0.25 0.5 1" # pan (scale 1.0 0.0 $ rand) # cut (choose[1,2,3,4,5,6,7,8,9])
+d4 $ slow 1 $ (16 <~) $ degradeBy 0.654 $ randcat [s "{cp(2,5,4)}%8", s "{cp(3,7,2)}%6", s "{cp(4,9,1)}%8", s "{cp(5,9,3)}%8"] # n (choose[3,4,5,6]) # up (choose[0, 12, 12]) # gain "1 1 3 1 2 1 1 1 3 2 1 4 1 1" # cut (choose[1,2,4,5,6,8,9])
+d5 $ slow 2 $ (48 <~) $ degradeBy 0.359 $ randcat [s "{bd(2,5,3)}%6", s "{bd(3,5,4)}%4", s "{bd(4,7,2)}%6", s "{bd(5,7,2)}%4", s "{bd(6,7,6)}%2"] # n "3" # up "-15" # gain "1 1 3 1 1 1 2 1 1 1" # end "0.25" # pan (scale 1.0 0.0 $ rand) # cut (choose[1,2,3,4,5,6,7,8,9])
+d6 $ slow 3 $ (39 <~) $ degradeBy 0.459 $ randcat [s "{ac(3,7,6)}%3", s "{ac(4,7,5)}%4", s "{ac(5,9,4)}%3", s "{ac(6,9,4)}%6"] # n (choose[2,2,2,2,3,3]) # gain (choose[0,1,2]) # up "12" # shape "0.9" # cut (choose[1,3,4,5,6,7,9]) # end "0.25"
+d7 $ density 1.5 $ (67 <~) $ degradeBy 0.891 $ randcat [s "{a(4,11,3)}%3", s "{a(5,11,7)}%4", s "{a(6,11,9)}%6", s "{a(7,11,1)}%8"] # n (choose[407,167,532,246]) # pan (scale 1.0 0.0 $ rand) # gain "1 1 1 1 2 1 3 1 1 1" # up "3" # end (choose [0.125,0.25,0.5,1]) # cut (choose[1,3,4,5,7,8,9])
+d8 $ slow 1 $ (29 <~) $ degradeBy 0.739 $ randcat [s "{a(3,19,9)}%2", s "{a(4,19,7)}%1", s "{a(5,19,5)}%3", s "{a(6,19,3)}%2", s "{a(7,19,1)}%1"] # n (choose[12,52,66,43]) # pan (scale 1.0 0.0 $ rand) # gain "1 1 2 1 1 1 1" # up "6" # end (choose [0.25,0.5,0.75]) # shape "0.9" # cut (choose[2,3,4,5,7,8,9])
+d9 $ density 4 $ (94 <~) $ degradeBy 0.873 $ randcat [s "{a(2,17,4)}%2", s "{a(2,5,5)}%1", s "{a(3,11,3)}%2"] # n (choose[9,345,35,24,76]) # pan (scale 1.0 0.0 $ rand) # gain "0.5 1 2 1 0.5 1 1 0.5 1 1" # up "6" # end (choose [0.125,0.25,0.5, 1]) # shape "0.9" # cut (choose[1,2,3,4,5,6,7])
+cps 0.1
+
+hush

@@ -1,0 +1,15 @@
+d1
+$ degradeBy 0.25
+$ iter "3 5 7"
+$ fast (choose[2,3,4,5,6,7,8,9,10,11])
+$ slow (choose[1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5])
+$ s "sso"
+# n (slow 0.1 $ choose[0..472])
+# att (slow 0.11 $ scale 0 4 $ rand)
+# hold (slow 0.12 $ scale 0 2 $ rand)
+# rel (slow 0.13 $ scale 1 2 $ rand)
+# up (slow 0.14 $ choose[6,3,0,-3,-6,-9,-12,-15,-18])
+# gain (slow 0.15 $ scale 0.9 1.4 $ rand)
+# pan (slow 0.16 $ scale 0.125 0.875 $ rand)
+# accelerate (slow 0.17 $ scale (-0.0125) 0.0125 $ rand)
+# nudge (slow 64 $ scale (-0.5) 3 $ rand)

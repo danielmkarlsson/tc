@@ -1,0 +1,14 @@
+d1 
+$ degradeBy 0.3
+$ sometimesBy (1/9) (spread _slow [1,1])
+$ slow (discretise (1/1) $ choose [1,1.25,1.25])
+$ fast (discretise (1/5) $ choose [1,1.5,2])
+$ s (randcat["srg*9","srg*8","srg*7","sbu*9","sbu*8"]) 
+# n (slow 0.1 $ choose [0..2]) 
+# up (slow 0.11 $ scale (-24) 24 $ rand)
+# cut (slow 0.12 $ wchoose [1,4][0,1])
+# rel (slow 0.13 $ choose [0.1,2])
+# gain (slow 0.14 $ scalex 0.75 1.5 $ rand)
+# lpf (slow 0.15 $ scalex 20 20000 $ rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)

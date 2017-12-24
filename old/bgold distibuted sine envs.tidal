@@ -1,0 +1,10 @@
+let pulse::Double -> Time -> Double
+    pulse w t | (fromRational . snd $ properFraction t) < w = cos (2 * pi / w * fromRational t) * (negate 0.5) + 0.5
+              | otherwise = 0
+    wave1 w = sig $ pulse w
+    randomPulse = Pattern $ \a@(s,e) -> arc (wave1 $ timeToRand s) a
+let somecyclesBy x = when (test x) -- cycle-by-cycle version of sometimesBy
+      where test x c = (timeToRand $ fromIntegral c) < x
+
+d1 $ somecyclesBy 0.7 (# cutoff (density 4 $ randomPulse))$ sound "bd*16"
+hush

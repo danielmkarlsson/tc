@@ -1,0 +1,1 @@
+d1 $ s "gabba*2 house*2" #n (irand 29) #pan (slow 2 rand)

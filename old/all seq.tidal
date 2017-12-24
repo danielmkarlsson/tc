@@ -1,0 +1,109 @@
+d1
+$ sometimesBy 0.75 (iter 8)
+$ spread _slow [1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5]
+$ spreadChoose _fast [1..11]
+$ s (randcat[
+  "abc","ace","ade","amn","arp","aut","bad","bch","bin","bka","bkb","bkc","bko","bnd","bsd","bsf","bsh","bso","bss","bst","bsz",
+  "cal","chn","chr","cli","clk","clp","dba","dmf","dmt","dor","drc","drf","drm","dro","drt","ebd","ecy","ehc","eht","eic","elc","elt",
+  "emc","emt","eoe","eoh","erk","esc","esd","est","fel","fif","fir","flc","flx","foo","fut","gab","gbb","gbl","gbr","gic","gio","glc","gls","glt",
+  "grt","hac","han","hat","haw","hdc","hou","htt","ifd","iff","inc","ins","jas","jnb","jng","jvb","key",
+  "lbu","led","lss","lsv","ltt","lxr","mcb","mde","mdt","mka","mog","msh","mst","mth","mtl","mtt","mut","nis",
+  "nnt","non","nst","nts","num","odx","oiz","pcs","per","pih","piz","pmb","prc","pri","prr","rap","rnb","rvp","rvv","sbg","sbu","seq","ser",
+  "sgl","sha","sho","sid","srg","ssf","sso","sta","sto","str","tch","tfs","tok","tuu","txz","ulg","uul","vin","voo","yry","zds",
+  "zhs"
+])
+# n (discretise (1/18) $ slow 0.1 $ choose [0..999])
+# rel (discretise (1/19) $ slow 0.11 $ scale 0.001 1.5 $ rand)
+# gain (slow 24 $ scale 1 3 sine)
+# pan (discretise (1/20) $ slow 0.12 $ rand)
+# up (discretise (1/21) $ slow 0.13 $ choose [-3,-2.5,-2,-1.5,-1,-0.5,0])
+# begin (discretise (1/22) $ slow 0.14 $ rand)
+# end (discretise (1/23) $ slow 0.15 $ rand)
+# loop 16
+# attack (discretise (1/24) $ slow 0.16 $ scale 0 2 $ rand)
+# hold (discretise (1/25) $ slow 0.17 $ rand)
+# release (discretise (1/26) $ slow 0.18 $ scale 0 2 $ rand)
+# hpf (discretise (1/27) $ slow 0.19 $ scale 20 200 $ rand)
+# nudge (slow 155 sine)
+# delay (slow 156 $ scale 0.25 1 $ sine)
+# delayfb 1
+# delayt (discretise (1/28) $ slow 0.2 $ choose [1/16,1/15,1/14,1/13,1/12,1/11,1/10,1/9,1/8,1/7,1/6,1/5] *
+choose [1/16,1/15,1/14,1/13,1/12,1/11,1/10,1/9,1/8,1/7,1/6,1/5,1/4,1/3,1/2,1])
+
+d1
+$ sometimesBy 0.85 (fast 1.25)
+$ sometimesBy 0.75 (1.5<~)
+$ sometimesBy 0.25 (fast 1.5)
+$ sometimesBy 0.5 (iter 8)
+$ degradeBy (1/3)
+$ (s $ shuffle 8 "srg mde:3 pmb:1 txz:3?")
+# cut 1
+# size 0
+# gain 8
+# up (discretise (1/22) $ slow 0.1 $ scale (-18) 0 $ rand)
+# lpf (slow 0.11 $ scale 20000 20000 $ rand)
+# rel (discretise (1/23) $ slow 0.12 $ scale 0 1 $ rand)
+# shape (slow 0.13 $ scale 0 0.9 $ rand)
+# room (slow 0.14 $ choose [0,(1/16),(1/16)])
+
+# n (discretise (1/24) $ slow 0.15 $ choose [0..99])
+
+d1 $ fast (discretise 0.125 $ choose [1..11]) $ sound "srg mde:3"
+
+d1
+$ slow 2
+$ spreadChoose _slow [2,3,4]
+$ degradeBy (1/16)
+$ sometimesBy (1/32) (1<~)
+$ spreadChoose _slow [2,12]
+$ fast (discretise (1/15) $ choose [4..11])
+$ unwrap (discretise (7) $ choose [s"srg*16",s"mde*16",s"pmb*16",s"bso*16",s"yry*16",s"yry*16",s"ebd*16"])
+# cut (discretise (1/9) $ slow 0.1 $ wchoose [1,2][0,1])
+# rel (discretise (1/11) $ slow 0.11 $ scale 0.1 1 $ rand)
+# gain (discretise (1/13) $ slow 0.12 $ scale 4 8 $ rand)
+# pan (discretise (1/3) $ slow 0.13 $ scale 0.25 0.75 $ rand)
+# n (discretise (1/33) $ slow 0.14 $ wchoose [1,3,1,1,2,2,4][0..7])
+# shape (slow 0.15 $ scale 0 0.7 $ rand)
+# up "0 0.125 0.25 0.375 0.5 0.625 0.75 0.875 1"
+# hpf (slow 0.17 $ scale 20 80 $ rand)
+# nudge (slow 9 $ scale 0 3 $ sine)
+# delay (slow 320 $ scale 0 0.125 $ saw)
+# delayfb (slow 0.18 $ wchoose [1,16][0,1])
+# delayt (discretise (1/5) $ slow 0.19 $ choose [1/32,1/16] / choose [1,2,4,8] * choose [1,1.1,1.2,1.3,1.4,1.5,2,3,4])
+
+m1
+$ slow 8
+$ spreadChoose _slow [2,3,4]
+$ degradeBy (1/16)
+$ sometimesBy (1/32) (1<~)
+$ spreadChoose _slow [2,12]
+$ fast (discretise (1/15) $ choose [4..11])
+$ n "128*16"
+# cc0 (slow 0.19 $ rand)
+# cc1 (discretise (1/9) $ slow 0.2 $ rand)
+# cc2 (discretise (1/10) $ wchoose [1,2][0,1])
+# cc3 (discretise (1/11) $ slow 0.22 $ rand)
+# cc4 (discretise (1/12) $ slow 0.23 $ rand)
+# cc5 (discretise (1/13) $ slow 0.24 $ rand)
+# cc6 (discretise (1/14) $ slow 0.25 $ rand)
+# cc7 (discretise (1/15) $ slow 0.26 $ rand)
+# cc8 (discretise (1/16) $ slow 0.27 $ rand)
+# cc9 (discretise (1/00001) $ slow 0.28 $ rand)
+# cc10 (discretise (1/100000) $ slow 0.29 $ rand)
+# cc11 (discretise (1/17) $ slow 0.3 $ rand)
+# cc12 (discretise (1/1) $ slow 0.31 $ wchoose [8,1][0,1])
+# cc13 (slow 0.32 rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+cps 2

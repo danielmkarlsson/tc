@@ -1,0 +1,30 @@
+d1
+$ sometimesBy 0.35 (slow 3)
+$ fast 8
+$ stack[
+s "bch:31"
+# up (slow 428 $ scale 46 66 $ sine)
+# pan 0.5,
+s "bch:31"
+# up (slow 316 $ scale 22 46 $ saw)
+# pan 1,
+s "bch:31"
+# up (slow 274 $ scale 27 10 $ saw)
+# pan 0,
+s "bch:31"
+# up (slow 674 $ scale 10 19 $ saw)
+# pan 0.25,
+s "bch:31"
+# up (slow 293 $ scale 7 25 $ saw)
+# pan 0.75
+]
+# nudge (slow 128 $ scale 0 3 $ sine)
+# hpf (slow 278 $ scalex 20000 20 $ sine)
+# delayt (discretise (1/8) $ slow 0.1 $ scalex (1/298) (1/295) $ rand)
+# delay (discretise (1/9) $ slow 0.11 $ scale 0 0.75 $ rand)
+# delayfb (discretise (1/10) $ slow 0.12 $ wchoose [1,8] [0,1])
+# gain (slow 0.13 $ scalex 1 4 $ rand)
+# rel (slow 0.14 $ scale 0 2 $ rand)
+# shape 0.5
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)

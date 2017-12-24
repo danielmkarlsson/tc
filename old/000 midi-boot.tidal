@@ -1,0 +1,107 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+m1
+$ stack[
+n "<[12,15,19][13,16,18][10,11,20]>"
+# dur 1,
+n "<[24,25][29,33][34,37][41,45]>"
+# dur 1
+] -- 3 chords containing 3 pitches aginst 4 chords of two pitches
+
+m1
+$ n "0"
+# cc0 (slow 0.1 $ rand) -- Send random cc values and never mind about the pitch
+
+m1
+$ stack[
+midinote (choose [0..12]),
+(111<~)
+$ midinote (choose [0..12]+12),
+(222<~)
+$ midinote (choose [0..12]+24),
+(333<~)
+$ midinote (choose [0..12]+36),
+(444<~)
+$ midinote (choose [0..12]+48),
+(555<~)
+$ midinote (choose [0..12]+60)
+]
+
+
+
+m1
+$ spreadChoose _fast [1,1.125,1.25,1.375,1.5,1.625,1.75,2]
+$ n ("<[7,9,12][3,5,7][0,3,5]>" + choose [-24,-12,0,12])
+# dur 1
+
+m1
+$ spreadChoose _slow ([1.125,1.25,1.375,1.5,1.625,1.75,2,2.125] ++ [3..9])
+$ spreadChoose _fast ([1,1.125,1.25,1.375,1.5,1.625,1.75,2] ++ [3..18])
+$ n ("{[8,11?,2?][3?,5,7?][0,3?,5?][0,7?,5?]}%2" + choose [-24,-12,0,12])
+# velocity (discretise (1/2) $ slow 0.11 $ rand)
+# dur (discretise (1/8) $ slow 0.1 $ scale (1/32) 0.5 $ rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+m1
+$ fast (discretise (1/3) $ choose [7..21])
+$ degradeBy 0.125
+$ (randcat[n"[0,3,5]",n"[3,5,7]",n"[5,7,10]",n"[7,10,12]",n"[10,12,14]",n"[12,14,15]",n"[14,15,17]"] |+| n (choose [12,0,-12]))
+# dur (discretise (1/9) $ choose [1/4,1/3,1/2])
+# cc0 (discretise (1/9) $ slow 0.1 $ rand)
+# cc1 (discretise (1/9) $ slow 0.11 $ rand)
+# cc2 (discretise (1/9) $ slow 0.12 $ scaalex 0.5 1 $ rand)
+# cc3 (discretise (1/9) $ slow 0.13 $ rand)
+# cc4 (discretise (1/9) $ slow 0.14 $ rand)
+# cc5 (discretise (1/9) $ slow 0.15 $ rand)
+# cc6 (discretise (1/9) $ slow 0.16 $ rand)
+# cc7 (discretise (1/9) $ slow 0.17 $ scalex 0.25 1  $ rand)
+# cc8 (discretise (1/9) $ slow 0.18 $ scalex 0.25 1  $ rand)
+
+d1
+$ fast (discretise (1/3) $ choose [7..21])
+$ stack[
+degradeBy 0.125
+$ randcat[s"sbu",s"srg"]
+# n (discretise (1/7) $ choose [0..8])
+# rel (discretise (1/8) $ choose [1/8,1/6,1/4])
+# pan (discretise (1/6) $ slow 0.1 $ scale 0.25 0.75 $ rand)
+# up (discretise (1/5) $ slow 0.11 $ wchoose [1,2,4][0,-12,-24])
+# gain (slow 0.12 $ scalex 0.125 2 $ rand)
+# cut 1
+# shape (slow 0.13 $ scale 0 0.5 $ rand),
+degradeBy 0.125
+$ s "rap"
+# n (discretise (1/9) $ choose [0..16])
+# pan (discretise (1/9) $ slow 0.1 $ scale 1 0 $ rand)
+# gain (slow 0.14 $ scalex 0.125 1.4 $ rand)
+# rel (slow 16 sine)
+# up (-3)
+]
+
+
+cps (-1)
+
+cps 1
+
+
+
+
+m1
+$ iter 4
+$ n "0 4 7 9"
+# dur "1/4"
+
+m1
+$ slow 2 $ n ("[{a5 a5 c4 eb5 g7 eb5}%4][{g1 g5 c2 eb7}%8]" + choose [-12,-0,12,-5,-7])
+# velocity "1/127 63/127 23/127"
+# dur "2"

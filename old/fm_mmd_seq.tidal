@@ -1,0 +1,52 @@
+d1 
+$ fast 1.25
+$ degradeBy 0.25
+$ spreadChoose _fast [1.5,2,2,2,3,4,4,4,4,4,6,8,8,8,8,8,8,8,12]
+$ sometimesBy (1/16) (spaceOut [1..8])
+$ s (randcat["dx7","txz","mmd","sbu"])
+# n (discretise (1/7) $ slow 0.1 $ choose [0..14])
+# pan (slow 0.11 $ rand)
+# rel (slow 0.12 $ rand)
+# gain (slow 0.13 $ scalex 1 2 $ rand)
+# lpf (discretise (1/11) $ slow 0.14 $ scalex 2000 20000 $ rand)
+# up (discretise (1/9) $ slow 0.15 $ choose [0,-12,12,24] + choose [0,2,3,5,7,9,11])
+# orbit 1
+# delay 1
+# delayfb 1
+# delayt (discretise (1/5) $ 1 / 22 / wchoose [8,7,6,5,4,3,2,1] [2..9] * wchoose [8,4,1][1,4,8])
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+import Sound.Tidal.MIDI.Context
+
+import Sound.Tidal.MIDI.Stream
+
+import Sound.Tidal.MIDI.Synth
+
+import Sound.Tidal.MIDI.CC
+
+devs <- midiDevices
+
+displayOutputDevices >>= putStrLn
+
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+
+let hush = mapM_ ($ silence) [m1,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+
+m1
+
+m1 
+$ fast 1.25
+$ degradeBy 0.25
+$ spreadChoose _fast [1.5,2,2,2,3,4,4,4,4,4,6,8,8,8,8,8,8,8,12]
+$ sometimesBy (1/16) (spaceOut [1..8])
+$ n "0"
+# cc0 (discretise (1/8) $ slow 0.14 $ rand)
+# cc1 (discretise (1/9) $ slow 0.15 $ rand)
+# cc2 (discretise (1/10) $ slow 0.16 $ rand)
+# cc3 (slow 0.17 $ wchoose [20,1][0,1])
+# cc4 (discretise (1/22) $ slow 0.18 $ rand)
+# cc5 (discretise (1/22) $ slow 0.19 $ rand)
+# cc6 (discretise (1/22) $ slow 0.20 $ rand)
+# cc7 (discretise (1/22) $ slow 0.21 $ rand)
+# cc8 (discretise (1/2) $ slow 0.22 $ scalex 0.0001 1 $ rand)

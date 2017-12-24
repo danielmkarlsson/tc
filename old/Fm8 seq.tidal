@@ -1,0 +1,44 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush
+hush
+
+m1
+$ fast 7
+$ n (randcat[0,2,3,5,7,8,11])
+# cc127 (slow 298 $ scale 0 1 $ sine1)
+# cc126 (slow 297 $ scale 0 1 $ sine1)
+# cc125 (slow 296 $ scale 0 1 $ sine1)
+# cc124 (slow 295 $ scale 0 1 $ sine1)
+# cc123 (slow 294 $ scale 0 1 $ sine1)
+# cc122 (slow 293 $ scale 0 1 $ sine1)
+# cc121 (slow 292 $ scale 0 1 $ sine1)
+# cc120 (slow 291 $ scale 0 1 $ sine1)
+# cc119 (slow 290 $ scale 0 1 $ sine1)
+# cc118 (slow 289 $ scale 0 1 $ sine1)
+# cc117 (slow 288 $ scale 0 1 $ sine1)
+# cc116 (slow 287 $ scale 0 1 $ sine1)
+# cc115 (slow 286 $ scale 0 1 $ sine1)
+# cc114 (slow 285 $ scale 0 1 $ sine1)
+# cc113 (slow 284 $ scale 0 1 $ sine1)
+# velocity (slow 283 $ scale 0.5 1 $ sine1)
+# dur (slow 282 $ scale 0.5 1 $ sine1)
+# legato (slow 281 $ scale 0.5 1 $ sine1)
+# nudge (slow 280 $ scale 0 1 $ sine1)
+# cc111 (slow 279 $ scale 0 1 $ sine1)
+# cc110 (slow 278 $ scale 0 1 $ sine1)
+
+# cc112 (slow 0.25 $ scale 0 0.508 $ rand)
+
+
+1.27*2
+
+381+127

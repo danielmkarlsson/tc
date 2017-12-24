@@ -1,0 +1,23 @@
+d1
+$ degradeBy 0.5
+$ (sometimesBy 0.25 $ iter 8)
+$ s "<vin(5,8),sbu*4,rnb/2,bch(5,8,3)?,rap/7?>"
+# n (slow 0.1 $ choose [0..4])
+# pan (slow 0.11 $ rand)
+# up (iter 3 $ slow 0.12 $ choose [0,-3,-6,-9,-12])
+# delay (1/8)
+# delayfb 1
+# delayt (iter 2 $ slow 0.1 $ choose [1,0.5,0.25,0.125] * choose [1/8,1/16,1/32,1/64,1/128])
+# gain (slow 0.11 $ scale 1.3 1.5 $ rand)
+# rel (slow 0.12 $ scale 0.125 1 $ rand)
+# lpf (slow 12 $ scale 20 20000 $ sine)
+
+d2
+$ (sometimesBy 0.5 $ slow 2)
+$ s "srg:1*4"
+# gain (slow 10 $ scale 0.75 1.1 $ sine)
+# pan (slow 8 sine)
+# shape (slow 9 $ scale 0.8 0.999 $ sine)
+# accelerate (slow 0.1 $ scale (-0.125) 0.125 $ rand)
+# hpf (slow 0.11 $ scale 20 800 $ rand)
+# lpf (slow 11 $ scale 20 20000 $ sine)

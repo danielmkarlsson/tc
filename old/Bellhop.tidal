@@ -1,0 +1,12 @@
+d1 $ degradeBy 0.9 $ randcat [s "bch/2",s "bch*1",s "bch*2"] # cut "1" # n (irand 29) # speed (scale 1 4 $ rand) # attack "0" # hold (scale 0.01 0.5 $ rand) # release (scale 0.01 0.5 $ rand) # pan (scale 0.0 1.0 $ rand) # gain (scale 0 1 $ rand)
+d2 $  density 4 $ (378 <~) $ degradeBy 0.2 $ randcat [s "vc/4", s "vc/3", s "vc/2",s "vc"] # n (irand 45) # cut  "2" # speed (scale 0 1 $ rand) # attack "0" # hold (scale 0.01 0.5 $ rand) # release (scale 0.01 3.0 $ rand) # pan (scale 0.0 1.0 $ rand) # loop "6" # gain (scale 0.5 1.5 $ rand)
+d3 $  density 1.5 $ (789 <~) $ degradeBy 0.6 $ randcat [s "a*4", s "a*3", s "a*2",s "a",s "cp"] # n (irand 30) # cut  "3" # speed (scale 1 2 $ rand) # attack "0" # hold (scale 0.01 0.125 $ rand) # release (scale 0.01 1.0 $ rand) # pan (scale 0.0 1.0 $ rand) # loop "12" # gain (scale 0.0 0.9 $ rand)
+
+d4 $ s "drum*2" # gain "1.25"
+d5 $ sound "drum:2*3" # gain (scale 0.25 1.25 $ rand)
+d6 $ sound "ac*6" # gain (scale 0.125 1.25 $ rand) # cut "4" #  begin "0.001"
+d7 $ sound "ac:2*6" # gain (scale 0.1 1.0 $ rand) # cut "5" # up "12"
+d8 $ sound "ac:3*6" # gain (scale 0.1 1.2 $ rand) # cut "4" #  up "0" # attack "0" # release "0.2"
+d9 $ randcat [s "a",s "a*3",s "a*3",s "a*3",s "a*6"] # n "34" # gain (scale 0.1 1.0 $ rand) # cut "6" #  up "0" # attack "0" # release (scale 0.0 0.2 $ rand)
+
+hush

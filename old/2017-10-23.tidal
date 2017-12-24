@@ -1,0 +1,34 @@
+d1
+            $ every 1 (0.5<)
+$ spread fast [1,1,1,1]
+$ stack[
+s "sbu*8"
+# rel 0.25
+# n (discretise (1/8) $ slow 0.11 $ choose [0..16])
+# pan (slow 8 $ saw)
+# shape (slow 0.17 $ scale 0.5 0.999999 $ rand)
+# lpf (slow 0.20 $ scalex 20 20000 $ rand)
+# gain (slow 0.12 $ scalex 0.75 2 $ rand),
+s "bch*8?"
+# rel 0.1
+# n (discretise (1/8) $ slow 0.13 $ choose [0..16])
+# pan (slow 8 $ saw)
+# up (-9)
+# shape (slow 0.18 $ scale 0.5 0.999999 $ rand)
+# lpf (slow 0.19 $ scalex 20 20000 $ rand)
+# gain (slow 0.14 $ scalex 0.75 2 $ rand),
+s "srg*8?"
+# rel 0.1
+# n (discretise (1/8) $ slow 0.21 $ choose [0..16])
+# pan (slow 8 $ saw)
+# up (-9)
+# shape (slow 0.22 $ scale 0.5 0.999999 $ rand)
+# lpf (slow 0.23 $ scalex 20 20000 $ rand)
+# gain (slow 0.24 $ scalex 0.75 2 $ rand)
+]
+# delay (1/8)
+# delayfb (discretise (1/8) $ slow 0.16 $ choose [0,1,1])
+# delayt (slow 0.15 $ 1/243 * choose [1,2,4,8,16])
+
+
+import Sound.Tidal.SpectralTricks

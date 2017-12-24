@@ -1,0 +1,6 @@
+d1
+$ fast 8
+$ s "bass1:8"
+# rel 0.25
+# up (discretise (1/8) $ slow 0.1 $ choose [0..12] + choose [0,12,24,36])
+# pan (discretise (1/8) $ slow 0.11 $ rand)

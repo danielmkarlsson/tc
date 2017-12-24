@@ -1,0 +1,15 @@
+d1 $ s "bass2*8" # cutoff (scale 202 4000 $ rand) # pan rand # shape(scale 0.1 0.9 $ rand) #  gain (choose[0.9,1.2])
+d2 $ (64<~)$ s "ac*4" # n "2" # cutoff (scale 202 4000$rand) # pan rand # shape(scale 0.1 0.9 $  rand) #  gain (choose[0.9,1.2])
+
+hush
+
+d1 $ s "rave2*8" # n (choose [1, 2, 3]) # cut "1"
+d1 $ s "rave2*8" # n (density 8 $ choose $ concat $ zipWith replicate [22, 164, 81] [1, 2, 3]) # cut "1"
+d1 $ s "rave2*8" # n (choose [1, 2, 2, 3, 3, 3]) # cut "1"
+
+
+let randperm t xs = pxs !! (floor $ timeToRand t * (fromIntegral $ length pxs)) where pxs = permutations xs
+
+randperm 0 ["a", "b", "c"]
+
+run n = listToPat [0 .. n-1]

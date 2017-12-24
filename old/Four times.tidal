@@ -1,0 +1,13 @@
+d1 $ density 6.05 $ randcat [s "ha",s "ce",s "cp", s "ha"] # n "55 56 57 58 59 60" # up (choose[0, -2, -3, -5]) # nudge (slow 128 $ scale 0 1 sine1) #  pan "1" # attack (slow 64 $ scale 1.0 1.5 sine1) # release (slow 96 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d2 $ density 6.04 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "56 57 58 59 60 61" # up (choose[-2, -3, -5, -7]) # nudge (slow 127 $ scale 0 1 sine1) #  pan "0" # attack (slow 63 $ scale 1.0 1.5 sine1) # release (slow 95 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d3 $ density 6.03 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "57 58 59 60 61 62" # up (choose[(-3), -5, -7, -9]) # nudge (slow 126 $ scale 0 1 sine1) #  pan "0.25" # attack (slow 62 $ scale 1.0 1.5 sine1) # release (slow 94 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d4 $ density 6.02 $ randcat [s "ha",s "ce", s "ha",s "cp"]  # n "58 59 60 61 62 63" # up (choose[-(5), -7, -9, -11]) # nudge (slow 125 $ scale 0 1 sine1) #  pan "0.75" # attack (slow 61 $ scale 1.0 1.5 sine1) # release (slow 93 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d5 $ density 6.01 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "59 60 61 62 63 64" # up (choose[-7, -8, -11, -12]) # nudge (slow 124 $ scale 0 1 sine1) #  pan "0.125" # attack (slow 60 $ scale 1.0 1.5 sine1) # release (slow 92 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d6 $ density 6.00 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "60 61 62 63 64 65" # up (choose[-8, -11,-12, -14]) # nudge (slow 123 $ scale 0 1 sine1) #  pan "0.875" # attack (slow 59 $ scale 1.0 1.5 sine1) # release (slow 91 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d7 $ density 5.99 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "61 62 63 64 65 66" # up (choose[-11, -12,-14, -15]) # nudge (slow 122 $ scale 0 1 sine1) #  pan "0.5" # attack (slow 58 $ scale 1.0 1.5 sine1) # release (slow 90 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d8 $ density 65.98 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "62 63 64 65 66 67" # up (choose[-12, -14,-15, -17]) # nudge (slow 121 $ scale 0 1 sine1) #  pan "0.25" # attack (slow 57 $ scale 1.0 1.5 sine1) # release (slow 89 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+d9 $ density 5.97 $ randcat [s "ha",s "ce", s "ha",s "cp"] # n "63 64 65 66 67 68" # up (choose[-14,-15,-17, -19]) # nudge (slow 120 $ scale 0 1 sine1) #  pan "0.75" # attack (slow 56 $ scale 1.0 1.5 sine1) # release (slow 88 $ scale 1.0 1.5 sine1) # cutoff (scale 20  20000 $ rand)
+
+cps 1.125
+
+hush

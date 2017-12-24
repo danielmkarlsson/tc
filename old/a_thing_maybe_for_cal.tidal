@@ -1,0 +1,68 @@
+d1
+$ iter 2
+$ s "syn*8?"
+# n (discretise (1/2) $ slow 0.1 $ choose [0..166])
+# cut 1
+# comb (discretise (1/3) $ slow 0.11 $ rand)
+# gain 4
+# binshift (discretise (1/5) $ slow 0.12 $ rand) 
+# smear (discretise (1/6) $ slow 0.13 $ rand) 
+# rel 0.4
+
+d2
+$ sometimesBy 0.125 (spread _fast [1,1])
+$ iter 2
+$ s "rap*8?"
+# n (discretise (1/2) $ slow 0.14 $ choose [90..166])
+# gain 2
+# rel 0.1
+# up (-6)
+
+d3
+$ iter 2
+$ s "sbu*8?"
+# n (discretise (1/2) $ slow 0.15 $ choose [90..166])
+# gain 3
+# rel 0.3
+# hpf (discretise (1/2) $ slow 0.16 $ scale 20 100 $ rand)
+ 
+m1
+$ iter 2
+$ n (randcat["-24*8?"])
+# velocity (discretise (1/2) $ slow 0.17 $ scale 0.5 1 $ rand)
+# dur (discretise (1/2) $ slow 0.18 $ scale 0 1 $ rand)
+# cc0 (discretise (1/2) $ slow 0.19 $ scale 0 1 $ rand)
+# cc1 (discretise (1/2) $ slow 0.20 $ scale 0 1 $ rand)
+# cc2 (discretise (1/2) $ slow 0.21 $ scale 0 1 $ rand)
+# cc3 (discretise (1/2) $ slow 0.22 $ scale 0 1 $ rand)
+# cc4 (discretise (1/2) $ slow 0.23 $ scale 0 1 $ rand)
+# cc5 (discretise (1/2) $ slow 0.24 $ scale 0 1 $ rand)
+# cc6 (discretise (1/2) $ slow 0.25 $ scale 0 1 $ rand)
+# cc7 (discretise (1/2) $ slow 0.26 $ scale 0 1 $ rand)
+# cc8 (discretise (1/2) $ slow 0.27 $ scale 0 1 $ rand)
+# cc9 (discretise (1/2) $ slow 0.28 $ scale 0 1 $ rand)
+# cc10 (discretise (1/2) $ slow 0.29 $ scale 0 1 $ rand)
+ 
+import Sound.Tidal.SpectralTricks
+
+import Sound.Tidal.MIDI.Context
+
+import Sound.Tidal.MIDI.Stream
+
+import Sound.Tidal.MIDI.Synth
+
+import Sound.Tidal.MIDI.CC
+
+devs <- midiDevices
+
+displayOutputDevices >>= putStrLn
+
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+
+hush
+
+cps 1

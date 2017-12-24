@@ -1,0 +1,50 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+m1
+$ fast 5
+$ n "0?"
+# cc0 (discretise (1/8) $ slow 0.1 $ rand)
+# cc1 (discretise (1/9) $ slow 0.11 $ rand)
+# cc2 (discretise (1/11) $ slow 0.12 $ rand)
+# cc3 (discretise (1/12) $ slow 0.13 $ rand)
+# cc4 (discretise (1/13) $ slow 0.14 $ rand)
+# cc5 (discretise (1/14) $ slow 0.15 $ rand)
+# cc6 (discretise (1/15) $ slow 0.16 $ rand)
+# cc7 (discretise (1/16) $ slow 0.17 $ rand)
+# cc8 (discretise (1/17) $ slow 0.18 $ rand)
+# cc9 (discretise (1/18) $ slow 0.19 $ rand)
+# cc10 (discretise (1/19) $ slow 0.2 $ rand)
+# cc11 (discretise (1/20) $ slow 0.21 $ rand)
+# cc12 (discretise (1/21) $ slow 0.22 $ rand)
+# cc13 (discretise (1/22) $ slow 0.23 $ rand)
+# cc14 (discretise (1/23) $ slow 0.24 $ rand)
+# cc15 (discretise (1/24) $ slow 0.25 $ rand)
+# cc16 (discretise (1/25) $ slow 0.26 $ rand)
+# cc17 (discretise (1/26) $ slow 0.27 $ rand)
+# cc18 (discretise (1/27) $ slow 0.28 $ rand)
+# cc19 (discretise (1/28) $ slow 0.29 $ rand)
+# cc20 (discretise (1/29) $ slow 0.30 $ rand)
+# cc21 (discretise (1/30) $ slow 0.31 $ rand)
+# cc22 (discretise (1/31) $ slow 0.32 $ rand)
+# cc23 (discretise (1/32) $ slow 0.33 $ rand)
+# cc24 (discretise (1/33) $ slow 0.34 $ rand)
+# cc25 (discretise (1/34) $ slow 0.35 $ rand)
+# cc26 (discretise (1/35) $ slow 0.36 $ rand)
+# cc27 (discretise (1/36) $ slow 0.37 $ rand)
+# cc28 (discretise (1/37) $ slow 0.38 $ rand)
+# cc29 (discretise (1/38) $ slow 0.39 $ rand)
+# cc30 (discretise (1/39) $ slow 0.40 $ rand)
+# cc31 (discretise (1/40) $ slow 0.41 $ rand)
+# cc32 (discretise (1/41) $ slow 0.42 $ rand)
+# cc33 (discretise (1/42) $ slow 0.43 $ rand)
+# cc34 (discretise (1/7) $ slow 0.44 $ wchoose [32,1][0,1])

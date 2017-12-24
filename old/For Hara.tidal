@@ -1,0 +1,22 @@
+d1
+$ spread _fast ([1,1.1..2]++[3,2.9..1.5]++[1.25,1.15])
+$ spread _fast [2,2,2,2,2]
+$ sometimesBy 0.25 (spreadChoose _fast [1,1.25..8])
+$ degradeBy 0.25
+$ s (randcat["srg(3,8)","sbu(3,8,3)","srr?(4,9,2)"])
+# n (discretise (1/7) $ slow 0.1 $ choose [0..2])
+# up (slow 0.11 $ choose [0,2,3,5,7,8,11] + choose [-24,-12,0,12,24,36])
+# rel (slow 0.12 $ scale 0 0.5 $ rand)
+# lpf (slow 0.13 $ scalex 20 20000 $ rand)
+# gain (slow 0.14 $ scale 1.5 4.5 $ rand)
+# shape (slow 0.15 $ scale 0 0.999999 $ rand)
+# nudge (slow 16 $ scale 0 3 sine)
+# att (slow 0.17 $ scale 1 4.5 $ rand)
+# hold (slow 0.18 $ scale 1 2.5 $ rand)
+# loop (discretise (1/9) $ slow 0.19 $ choose [0..4])
+# delay (slow 17 $ sine)
+# delayfb 1
+# delayt (1/278 * choose [1,2,4] / choose [1,2,4,8])
+# hpf (slow 0.19 $ scalex 20 2000 $ rand)
+# room (slow 0.2 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1/32])
+# size 0.925

@@ -1,0 +1,30 @@
+d1 $ s "ac*2"
+d1 $ s "ac*2" # cut "1"
+d1 $ s "ac*3"
+d1 $ s "ac*3" # cut "1"
+d1 $ s "ac*3" # pan (scale 0 1 $  rand)
+d1 $ s "ac*3" # pan (scale 0 1 $  rand) # cut "1"
+d1 $ s "ac*4" # pan (scale 0 1 $  rand) # cut "1"
+d1 $ degradeBy 0.2 $ s "ac*4" # pan (scale 0 1 $ rand) # cut "1"
+d1 $ degradeBy 0.2 $ s "ac*4" # pan (scale 0 1 $ rand) # cut (choose [0,1,1,1])
+d1 $ degradeBy 0.3 $ s "ac*6" # pan (scale 0 1 $ rand) # cut (choose [0,1,1])
+d1 $ slowspread density [1,1.25 .. 2] $ degradeBy 0.4 $ s "ac*4" # pan rand # cut (choose [0,1,1])
+d1 $ slowspread density [0.75,1 .. 2.25] $ degradeBy 0.4 $ s "ac*4" # pan rand # cut (choose [0,1,1])
+d1 $ slowspread density [0.5,0.75 .. 2.5] $ degradeBy 0.3 $ s "ac*4" # pan rand # cut (choose [0,1,1])
+d1 $ slowspread density [0.5,0.75 .. 2.5] $ degradeBy 0.2 $ s "ac*4" # pan rand # cut (choose [0,1,1,1]) # n (choose[0,0,0,2])
+d1 $ slowspread density [0.5,0.75 .. 2.5] $ degradeBy 0.2 $ s "ac*4" # pan rand # cut (choose [0,1,1,1]) # n (choose[0,0,0,0,0,2,2,3])
+d1 $ slowspread density [0.5,0.75 .. 2.5] $ degradeBy 0.2 $ s "ac*4" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3]) # gain (choose[1,1.15])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.3 $ s "ac*4" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3]) # gain (choose[1,1.15])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.3 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3]) # gain (choose[1,1.15])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.4 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4]) # gain (choose[1,1.15])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.4 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.4 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15,1.2])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.4 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15,1.2]) # up (choose[0,0,0.0,0,0,-2])
+d1 $ slowspread density [0.75,1 .. 2.75] $ degradeBy 0.4 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15,1.2]) # up (choose[0,0,0,0.0,0,0,-2,3])
+d1 $ slowspread density [0.5,1 .. 3] $ degradeBy 0.4 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15,1.2]) # up (choose[0,0,0,0.0,0,0,-2,3,-4])
+d1 $ slowspread density [0.5,1 .. 3.5] $ degradeBy 0.45 $ s "ac*5" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15,1.2]) # up (choose[0,0,0,0.0,0,0,-2,3,-4])
+d1 $ slowspread density [0.5,1 .. 3.5] $ degradeBy 0.45 $ s "ac*6" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4]) # gain (choose[1,1.15,1.2]) # up (choose[0,0,0,0.0,0,0,-2,3,-4])
+d1 $ slowspread density [1.5,2.0 .. 4] $ degradeBy 0.35 $ s "ac*3" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4,4,4]) # gain (choose[1,1.15,1.2]) # up (choose[0,0,0,0.0,0,0,-2,3,-4,-4,6])
+d1 $ slowspread density [1.5,2.0 .. 4] $ degradeBy 0.35 $ s "ac*3" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4,4,4]) # gain (choose[1,1.15,1.2,1.4]) # up (choose[0,0,0,0.0,0,0,-2,3,-4,-4,6]) # cutoff (scale 20 20000 $ rand)
+d1 $ slowspread density [0.5,0.75 .. 4] $ degradeBy 0.35 $ s "ac*4" # pan rand # cut "1" # n (choose[0,0,0,0,0,2,2,3,4,4,4,4]) # gain (choose[1,1.15,1.2,1.4]) # up (choose[0,0,0,0.0,0,0,-2,3,-4,-4,6]) # cutoff (scale 20 20000 $ rand)
+hush

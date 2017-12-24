@@ -1,0 +1,7 @@
+d1 $iter 9$slow 0.08$sound"clp?srg:1?"#pan(fast 9rand)#bandf(choose[20,40..665])#bandq 99#nudge(fast 19$scale(0.5)3rand)#hpf 150
+
+
+d1 $trunc"0 9 8 7 6 5 4 3 2 1"$s"{clp?sbu?stg?d?e?}%199"#speed(scale 0 2rand)#n(irand 9)#nudge(slow 9saw)#pan(fast 9rand)#rel rand
+
+
+d1 $stack[s"clp*9"#nudge(slow 9$scale 0 3sine)#hpf(slow 5$scale 9999 20sine)#pan(slow 7sine),sound"srg:1*2"#pan(slow 3saw)]#cut 1

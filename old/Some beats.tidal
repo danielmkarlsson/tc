@@ -1,0 +1,5 @@
+d1 $ degradeBy 0.612 $ slowspread density [0.001, 0.08 .. 2.5] $ s "gab*5 cp*3 a*4" # n (irand 25) #  cut  "1" # cutoff  (scale 20 20000 $ rand) # shape (scale 0.0001 0.9999 $ rand) #  up (choose[-48,-24,-12,0,12,24]) # pan rand
+
+m1 $ slowspread density [0.01, 0.07 .. 1.5] $ (678<~) $ randcat[note "e1*3",note "d2*5",note "g6*2", note "g5*4",note "e4*11",note "a1*6",note "c1*3", note "d3*17", note "c6*5", note "d5*7"] # dur (scale 0.01 0.1 $ rand) # velocity (scale 1 127 $ rand)
+
+hush

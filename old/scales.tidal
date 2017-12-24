@@ -1,0 +1,55 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Bus 2" 1 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush
+hush
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import qualified Sound.Tidal.Scales as Scales
+import qualified Sound.Tidal.Chords as Chords
+
+m1
+$ fast (choose[0.125,0.25,0.5,0.75,1,1.25])
+$ slow (choose[1,1.25,1.5,1.75,2,2.5,3,4,5,6,7,8])
+$ midinote (toScale Scales.harmonicMinor (randcat["0","1 2","3 4 5","6 7 8 9","10 11 12 13 14"]+(99<~randcat["0","12","24","36"])))
+# cc0 (slow 0.1 $ rand) -- algorithm
+# cc1 (slow 0.11 $ scale 0.125 1 $ rand) -- cutoff
+# cc2 (slow 0.12 $ rand) -- feedback
+# cc3 (slow 0.13 $ rand) -- resonance
+# dur (slow 0.14 $ scale 0.25 1 $ rand)
+# velocity (slow 0.15 $ scale 0.25 0.75 $ rand)
+# cc5 (slow 0.16 $ rand) -- op1 eg rate1
+# cc6 (slow 0.17 $ rand) -- op2 eg rate1
+# cc7 (slow 0.18 $ rand) -- op3 eg rate
+# cc8 (slow 0.19 $ rand) -- op4 eg rate1
+# cc9 (slow 0.20 $ rand) -- op5 eg rate1
+# cc10 (slow 0.21 $ rand) -- op6 eg rate1
+# cc11 (slow 0.22 $ rand) -- time
+# cc12 (slow 0.23 $ rand) -- room size
+# cc13 (slow 0.24 $ rand) -- low time mult
+# cc14 (slow 0.25 $ rand) -- high time mult
+# cc15 (slow 0.26 $ rand) -- width
+# cc16 (slow 0.27 $ rand) -- seed
+# cc17 (slow 0.28 $ rand) -- kick decay
+# cc18 (slow 0.29 $ rand) -- lpf
+# cc19 (slow 0.30 $ rand) -- karplus pitch
+# cc20 (slow 0.31 $ rand) -- karplus filter
+# cc21 (slow 0.32 $ rand) -- karplus mix
+# cc22 (slow 0.33 $ rand) -- buffer mix
+# cc23 (slow 0.34 $ rand) -- synth/drum mix
+# cc24 (slow 0.35 $ rand) -- master lpf/pan
+
+m2 $ midinote (wchoose [5,1,6,9,2,128][36,40,41,42,43,0])
+# cc0 (discretise 0.5 $ slow 0.30 $ rand) -- buffer divisor
+# cc1 (discretise 2 $ slow 0.31 $ rand) -- buffer divisor
+# cc2 (discretise 1 $ slow 0.32 $ rand) -- grain duration
+# cc3 (discretise 0.5 $ slow 0.33 $ rand) -- grain mix
+# cc4 (discretise 1 $ slow 0.34 $ rand) -- samp status
+# cc5 (slow 0.36 $ wchoose [8,1][0,1]) -- shop
+# cc6 (slow 0.37 $ rand) -- amount
+# cc7 (slow 73 $ sine) -- amount

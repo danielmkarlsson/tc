@@ -1,0 +1,22 @@
+d1 $ slowspread slow [1,11,1,1,1,1] $ s "odx*8" # cut "1" # gain (density 02 $ choose [0,0,0,0,0,0,0,0,0,1.0]) # cutoff (density 3 $ scale 20 20000 $ rand) # pan (density 4 $ rand) # up (density 5 $ choose[0,6,12,-12,-6]) # attack "0" # release (density 6 $ choose[0.1,1])
+d2 $ slowspread slow [1,1,1,1,1,1,1] $ s "sh9*8" # cut "2" # gain (density 07 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,0.8]) # cutoff (density 13 $ scale 20 20000 $ rand) # pan (density 14 $ rand) # cutoff (density 8 $ scale 20 10000 $ rand) # pan (density 9 $ rand) # up (density 10 $ choose[0,6,12,-12,-6]) # attack "0" # release (density 11 $ choose[0.1,1]) # n "35"
+d3 $ slowspread slow [1,1,1,1,1,1,1] $ s "808*8" # cut "3" # gain (density 12 $ choose [0,10,0,0,0,0,0,0,0,0,0,0,1.8]) # cutoff (density 13 $ scale 20 20000 $ rand) # pan (density 14 $ rand) # up (density 15 $ choose[0,6,12,-12,-6]) # attack "0" # release (density 16 $ choose[0.1,1]) # n "1"
+d4 $ slowspread slow [1,1,1,1,1,1,1] $ s "cp*8"  # cut "4" # gain (density 17 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.25]) # cutoff (density 18 $ scale 20 20000 $ rand) # pan (density 19 $ rand) # attack "0" # release (density 20 $ choose[0.1,1]) # n "3"
+d5 $ slowspread slow [1,1,1,1,1,1,1] $ s "808*8" # cut "5" # gain (density 21 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]) # cutoff (density 22 $ scale 20 20000 $ rand) # pan (density 23 $ rand) # up (density 24 $ choose[0,6,12,-12,-6]) # attack "0" # release (density 25 $ choose[0.1,0.1,1]) # n "4"
+d6 $ slowspread slow [1,1,1,1,1,1,1] $ s "sh9*8" # cut "6" # gain (density 26 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,1.2]) # cutoff (density 27 $ scale 2000 20000 $ rand) # pan (density 28 $ rand) # up (density 29 $ choose[0,-12,-6]) # n "10"
+d7 $ slowspread slow [1,1,1,1,1,1,1] $ s "606*8" # cut "7" # gain (density 30 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.9]) # cutoff (density 31 $ scale 20 20000 $ rand) # pan (density 32 $ rand) # up (density 33 $ choose[0, -2, -5, -3, -7, -10]) # attack "0" # release (density 34 $ choose[0.1,0.1,0.5]) # n "13"
+d8 $ slowspread slow [1,1,1,1,1,1,1] $ s "pds*8" # cut "8" # gain (density 30 $ scale 0.1 1 $ rand) # cutoff (density 35 $ scale 20 20000 $ rand) # pan (density 36 $ scale 0.1 0.9 $ rand) # up (density 37 $ choose[0, -2, -5, -3, -7, -10]) # attack "0" # release (density 38 $ choose[0.1,0.1,0.5]) # n "30"
+d9 $ slowspread slow [1,1,1,1,1,1,1] $ s "gabba*8" # cut "9" # gain (density 39 $ choose [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.9]) # cutoff (density 40 $ scale 20 20000 $ rand) # pan (density 41 $ rand) # up (density 42 $ choose[1]) # attack "0" # release (density 43 $ choose[0.1,0.1,0.5]) # n "1"
+m1 $ n "128/2" #cc119 (density 44 $ scale 0 1 $ rand) #cc118 (density 45 $ scale 0 1 $ rand) #cc117 (density 46 $ scale 0 1 $ rand) #cc116 (density 47 $ scale 0 1 $ rand) #cc115 (density 48 $ scale 0 1 $ rand) #cc114 (density 49 $ scale 0 1 $ rand) #cc113 (density 50 $ scale 0 1 $ rand) #cc112 (density 51 $ scale 0 1 $ rand) #cc111 (density 52 $ scale 0 1 $ rand) #cc110 (density 51 $ scale 0 1 $ rand) #cc109 (density 52 $ scale 0 1 $ rand) #cc108 (density 51 $ scale 0 1 $ rand) #cc107 (density 50 $ scale 0 1 $ rand) #cc106 (density 51 $ scale 0 1 $ rand) #cc105 (density 52 $ scale 0 1 $ rand) #cc104 (density 53 $ scale 0 1 $ rand) #cc103 (density 54 $ scale 0 1 $ rand) #cc102 (density 55 $ scale 0 1 $ rand) #cc101 (density 56 $ scale 0 1 $ rand)
+hush
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,m1]
+solo = (>>) hush
+hush

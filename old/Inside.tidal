@@ -1,0 +1,54 @@
+d1 $ degradeBy 0.7 $ sound "a*11" # n (irand 61)  # pan (scale 0.0 0.49 $ rand)
+d2 $ (8 <~) $ degradeBy 0.7 $ sound "a*11" # n (irand 60)  # pan (scale 0.51 1.0 $ rand)
+d3 $ (32 <~) $ degradeBy 0.7 $ sound "a*11" # n (irand 62) # cut "3" # pan (scale 0.3 0.7 $ rand)
+
+hush
+
+d1 $ slow 8 $ striate 120 $ sound "in" # cut "1"
+d1 $ slow 65 $ jux (# speed "0.5") $ striate' 64 (1/8) $ sound "in"
+
+d1 $ slow 64 $ jux (rev) $ striate' 64 (1/8) $ sound "in" # speed "0.5"
+
+
+d1 $ juxBy 0.125 (density 1) $ sound "in in:1"
+
+d1 $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+   # shape ((/ 2) <$> sinewave2)
+
+d1 $ slow 12 $ sound (brak "{[in*1~in*3~, in*3~, in*2~~~], in*3~~"}%9) # cut "1" # speed "0.5" # pan "0"
+d2 $ slow 12 $ sound (brak "[in*1~~~in*3~~~~~, in*3~~~, in*2~~~~~~], in*3~~~~~~") # cut "1" # speed "0.5" # pan "1"
+
+d1 silence
+
+
+
+
+
+
+
+
+
+
+hush
+
+
+
+
+
+
+
+
+
+
+hush
+
+
+
+
+
+
+
+
+
+
+d1 $ slow 8000 $ jux (rev) $ striate' 9000 (1/8) $ sound "in" # speed "0.7" # pan "0.5"

@@ -1,0 +1,8 @@
+d1 $ slow 24 $ slowspread density [1,1.1 .. 2] $ s "101*8" # n (density 2 $ choose[0,1 .. 6]) # cut "1" # pan (density 9 $ rand) # gain (density 16 $ scale 1 2 $ rand) # cutoff (density 23 $ scale 20 20000 $ rand)
+d2 $ slow 24 $ slowspread density [1,1.2 .. 2.1] $ s "303*8" # n (density 3 $ choose[0,1 .. 29]) # cut "1" # pan (density 10 $ rand) # gain (density 17 $ scale 1 2 $ rand) # cutoff (density 24 $ scale 20 20000 $ rand)
+d3 $ slow 24 $ slowspread density [1,1.3 .. 2.2] $ s "606*8" # n (density 4 $ choose[0,1 .. 6]) # cut "1" # pan (density 11 $ rand) # gain (density 18 $ scale 1 2 $ rand) # cutoff (density 25 $ scale 20 20000 $ rand)
+d4 $ slow 24 $ slowspread density [1,1.4 .. 2.3] $ s "626*8" # n (density 5 $ choose[0,1 .. 8]) # cut "1" # pan (density 12 $ rand) # gain (density 19 $ scale 1 2 $ rand) # cutoff (density 26 $ scale 20 20000 $ rand)
+d5 $ slow 24 $ slowspread density [1,1.5 .. 2.4] $ s "707*8" # n (density 6 $ choose[0,1 .. 12]) # cut "1" # pan (density 13 $ rand) # gain (density 20 $ scale 1 2 $ rand) # cutoff (density 27 $ scale 20 20000 $ rand)
+d6 $ slow 24 $ slowspread density [1,1.6 .. 2.5] $ s "808*8" # n (density 7 $ choose[0,1 .. 5]) # cut "1" # pan (density 14 $ rand) # gain (density 21 $ scale 1 2 $ rand) # cutoff (density 28 $ scale 20 20000 $ rand)
+d7 $ slow 24 $ slowspread density [1,1.7 .. 2.6] $ s "909*8" # n (density 8 $ choose[0,1 .. 8]) # cut "1" # pan (density 15 $ rand) # gain (density 22 $ scale 1 2 $ rand) # cutoff (density 29 $ scale 20 20000 $ rand)
+hush

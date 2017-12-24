@@ -1,0 +1,18 @@
+d1
+$ (# delayfb (scale 0.75 2 $ slow 211 sine))
+$ (# hpf (scalex 20 1000 $ slow 213 sine))
+$ (# pan (slow 61 $ scale 0.25 0.75 $ sine))
+$ (# rel (discretise (1/31) $ slow 0.14 $ scalex 0.01 1 $ sine))
+$ (# delayt (discretise (1/38) $ slow 0.12 $ choose [0.1,0.2,0.4] / choose [1..64]))
+$ (# n (discretise (1/39) $ slow 0.13 $ choose [0..19]))
+$ (# up (discretise (1/37) $ slow 0.11 $ choose [0,2,3,5,7,8,11] + choose [0,6,12] - choose [0,12,18,24]))
+$ (# nudge (slow 25 $ scale 0 3 $ sine))
+$ spaceOut ([1,0.99..0.01] ++ [0.02,0.03..0.99])
+$ fast (discretise (1/65) $ slow 0.16 $ choose [6..12])
+$ unwrap (discretise (1/35) $ choose [s"sbu",s"srr",s"bch",s"srg",s"pmb"])
+# orbit 1
+# delay 1
+# gain 0.75
+
+cps (-1)
+cps 1

@@ -1,0 +1,34 @@
+d1
+$ sometimesBy (1/7) (iter 4)
+$ sometimesBy (1/5) (spread _slow [1,1])
+$ sometimesBy (1/4) (fast 1.5)
+$ sometimesBy (1/2) (fast 4)
+$ stack [
+spaceOut ([3/8,7/8..1/8]++[2/8,4/8..12/8]++[9/8,6/8,3/8]++[4/8,8/8..16/8])
+$ degradeBy 0.125
+$ s (randcat["syn","tuu","909","[tuu,909]","[tuu,syn]"])
+# n (slow 0.1 $ wchoose [1,4,1,3,2,1][0,1,2,3,4,5])
+# gain 8
+# pan (slow 0.11 $ rand)
+# rel 0.1
+# shape (slow 0.12 $ scale 0.5 0.999 $ rand)
+# orbit 1
+# delay (slow 0.19 $ scale 0 0.0001 $ rand)
+# delayfb (slow 0.2 $ wchoose [1,2] [0.75,1])
+# lpf (slow 0.18 $ scalex 20 20000 $ rand)
+# delayt (discretise (1/7) $ slow 0.13 $ scalex (1/4) (1/256) $ rand),
+slow 5
+$ s "dx7"
+# up (discretise (1/2) $ slow 0.14 $ wchoose [4,3,3,2,2,1][0,2,5,6,8,10,11] --pitches
++ wchoose [4,3,2,1] [0,12,24,36] --octaves
++ wchoose[1,1,8] [-0.25,0.25,0]) --deviations
+# pan (slow 0.15 $ rand)
+# hpf 350
+# rel 0.4
+# gain (slow 0.18 $ scalex 0.4 0.9 $ rand)
+# n (slow 0.16 $ wchoose [4,3,2,1][12,13,14,15])
+# att (slow 0.17 $ scalex 0.0001 8 $ rand)
+# orbit 0
+# room 0.025
+# size 0.95
+]

@@ -1,0 +1,34 @@
+d1 $ sound "gabba*3 [cp*2 808cy]"
+d2 $ sound "[rave*3, feel:6]" # cut "1"
+d2 $ sound "[rave*3, feel:6, moog*4]" # cut "1" #gain "0.75"
+d3 $ sound "~arp [moan*4]" # cut "1"
+d1 $ slowspread slow [2, 4] $ sound "gabba*3/7 [cp*2 808cy]"
+
+d1 $ sound "gabba*2"
+d1 $ sound "gabba*2cp"
+d1 $ sound "gabba*2 cp" # speed "1 1 0.4"
+d2 $ every 2 (e 10 3) $ sound "odx"
+d3 $ sound "arp*2" # cut "1" #up (choose[6,7,8])
+d1 $ sound "gabba*2 cp" # speed "-1 1 0.4"
+d1 $ sound "[gabba*2 cp, gabba*3 cp clak]" # speed "-1 1 0.4"
+d4 $ sound"{koy}%10"
+d1 $ sound "[gabba*2 cp, gabba*3 cp clak, gabba*2]" # speed "0.1 1 0.4"
+d2 $ sound "[rave*75, feel:6, moog*4]" # cut "7" #gain "0.75"
+d1 $ every 4 (0.1 <~) $ sound "[gabba*2 cp, gabba*3 cp clak, gabba*2]" # speed "0.1 1 0.4"
+d4 $ sound "odx" #gain (choose[0,1,1,1.5,1.5])
+d2 $ sound "[rave, feel:6, moog*4]" # cut "7" #gain "0.75"
+d4 $ sound "odx" #gain (choose[0,1,1,1.5,1.5]) # pan "0.1 0.4 0.5 0.7 0.8 1"
+d2 $ (rev) (sound "[rave, feel:6, moog*4]" # cut "7" #gain "0.75")
+d3 $ sound "wind*2" # cut "1" #up (choose[6,7,8])
+d9 $ sound "xmas*9" # speed [1 2 3 6] # cut "7"
+d5 $ every 4 (|*| up "4") $ sound "[[808cy:19*3],808cy*5]/7"
+d6 $ sound "cp"
+d1 $ sound "gabba*2 cp, [gabba*3 cp clak, gabba*2]" # speed "0.7 1 0.4"
+d7 $ sound "sax sax2/2"#pan "0.5 1 2"
+d8 $ slowspread density [1, 1.5 .. 3] $ sound "moog:6" # cut "1" #up (choose[4,7,10])
+d7 $ sound "sax [sax:2 sax:9]*3" # cut "1" # pan "0.5 1 2"
+d1 $ sound "gabba*2 cp, [gabba*5/2 cp clak, gabba*2]" # speed "0.7 1 0.4"
+
+cps 8
+
+hush

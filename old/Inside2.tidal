@@ -1,0 +1,15 @@
+hush
+
+
+
+
+
+
+
+
+
+
+
+
+d1 $ slow 8000 $ striate' 90000 (1/2) $ sound "in" # speed "0.7" # cut  "1" # pan "0.0"
+d2 $ slow 8000 $ striate' 90000 (1/2) $ sound "in" # speed "0.7" # cut  "2" # pan "1.0"

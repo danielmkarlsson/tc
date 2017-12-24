@@ -1,0 +1,2 @@
+d1 $ do s <- slow 4 sine1
+        striate' 8 s $ sound "ho"

@@ -1,0 +1,6 @@
+d1 $ slowchoose slow [1..5]
+$ s "arpy*8?"
+#up (slow 0.1 $choose [-48,-36,-34,-24,-22,-21,-12,-10,-9,-7,0,2,3,5,7,8,11])
+#pan (slow 0.1 $ rand)
+
+m1 $ n "128*4?" #cc0 (slow 0.1 $ choose [0,0,0,1])

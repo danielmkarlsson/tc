@@ -1,0 +1,27 @@
+d1
+$ stack[
+s "srr*9"
+# nudge (slow 9 $ scale 0 3 $ sine)
+# hpf (slow 5 $ scale 9999 20 $ sine)
+# pan (slow 7 $ sine)
+# n (4.5<~ (discretise (1/9) $ slow 0.1 $ choose [0..63])),
+slow 1.125
+$ s "tuu*9"
+# nudge (slow 9 $ scale 0 3 $ sine)
+# hpf (slow 5 $ scale 9999 20 $ sine)
+# pan (slow 7 $ sine)
+# n (4.5<~ (discretise (1/9) $ slow 0.1 $ choose [0..92])),
+slow 1.25
+$ s "sbu*9"
+# nudge (slow 9 $ scale 0 3 $ sine)
+# hpf (slow 5 $ scale 9999 20 $ sine)
+# pan (slow 7 $ sine)
+# n (4.5<~ (discretise (1/9) $ slow 0.1 $ choose [0..16])),
+slow 1.375
+$ s "bch*9"
+# nudge (slow 9 $ scale 0 3 $ sine)
+# hpf (slow 5 $ scale 9999 20 $ sine)
+# pan (slow 7 $ sine)
+# n (4.5<~ (discretise (1/9) $ slow 0.1 $ choose [0..166]))
+# rel (slow 11 $ scale 0.125 4 $ sine)
+]

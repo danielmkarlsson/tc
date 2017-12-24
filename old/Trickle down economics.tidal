@@ -1,0 +1,53 @@
+d1
+$ degradeBy 0.9
+$ fast (slow 0.12 $ choose[0.5,1,2])
+$ s (randcat["gio*3","gio*4","gio*6","gio*8","gio*12"])
+# rel (slow (choose[0.25,0.5,1,2,4,8,16]) $ scale 0.1 0.4 $ rand)
+# pan (slow 0.1 $ rand)
+# n (slow 0.11 $ choose [0..11])
+# gain (slow (choose[0.25,0.5,1,2,4,8]) $ scale 0.9 1.4 $ saw)
+# shape (slow (choose[0.25,0.5,1,2,4]) $ scale 0 0.4 $ saw)
+# lpf (slow (choose[0.25,0.5,1,2]) $ scale 20000 20 $ saw)
+# delay (slow (choose[8,4,2,1]) $ scale 0.15 0 $ saw)
+# delayfb (slow (choose[1,2,4,8,16]) $ scale 1 0.75 $ saw)
+# delayt (slow (choose[2,4,8,16,32]) $ scale 0.05 0.00000001 $ saw)
+
+d2
+$ degradeBy 0.5
+$ fast (slow 0.12 $ choose[0.5,1,2])
+$ s (randcat["bass1*3","bass1*4","bass1*6","bass1*8","bass1*12"])
+# rel (slow (choose[0.25,0.5,1,2,4,8,16]) $ scale 0.1 0.4 $ rand)
+# pan (slow 0.1 $ rand)
+# n (slow 0.11 $ choose [12])
+# up (slow 0.13 $ choose [66..99])
+# gain (slow (choose[0.25,0.5,1,2,4,8]) $ scale 0.25 1 $ saw)
+# shape (slow (choose[0.25,0.5,1,2,4]) $ scale 0 0.4 $ saw)
+# hpf (slow (choose[0.25,0.5,1,2]) $ scale 20000 20 $ saw)
+# room (wchoose[1,35][1,0])
+# size (slow (choose[4,8,16,32]) $ scale 0 1 $ saw)
+
+d1 silence
+m1 silence
+
+m1
+$ n "128*299"
+# cc0 (slow 17 $ scale 1 0 $ saw)
+# cc1 (slow 18 $ scale 1 0 $ saw)
+# cc2 (slow 19 $ scale 1 0 $ saw)
+# cc5 (slow 20 $ scale 1 0 $ saw)
+# cc3 1
+# cc4 0.125
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+solo = (>>) hush
+hush

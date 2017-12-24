@@ -1,0 +1,11 @@
+d1
+$ spread _fast [1,2,1,1,1,1.5,0.5,1,1,1,1]
+$ iter 4
+$ slow (choose[0.5,1,2,4])
+$ s "{rap rap?}%8"
+# n (discretise (1/27) $ slow 0.11 $ choose [0..401])
+# pan (slow 0.1 $ rand)
+# up (-7)
+# cut 1
+# nudge (slow 32 sine)
+# gain (slow 18 $ scale 0.75 1 $ sine)

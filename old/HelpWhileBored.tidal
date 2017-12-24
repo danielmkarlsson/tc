@@ -1,0 +1,5 @@
+d1 $stack[sound"{hc,erk?,808bd:1?}%11"#gain(slow 0.1$choose[0,0.1..1])#cut(choose[0,1,1]),sound"808:3/3?"#gain"2"]#pan(slow 0.11$rand)
+
+cps (-1)
+
+cps 1

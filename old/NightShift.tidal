@@ -1,0 +1,17 @@
+d1
+$ (# nudge (slow 64 $ scale 0 3 $ sine))
+$ (# hpf (slow 65 $ scale 20 200 $ sine))
+$ (# delay (slow 66 $ sine))
+$ (# delayt (slow 67 $ scale 0.001 0.008 $ sine))
+$ (# delayfb (slow 68 $ sine))
+$ iter 4
+$ every 15 (16~>)
+$ fast 8
+$ s (randcat["numbers:1","numbers:2","numbers:3","numbers:4","numbers:5"])
+# cut (choose[0,1])
+# begin (scale 0.2 0.23 $ rand)
+# pan rand
+# lpf (scale 20 20000 $ rand)
+# gain (scale 1.5 2 $ rand)
+# up (choose [0,-3,-6,-9,-12])
+# rel (scale 0.1 0.2 $ rand)

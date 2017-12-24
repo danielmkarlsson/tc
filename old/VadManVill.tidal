@@ -1,0 +1,9 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ slow (slow 0.1 $ choose[0.5,1,1.5,2])
+$ sound "{odx 808/3 click hc 808bd sbg}%4"
+# n (slow 0.11 $ choose[0,3])
+# cut (slow 0.12 $discretise 9 $ wchoose[10,1][0,1])
+
+#up(discretise 9$choose[-48,-45..0])

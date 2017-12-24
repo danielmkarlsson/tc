@@ -1,0 +1,7 @@
+bps (120/60)
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,m1,m2,m3,m4]
+solo = (>>) hush
+hush
+
+m1 $ density 4 $ (0.06125 <~) $ randcat [note "{a0}%4",note "{b0}%3",note "{c0}%3",note "{d0}%3",note "{e0}%3",note "{f0}%3",note "{gs0}%3",note "{a1}%4",note "{b1}%3",note "{c1}%3",note "{d1}%3",note "{e1}%3",note "{f1}%3",note "{gs1}%3",note "{a2}%4",note "{b2}%3",note "{c2}%3",note "{d2}%3",note "{e2}%3",note "{f2}%3",note "{gs2}%3",note "{a3}%4",note "{b3}%3",note "{c3}%3",note "{d3}%3",note "{e3}%3",note "{f3}%3",note "{gs3}%3"] # velocity (scale 0.2 1.0 $ rand)

@@ -1,0 +1,83 @@
+-- drum beat
+
+d1
+$ slow 2
+$ sometimesBy 0.2 (slow 2)
+$ sometimesBy 0.05 (degradeBy 0.375)
+$ sometimesBy 0.1 (0.375<~)
+$ sometimesBy 0.15 (0.125~>)
+$ s (randcat["{rnb}%20","{rnb}%20","{rnb}%20","{rnb}%20","{rnb}%16","{rnb}%16","{rnb}%16","{rnb}%14","{rnb}%14","{rnb}%10"])
+# n "29 28 17 21 15 17 55 65 91 78 36 60 27 62 70 36 100"
+# pan (slow 0.1 $ rand)
+# gain (slow 0.11 $ scale 1 2 $ rand)
+# rel (slow 0.12 $ scale 0.2 2 $ rand)
+# gain (slow 0.15 $ choose [1,2])
+# delay 0.0625
+# delayfb 1
+# delayt (discretise (1/2) $ slow 0.16 $ scale 0.000001 0.02 $ rand)
+
+
+-- bass line
+
+d2
+$ stack[
+sometimesBy 0.5 (slow 4)
+$ sometimesBy 0.5 (iter 4)
+$ degradeBy 0.125
+$ fast (slow 0.13 $ choose [0.5,1])
+$ s (randcat["txz*8","txz*4"])
+# n (slow 0.1 $ choose [14,15])
+# pan (slow 0.11 $ choose [0,1,0.5])
+# rel (slow 0.12 $ choose [0.45,0.9])
+# up (discretise (1/4) $ slow 0.14 $ choose [-4,-2,0,2,4,5,6,8,10])
+# shape (slow 0.15 $ choose [0,0.9])
+# delay (slow 0.16 $ choose [0,1])
+# delayt (slow 0.17 $ choose [0.03125,0.0625])
+# delayfb (slow 0.18 $ choose [0,1])
+# gain (slow 0.19 $ choose [0.5,1])
+# lpf (slow 0.2 $ choose [2000,20000])
+]
+
+-- vocal
+
+d3
+$ slow 2
+$ sometimesBy 0.12 (spread _slow [8,8,8,8,8,8,8])
+$ sometimesBy 0.11 (spread _slow [4,4,4,4,4,4])
+$ sometimesBy 0.1 (spread _slow [2,2,2,2,2])
+$ sometimesBy 0.125 (iter 4)
+$ sometimesBy 0.25 (degradeBy 0.9)
+$ striate (slow 0.1 $ choose[1,2,4,8,16])
+$ s (randcat["whv/2","whv","whv*2","whv*4","whv*8"])
+# begin (slow 2 $ scale 0 0.01 $ saw)
+# end (slow 2.1 $ scale 0.01 0.02 $ saw)
+# pan (slow 3 rand)
+# cut 1
+# up (choose[-12,0])
+# rel (slow 3.1 $ scale 0.01 0.02 $ saw)
+
+-- keys
+
+m1 $ n "128"
+# cc0 (slow 0.1 $ wchoose[1,1][0,1])
+# cc1 (slow 0.11 $ wchoose[1,1][0,1])
+# cc2 (slow 0.12 $ wchoose[1,1][0,1])
+# cc3 (slow 0.13 $ wchoose[1,1][0,1])
+# cc4 (discretise (1/8) $ slow 0.14 $ rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC -- This right here adds #cc127 capability.
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver IAC Bus 1" 1 ccallController -- See here how it's called ccallController. These might need renaming 4 yur comp.
+m2 <- midiStream devs "IAC Driver IAC Bus 1" 2 ccallController
+-- m2 <- midiStream devs "IAC Bus 2" 2 synthController -- This is only good for the midinote stuffs.
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9] -- edit this list. It changes what hush means.
+solo = (>>) hush
+hush
+
+m1 $ n "128*8" #cc0 (slow 0.1 $ rand) -- 0.0 to 1.0  Most things (synths,softwares, etc) will disregard n 128 so good for testing/mapping.

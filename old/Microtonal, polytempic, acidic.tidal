@@ -1,0 +1,11 @@
+d1 $ slow 1.00000 $ (100 <~) $ s "303" # n "23" |+| speed (slow 512 $ scale 4.0 3.2 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d2 $ slow 1.00001 $ (200 <~) $ s "303" # n "23" |+| speed (slow 511 $ scale 4.01 3.1 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d3 $ slow 1.00002 $ (300 <~) $ s "303" # n "23" |+| speed (slow 510 $ scale 4.02 3.0 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d4 $ slow 1.00003 $ (400 <~) $ s "303" # n "23" |+| speed (slow 509 $ scale 4.03 2.9 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d5 $ slow 1.00004 $ (500 <~) $ s "303" # n "23" |+| speed (slow 508 $ scale 4.04 2.8 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d6 $ slow 1.00005 $ (600 <~) $ s "303" # n "23" |+| speed (slow 508 $ scale 4.05 2.7 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d7 $ slow 1.00006 $ (700 <~) $ s "303" # n "23" |+| speed (slow 507 $ scale 4.06 2.6 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d8 $ slow 1.00007 $ (800 <~) $ s "303" # n "23" |+| speed (slow 506 $ scale 4.07 2.5 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+d9 $ slow 1.00008 $ (900 <~) $ s "303" # n "23" |+| speed (slow 505 $ scale 4.08 2.4 sine1) # attack "1" # release "0.1" # pan (scale 0.0 1.0 $ rand)
+
+hush

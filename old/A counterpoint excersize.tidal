@@ -1,0 +1,4 @@
+d1 $iter 4$stack[
+s"moog*8?"#n(choose([1..9]++[12,15,16]))#up(choose[12,14,15,17,7,8,11])#pan rand#cutoff(slow 0.1$scale 200 20000rand),
+s"moog*2"#n(choose([1..9]++[12,15,16]))#up(choose[0,2,3,5])#pan (slow 2rand)#cutoff(slow 0.1$scale 200 20000rand)
+]

@@ -1,0 +1,15 @@
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+d1 $ slowspread density [0.6, 0.8 .. 5] $ s "ag" # n (choose[0,1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31,33,36,37,38,39,40,41,51,60,61,62,63,64,65,66,67,68,70,71,72,73,74,78,80,81,82,84,85,86,87,91,92,93,94,97,98,99]) # beginend (slow 5 $ scale 0.6 1.0 sine1) (choose[0.27,0.39 .. 1.0]) # loop (choose[2,4 .. 32]) # pan (choose[0.1,0.2 .. 1.0]) # attack (scale 0 12 $ rand) # hold (scale 2 12 $ rand) # release (scale 2 12 $ rand) # up (choose[0,0,-12]) #hcutoff (scale 20 600 $ rand) # gain "1.5"
+d2 $ (568<~) $ slowspread density [0.64, 0.66 .. 1.5] $ s "ac(3,7)" # n "2" #  pan rand # gain "1.15"
+d3 $ (127<~) $ slowspread density [0.68, 0.70 .. 1.4] $ s "{ac(3,8)}/2" # n "0"
+d4 $ (634<~) $ slowspread density [0.70, 0.72 .. 1.6] $ s "{ac(3,8)}/4" # n "1" # up "-12"  # gain (scale 0.25 1.5 $ rand)
+d5 $ (308<~) $ slowspread density [0.72, 0.74 .. 1.8] $ s "{808(5,8,3)}/3" # n "2"
+d6 $ s "{808(5,8,5)}/18" # n "7" # cutoff (scale 20 1000 $ rand) #  gain (scale 1 2 $ rand) # up (choose[-12,-11 .. 0])
+d7 $ (734<~) $ slowspread density [0.068, 0.070 .. 0.5] $ degradeBy 0.3 $ s "{808}%8" #  n "9" #  cutoff (scale 80 20000 $ rand) # pan rand # end (slow 25 $ scale 0.01 0.5 sine1)  # hcutoff "1500" # gain (scale 0.25 1.0 $ rand)
+d8 $ (999<~) $ slowspread density [0.62, 0.64 .. 1.1] $ degradeBy 0.8 $ s "{808(3,8,6)}" #  n "15" # pan rand # end (slow 25 $ scale 0.1 1.0 sine1) # cut "1" # hcutoff "1500" # gain (scale 0.25 1.5 $ rand)
+d9 $ slowspread density [0.25, 0.5 .. 2] $ randcat [s "foo", s "foo*2", s "foo*3", s "foo*4", s "foo*5", s "foo*6", s "foo*7"] # n (slow 44 $ fmap (+1) $ run 26) # beginend (slow 5 $ scale 0.06 1.0 sine1) (choose[0.07,0.09 .. 0.64]) # loop "6" # attack "0.3" # hold (slow 7 $ scale 0.3 2.3 sine1) # release (slow 6 $ scale 0.6 2.6 sine1) # gain "0.8" # cutoff (scale 80 16000 $ rand) # shape "0.8" # pan (scale 0.25 0.75 $ rand) # up (choose[-3,0,3,6]) # cut (choose[0,1])
+
+hush
+
+--bad ag values
+13,23,32,34,35,42,43,44,45,46,47,48,49,50,52,53,54,55,56,57,58,59,69,75,76,77,79,83,88,89,90,95,96

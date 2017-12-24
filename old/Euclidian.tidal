@@ -1,0 +1,27 @@
+
+
+
+
+hush
+d1 $ sound "[bd sn sn*3]/2 [bd sn*3 bd*4]/3"
+d1 $ every 4 (rev) (sound "bd*2 [bd [sn sn*2 sn] sn]")
+d1 $ every 4 (density 4) $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+d1 $ sound "bd*4" # gain (scale 0.1 1.0 $ rand)
+d1 $ sound "arpy*4" # pan (scale 0.25 0.75 $ rand)
+
+d1 $ sound "[a:30? a:30?] [a:30? [a:80? [a:80? a:80?] a:80?] a:80?]"
+d1 $ sound "bd"
+
+hush
+
+bps (132/60)
+
+d1 $  density  2 $ (64 <~) $ sound "[a:30(1,16)?, ~ a:94(1,16)?]" # shape (scale 0.1 0.5 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d2 $  density  2 $ (37 <~) $ sound "[a:80(1,16)?, ~ a:61(1,16)?]" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d3 $  density  4 $ (35 <~) $ sound "[a:94(1,4)?, ~ a:54(1,16)?]" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d4 $  density  1 $ (22 <~) $ sound "[a:11(1,24)?, ~ a:49(1,8)?]" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d5 $  density  2 $ (91 <~) $ sound "[a:81(1,16)?, ~ a:41(1,8)]" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d6 $  density  1 $ (59 <~) $ sound "[a:61(1,16)?, ~ a:78(1,16)]" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d7 $  density  3 $ (76 <~) $ sound "a:54(1,16)?" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d8 $  density  2 $ (43 <~) $ sound "a:49(1,8)?" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "1"
+d9 $  density  2 $ (19 <~) $ sound "a:59(1,1)" # shape (scale 0.0 0.4 $ rand) # gain (scale 0.1 1.0 $ rand) # pan (rand) # cut  "2"

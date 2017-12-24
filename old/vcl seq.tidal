@@ -1,0 +1,8 @@
+d3
+$ spread _fast [1,1,1]
+$ s "vcl*8"
+# n (slow 0.11 $ choose [0..156]) 
+# up (slow 0.12 $ choose [0,-12])
+# pan (slow 0.13 $ rand)
+# gain (slow 0.14 $ scale 1.5 2 $ rand)
+# rel (slow 0.15 $ scale 0.25 2 $ rand)

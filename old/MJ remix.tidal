@@ -1,0 +1,62 @@
+-- Run each line separately
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC -- This right here adds #cc127 capability.
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController -- See here how it's called ccallController.
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+-- m2 <- midiStream devs "IAC Bus 2" 2 synthController -- This is only good for the midinote stuffs.
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9] -- edit this list. It changes what hush means.
+solo = (>>) hush
+hush
+cps 1.35
+m1 $ degradeBy 0.0 $ n "128" #cc1 "1" --rev
+m2 $ degradeBy 0.0 $ (999<~) $ n "128/2" #cc2 "1" --ffw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let slowchoose f xs p = Pattern $ \(s,e) -> arc (f (getrand s xs) p) (s,e)
+      where getrand s xs = xs!!(floor $ (r s) * (l xs))
+            r s = timeToRand $ fromIntegral $ floor s
+            l xs = fromIntegral $ length xs
+
+m1 $ slowchoose slow [0.1..1.1] $ degradeBy 0.01 $ randcat[n "128" #cc1 (slow 0.1 $ scale 0.1 1 rand),n "128" #cc2 (slow 0.11 $ scale 0.0 1 rand)]

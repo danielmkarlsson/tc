@@ -1,0 +1,29 @@
+m1
+$ spreadChoose _fast [1..7]
+$ midinote (randcat[21,26,32,38,41,43,46,48,50,51,55,58,60,63,67,70,74,75,79,82])
+
+# cc0 (slow 0.1 $ rand) -- Algorithm
+# cc1 (slow 0.11 $ rand) -- Feedback
+# cc2 (slow 0.12 $ rand) -- EG operator 4
+
+# cc3 (slow 0.13 $ rand) -- cutoff
+
+# velocity (slow 0.14 rand)
+# cc4 (slow 0.15 $ rand) -- Time
+
+# cc5 (slow 0.16 $ rand) -- Low time multiplier
+# cc6 (slow 0.17 $ rand) -- High time multiplier
+
+# cc7 (discretise (1/8) $ slow 0.18 $ wchoose [2,3,1][0,0.01,0.02]) -- Voice
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush

@@ -1,0 +1,10 @@
+d1
+$ s "jvbass*7"
+# n (discretise(1/2)(slow 0.1$choose[0,3,6,8,10,12,13]))
+# up "0 0.25 0.5 0.75 1 1.25 1.5"
+# gain "1 0.8 0.6 0.5 0.4 0.3 0.25"
+
+:t discretise
+
+
+:browse Sound.Tidal.Pattern

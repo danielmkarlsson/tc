@@ -1,0 +1,20 @@
+cps 1
+
+d1 $ n (slow 0.1 $ choose [(-12)..12])
+# s "supermandolin"
+# gain 2.2
+# lpf (scale 200 1000 $ rand)
+# hpf 150
+# nudge (slow 64 $ scale 0 16 $ sine)
+# pan (slow 32 sine)
+# rel 0.2
+
+d2
+$ n (slow 0.1 $ choose [(-12)..12])
+# s "supermandolin"
+# gain 2.2
+# lpf (scale 200 1000 $ rand)
+# hpf 150
+# nudge (32<~(slow 64 $ scale 0 16 $ sine))
+# pan (16<~(slow 32 sine))
+# rel 0.2

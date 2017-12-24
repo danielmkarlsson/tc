@@ -1,0 +1,17 @@
+bps (10/60)
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,m1,m2,m3,m4]
+solo = (>>) hush
+hush
+
+m1 $ density 6 $ (0 <~) $ randcat [note "{0? 7 5? 3}%2", note "{2 7? 3?}%3", note "{11? 7 8? 3 5?}%2", note "{19? 17? 20? 11? 23? 7?}%3"] # velocity (scale 0.0 1.0 $ rand)--fm37
+m2 $ density 4 $ (4 <~) $ randcat [note"{5? 0? 19?}%3", note"{3? 11 20 7?}%2", note"{15? 17 12? 19? 0?}%3", note"{26? 24 31? 27? 29? 15}%2"] # velocity (scale 0.0 1.0 $ rand) --fm56
+m3 $ slow 2 $ (0 <~) $ randcat [note"{12~7~24?~~~}%12", note"{14?~~~26~3~}%6", note"{15~5~27?~~~}%4", note"{17?~~7~29~~}%6", note"{19~~31?~~5~}%2", note"{20?~~~32~~}%3", note"{31~~43?~~~}%6", note"{32?~~~44~~}%3", note"{35~~47?~~~}%2"] # velocity (scale 0.0 1.0 $ rand) --fm79
+m4 $ density 4 $ (2 <~) $ randcat [note"{8?~11 15}%3",note"{7 2?~5 2}%2",note"{17 14 12?~}%3",note"{~19 5 14 3?}%2",note"{11?~5 7}%3"] # velocity (scale 0.0 1.0 $ rand) --fm26
+
+d1 $ (0 <~) $ density 2 $ randcat [sound "808:5?(3,11)",sound "808:5?(4,11)",sound "808:5(5,11)"] #  cut "1" # shape "0.5" --kick
+d2 $ (8 <~) $ density 2 $ randcat [sound "808:544(3,19)",sound "808:544?(4,19)",sound "808:544?(5,19)"] # end (choose [0.1,0.2,0.3]) # pan (scale 0.0 1.0 $ rand) --hat
+d3 $ (6 <~) $ density 2 $ randcat [sound "808:549?(3,7)", sound "808:549?(4,7)", sound "808:549?(5,7)"] --rimshot
+d4 $ (4 <~) $ density 2 $ randcat [sound "ac:3?(2,7)",sound "ac:3?(3,7)",sound "ac:3?(4,7)",sound "ac:3?(5,7)"] # pan (scale 0.0 1.0 $ rand) # gain (scale 0.5 1.0 $ rand) #  cut "2" --clap
+d5 $ (7 <~) $ density 2 $ randcat [sound "bass2?(2,5)",sound "bass2?(4,5)",sound "bass2?(5,7)"] #  cut "2" # gain (choose [0.25,0.5,0.75]) # pan (choose [0.25,0.5,0.75]) # up "-12" --gabb
+d6 $ (9 <~) $ density 2 $ randcat [sound "ac(2,5)",sound "ac?(4,5)",sound "ac?(5,7)",sound "ac?(7,9)"] #  cut "2" # gain "1.75" # pan (choose [0.25,0.5,0.75]) # end "0.125" --boom

@@ -1,0 +1,2 @@
+d1 $ slowspread density [1,2 .. 16] $ sound "bass2 808 707 606 303" # cut "1" # n " 1 3 67 5" # pan (scale 0.25 0.75 $ rand)
+hush

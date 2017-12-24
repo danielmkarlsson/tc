@@ -1,0 +1,24 @@
+d1
+$ fast 7
+$ sometimesBy 0.6 (iter 4)
+$ sometimesBy 0.65 (degradeBy 0.8)
+$ sometimesBy 0.9 (striate' 11(5/2))
+$ spreadChoose _fast [1.6,1.8,1.9,1.9,1.4,1.5,1,1.3,1.7,0.25,0.5]
+$ s (randcat["tuu(5,9?)","sbu(3,8?)"])
+# n (discretise (1/27) $ slow 0.1 $ choose ([0..6] ++ [10..16]))
+# rel (slow 0.11 $ scale 0.5 2.5 $ rand)
+# lpf (slow 0.12 $ scalex 2000 20000 $ rand)
+# up (slow 0.13 $ choose [-12.9,-11.2,-10.7,-9.3,-8.9,-7.8,-6.7,-5,4,-4.7,-3.1,-2.5,-1.3,0]) 
+# gain (slow 0.15 $ scalex 0.5 1.5 $ rand)
+# nudge (slow 32 $ scale 0 2 $ sine)
+# delay (slow 0.17 $ scale 0.001 0.2 $ rand)
+# delayfb 1
+# delayt (discretise (1/48) $ slow 0.18 $ choose [1/19] 
+/ choose [1,2,4,8,16,32,64,128,256] 
+* choose [1,2,4])
+# pan (slow 0.19 $ saw)
+# cut (slow 0.2 $ wchoose [1,2][0,1])
+
+let wchoose weights values = choose $ concatMap (\x -> 
+replicate (fst x) (snd x)) (zip weights values)
+

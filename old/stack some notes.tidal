@@ -1,0 +1,7 @@
+m1 $ stack [
+n "a3" #velocity (slow 0.1 $ scale 0 1 $ rand) #dur (slow 0.13 $ scale 0 1 $ rand),
+n "c3" #velocity (slow 0.11 $ scale 0 1 $ rand) #dur (slow 0.14 $ scale 0 1 $ rand),
+n "e3" #velocity (slow 0.12 $ scale 0 1 $ rand) #dur (slow 0.15 $ scale 0 1 $ rand)
+]
+
+m2 $ (0.01<~) $ "128" #cc0 (slow 0.16 $ scale 0 1 $ rand)

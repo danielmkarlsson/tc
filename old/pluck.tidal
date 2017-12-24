@@ -1,0 +1,8 @@
+d1
+$ fast 16
+$ s "<syn lbu sbu tuu srg srr>"
+# n (slow 0.1 $ choose [0..9])
+# gain 2
+# nudge (slow 32 sine)
+# rel (slow 33 $ scale 0 4 $ sine)
+# hpf (slow 34 $ scale 20 20000 $ sine)

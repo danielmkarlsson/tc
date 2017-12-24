@@ -1,0 +1,7 @@
+m1 $ (0.97<~) $ randcat [midinote "{50}%9"] # velocity (scale 0.1 0.5 $ rand)
+m2 $ midinote "{65}%9" # modwheel "0 0.125 0.25 0.375 0.5 0.625 0.75 0.875 1"
+m2 silence
+let hush = mapM_ ($ silence) [d1,d2,m1,m2]
+solo = (>>) hush
+hush
+cps  1

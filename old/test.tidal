@@ -1,0 +1,115 @@
+
+d1 $ sound "bd*4[bd [bd*3bd/3] bd/9 bd]" # gain (every 4 (rev) $ "1 0.8 0.5 0.7") # pan (every 2 (rev) $ "1 0.8 0.5 0.7")
+d2 $ sound "cp*3[cp*4] [cp/3 cp] cp" # gain (every 3 (rev) $ "1.0 0.8 0.5 0.7 ") # pan (every 3 (rev) $ "0.8 0.7 0 0.1 0.2")
+d3 $ sound "[sn sn/19] [sn/5 sn/2]" # gain (every 5 (rev) $ "1.0 0.8 0.5 0.75 0.6 0.4 0.9 0.5")
+d4 $ sound "hh*4" #speed "4"
+
+
+d1 $ every 2 (|+| speed "1") $ sound "arpy*4" |=| speed "1"
+d1 $ every 2 (|*| speed "1.5") $ sound "arpy*4" |=| speed "1"
+d1 $ every 3 (|-| up "3") $ every 2 (|+| up "5") $ sound "arpy*4" |=| up "0 2 4 5"
+
+d2 $ sound "hh*4hh/2hh/3hh/2" #speed "[8, 6]"
+
+d1 $ sound "bd*5/2"
+d2 $ sound "cp*4/16"
+d3 $ sound "sn[7/2, 11/2]" # speed "16"
+
+d1 $ sound "bd(5,11)"
+d2 $ sound "hh(5,19)" # speed "8" # gain (every 4 (rev) $ "1 0.8 0.5 0.7")
+
+d1 $ e 3 8 $ sound "bd*7 [sn*3 cp*4]"
+d1 $ sound "bd([5 3]/2,8)"
+d1 $ sound $ samples "drum*4" "0 1 2 3"
+d1 $ sound $ samples "drum*4" (run 4) -- or with samples
+d1 $ s "drum arpy cp hh" # n (run 10)
+d1 $ n (run 10) # s "drum arpy cp hh"
+d1 $ sound "bd sn drum arpy" # pan "0 1 0.25 0.75"
+d1 $ sound "bd*16" # pan sine1
+d1 $ sound "bd*16" # pan (slow 8 $ saw1)
+d1 $ sound "bd*8 sn*8" # pan (density 1.75 $ tri1)
+d1 $ sound "bd*8 sn*8" # speed (density 2 $ tri)
+d1 $ sound "bd*16" # pan (slowcat [sine1, saw1, square1, tri1])
+d1 $ sound "sn:2*16" # (speed $ scale 0.5 3 sine1) |*| (speed $ slow 4 saw1)
+d1 $ sound "bd*8 sn*8" # speed (scale 1 3 $ tri1)
+d1 $ sound "bd*8 sn*8" # speed (slow 4 $ scale 1 3 $ tri1)
+d1 $ sound "bd*8 sn*8" # speed (scale (-2) 3 $ tri1)
+d1 $ sound "hh*32" # cutoff (scale 300 1000 $ slow 4 $ sine1) # resonance "0.4"
+d1 $ sound "hh*32" # cutoff (scale 0.001 0.1 $ slow 4 $ sine1) # resonance "0.1"
+d1 $ sound "bd~bd~b~*7e~*3d~*3p~*6a~*7" # pan "1"
+d2 $ sound "bd~~~bd~~e~bd~d~~~cp~~~~~e~~~~~~~e~~~~~~~~~~~~~~~~~" # pan "0"
+d1 $ sound "{bd~~~~~~, ~~bass2 bass2~~~drum ~~d ~cp, ~~~~cp, hh~~~~hh}"
+d2 $ every 3 (1%2 <~) $ sound "{arpy bass2 cp2/2 hh drum/2 bd/3 notes/2 bd can}%9"
+d1 $ (0.25 <~) $ sound "bd*2 cp*2 hh sn"
+d2 $ (0.125 <~) $ sound "bd*2 cp*2 hh sn"
+d3 $ (0.25 ~>) $ sound "bd*2 cp*2 hh sn"
+d1 $ every 3 (0.25 <~) $ sound "bd*2 cp*2 hh sn"
+d1 $ sound "bd*2?"
+d2 $ sound "bd sn? cp hh?"
+
+sometimes = sometimesBy 0.5
+often = sometimesBy 0.75
+rarely = sometimesBy 0.25
+almostNever = sometimesBy 0.1
+almostAlways = sometimesBy 0.9
+
+d1 $ sometimes (density 2) $ sound "bd*8"
+d1 $ $ sound "cp" sometimesBy 0.001
+d2 $ $ sound "bd" sometimesBy 0.0001
+d1 $ whenmod 8 6 (const $ sound "arpy(3,8) bd*4") $ sound "bd sn bass2 sn"
+d1 $ every 12 (const $ sound "bd*4 sn*2") $ sound "bd sn bass2 sn"
+
+d1 $ stack [
+  sound "gabba bd*2",
+  sound "hh*2 [sn cp] cp future*4",
+  sound (samples "arpy*8" (run 16))
+]
+
+t1 (xfadeIn 8) $ sound "numbers:7[5,8]"
+t2 (xfadeIn 8) $ sound "numbers:6(2,12)"
+t3 (xfadeIn 8) $ sound "numbers:5(9,16)"
+t4 (xfadeIn 8) $ sound "numbers:4(2,7)"
+t5 (xfadeIn 8) $ sound "numbers:3(5,8)"
+t6 (xfadeIn 8) $ sound "numbers:2(4,10)"
+t7 (xfadeIn 8) $ sound "numbers:1(3,20)"
+
+d1 $ jux (# accelerate "-0.1") $ s "supermandolin*8" # midinote "[80!6 78]/8"
+  # sustain "1 0.25 2 1"
+
+d2 $ midinote (slow 2 $ fmap ((+50) . (*7)) $ run 8) # s "supergong" # decay "[1 0.2]/4"
+    # voice "[0.5 0]/8" # sustain (slow 16 $ scale 5 0.5 $ saw1)
+
+flick sid can metal future gabba sn mouth co gretsch mt arp h cp
+cr newnotes bass crow hc tabla tabla hh bass1 bass2 oc bass3 ho
+odx diphone2 house off ht tink perc bd industrial pluck trump
+printshort jazz voodoo birds3 procshort blip drum jvbass psr
+wobble drumtraks koy rave bottle kurt latibro rm sax lighter lt
+arpy feel less stab ul
+
+20010320-samples (23) 808 (0) 909 (1) ab (12) ade (10) ades2 (9) ades3 (7) ades4 (6) alex (2) alphabet (26) amencutup (32) armora (7) arp (2) arpy (11) auto (11) baa (7) baa2 (7) bass (4) bass0 (3) bass1 (30) bass2 (5) bass3 (11) bassdm (24) bassfoo (3) battles (2) bd (24) bend (4) bev (2) bin (2) birds3 (19) bleep (13) blip (2) blue (2) bottle (13) breaks125 (2) breaks152 (1) breaks152loud (1) breaks152louder (1) breaks157 (1) breaks165 (1) breath (1) bubble (8) can (14) casio (3) cc (6) chin (4) chink (1) circus (3) clak (2) click (4) co (4) cosmicg (15) cp (2) cr (6) crow (4) d (4) db (13) diphone (38) diphone2 (12) dist (16) dork2 (4) dorkbot (2) dr (42) dr2 (6) dr55 (4) dr_few (8) drum (6) drumtraks (13) e (8) east (9) electro1 (13) erk (1) f (1) feel (7) feelfx (8) fest (1) fire (1) flick (17) foo (27) future (17) gab (10) gabba (4) gabbaloud (4) gabbalouder (4) glasstap (3) glitch (8) glitch2 (8) gretsch (24) h (7) hand (17) hardcore (12) haw (6) hc (6) hh (13) hh27 (13) hit (6) hmm (1) ho (6) house (8) ht (16) if (5) ifdrums (3) incoming (8) industrial (32) insect (3) invaders (18) jazz (8) jungbass (20) jungle (13) jvbass (13) koy (2) kurt (7) latibro (8) led (1) less (4) lighter (33) lt (16) made (7) made2 (1) mash (2) mash2 (4) metal (10) miniyeah (4) moan (1) monsterb (6) moog (7) mouth (15) mp3 (4) msg (9) mt (16) mute (28) newnotes (15) noise (1) noise2 (8) notes (15) numbers (9) oc (4) odx (15) off (1) pad (3) padlong (1) pebbles (1) perc (6) peri (15) pluck (17) print (11) printshort (11) proc (2) procshort (8) psr (30) rave (8) rave2 (4) ravemono (2) rm (2) sax (22) seawolf (3) sequential (8) sf (18) sheffield (1) short (5) sid (12) sine (6) sitar (8) sn (52) space (18) speech (7) speechless (10) speedupdown (9) stab (23) stomp (10) subroc3d (11) sugar (2) sundance (6) tabla (26) tabla2 (46) tablex (3) tacscan (22) tech (13) techno (7) tink (5) tok (4) toys (13) trump (11) ul (10) ulgab (5) uxay (3) v (6) voodoo (5) wind (10) wobble (1) world (3) xmas (1) yeah (31)
+
+
+d1 $ n "c5 d5*2" # s "supersaw" # sustain "0.4 0.2"
+
+superkick, superhat, supersnare, superclap, super808
+
+bps (120/60)
+
+d2 $ sound "bd~~~bd~~e~bd~d~~~cp~~~~~e~~~~~~~e~~~~~~~~~~~~~~~~~" # pan "0"
+
+d1 $ sound "{numbers:1/4~~~~~}%9" # pan "0"
+d2 $ sound "{numbers:2/4~~~~~~}%10"# pan "1"
+d3 $ sound "{numbers:3/4~~~~~~~}%11"# pan "0.9"
+d4 $ sound "{numbers:4/4~~~~~~~~}%12"# pan "0.1"
+d5 $ sound "{numbers:5/4~~~~~~~~~}%13"# pan "0.8"
+d6 $ sound "{numbers:6/4~~~~~~~~~~}%14"# pan "0.2"
+d7 $ sound "{numbers:7/4~~~~~~~~~~~}%15"# pan "0.7"
+d8 $ sound "{numbers:8/4~~~~~~~~~~~~}%16"# pan "0.3"
+
+
+
+
+
+
+
+hush

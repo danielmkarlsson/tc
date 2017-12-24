@@ -1,0 +1,22 @@
+d1 $ slowspread slow [1,1.75 .. 3] $ slowspread density [1,1.5 .. 5] $ slowspread density [1,1.25 .. 7] $ randcat [ s "303", s "sh9"] # n "2" #  cut "1" # attack "0" # release "0.2" # up (density 24 $ choose[-36,-35.5 .. 36]) # coarse (density 25 $ choose[1,2 .. 8]) # cutoff (slow 26 $ scale 2000 20000 $ saw1) # hcutoff (slow 27 $ scale 2000 20000 $ saw1) # gain "4"
+d2 $ s "odx"
+
+
+
+d1 $ slowspread density [0,0.5 .. 4] $ slow 7 $ s "ez" # up "-3" # pan "0" # cut "1"
+d2 $ slowspread density [0,0.25 .. 7.5] $ slow 7.1 $ s "ez" # up "-3" # pan "1" # cut "2"
+d3 $ slowspread density [0,0.25 .. 5] $ slow 8 $ s "ez" # pan "0" # n "1" # cut "3" # gain "2"
+d4 $ slowspread density [0,0.125 .. 5.5] $ slow 8.1 $ s "ez" # pan "1" # n "1" # cut "4" # gain "2"
+d5 $ slowspread density [0,0.5 .. 6] $ s "odx" # pan "0" # cut "5"
+d6 $ slowspread density [0,0.5 .. 6.5] $ slow 1.1 $ s "odx" # pan "1" # cut "6"
+d7 $ slowspread density [0,0.5 .. 7] $ slow 1.15 $ s "odx" # pan "0" # n "12" # cut "7"
+d8 $ slowspread density [0,0.125 .. 3] $ slowspread density [0,0.125 .. 5.5] $ slow 1.2 $ s "sh9" # pan "0" # n "12" # gain "3" # cut "8" # attack "0" # release "0.2"
+d9 $ slowspread density [0,0.125 .. 4] $ slowspread density [0,0.125 .. 6] $ slow 1.21 $ s "sh9" # pan "1" # n "12" # gain "3" # cut "9" # attack "0" # release "0.2"
+
+
+
+
+
+
+
+hush

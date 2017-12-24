@@ -1,0 +1,43 @@
+d1
+$ stack[
+degradeBy 0.95
+$ s "har*8"
+# cut 0
+# n (discretise (1/26) $ slow 0.1 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3,1]),
+(111<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/29) $ slow 0.11 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3]),
+(222<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/33) $ slow 0.12 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3]),
+(333<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/38) $ slow 0.13 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3]),
+(444<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/44) $ slow 0.14 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3]),
+(555<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/51) $ slow 0.15 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3]),
+(666<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/59) $ slow 0.16 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3]),
+(777<~)
+$ degradeBy 0.95
+$ s "har*8"
+# n (discretise (1/68) $ slow 0.17 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3])
+]
+
+
+d1
+$ fast 4
+$ (777<~)
+$ degradeBy 0.3
+$ s "har*2"
+# n (discretise (1/1) $ slow 0.17 $ choose [0,2,3,5,7,8,10,11] + choose [0,12,24,36] * choose [1,2,3])

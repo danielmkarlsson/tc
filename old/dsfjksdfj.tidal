@@ -1,0 +1,6 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.CC
+displayOutputDevices >>= putStrLn
+devices <- midiDevices
+m1 <- midiStream devices "Midi Through Port-0" 1 ccallController
+m1 $ n "50" # cc0 "3"

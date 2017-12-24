@@ -1,0 +1,13 @@
+d1 
+$ sometimesBy 0.5 (spread _slow (replicate 3 1))
+$ fast (choose [1..16])
+$ s "srg:4"
+# up (discretise (1/32) $ slow 0.1 $ scale 0 (1/16) $ rand * choose [0,2,4,8])
+# pan (slow 0.11 $ rand)
+# att 2
+# rel 2.5
+# gain (slow 0.12 $ scalex 0.25 1 $ rand)
+# lpf (slow 16 $ scalex 20 7000 $ sine)
+# resonance (slow 0.13 $ scale 0 0.65 $ rand)
+# nudge (slow 7 $ scale 0 3 $ sine)
+

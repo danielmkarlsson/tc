@@ -1,0 +1,16 @@
+d1
+$ fast 1.5
+$ degradeBy (1/16)
+$ s (randcat ["voc","voc*2","voc*3","voc*3","voc*4","voc*5","voc*6","voc*7","voc*8","voc*9","voc*10","voc*11","voc*12"])
+# up (discretise (1/16) $ slow 0.1 
+$ wchoose [1..7] [2,3,5,7,8,11,12] 
+* wchoose [9,8,7,6,5,4,3,2,1] [1..9] 
+- choose [0,12,24,36,48,56,64,78,90])
+# pan (slow 0.11 $ rand)
+# lpf (slow 0.12 $ scalex 20 10000 $ rand)
+# gain (slow 0.13 $ scalex 0.2 0.8 $ rand)
+# accelerate (discretise (1/7) $ slow 0.14 $ scale (-0.05) 0.05 $ rand)
+
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+

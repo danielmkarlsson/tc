@@ -1,0 +1,10 @@
+d1
+$ degradeBy 0.125
+$ spreadChoose _fast [1.5,2,2,4,4,4,8,8,8,8,12]
+$ s (randcat["dx7","txz","mmd"])
+# n (slow 0.1 $ choose [0..7])
+# pan (slow 0.11 $ rand)
+# rel (slow 0.12 $ rand)
+# gain (slow 0.13 $ scalex 1 2 $ rand)
+# lpf (slow 0.14 $ scalex 2000 20000 $ rand)
+# up (slow 0.15 $ choose [0,-12])

@@ -1,0 +1,27 @@
+d1
+$ degradeBy 0.33
+$ stack [
+sometimesBy 0.75 (3.125<~)
+$ sometimesBy 0.66 (fast 8)
+$ s "<bch ~ rnb ~ rnb rnb ~ ~ ~ rnb ~ rnb rnb ~ rnb rnb rnb rnb ~ ~>"
+# n 34
+# rel 0.1
+# pan (slow 0.1 $ rand),
+sometimesBy 0.7 (2.125<~)
+$ sometimesBy 0.55 (fast 8)
+$ s "<~ pmb ~ rnb rnb ~ ~ ~ rnb ~ rnb rnb ~ rnb rnb rnb rnb ~ ~>"
+# n 67,
+sometimesBy 0.8 (5.25<~)
+$ sometimesBy 0.35 (fast 4)
+$ sometimesBy 0.45 (slow 2)
+$ s "<mcb ~ rnb rnb ~ ~ rnb ~ rnb rnb ~ rnb rnb rnb rnb ~ ~>"
+# n 87
+]
+# room (slow 0.13 $ choose [0,0,0,0.1])
+# size 0.9
+# comb (slow 0.11 $ scale 0.125 0.95 $ rand)
+# gain 2
+# hpf (slow 0.12 $ choose [20,400,400,800])
+
+import Sound.Tidal.SpectralTricks
+

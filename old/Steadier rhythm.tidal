@@ -1,0 +1,20 @@
+d1 $ density 2
+$ every 4 (1.5<~)
+$ iter 2
+$ slow 0.1
+$ stack[
+s "srg?" #up (slow 0.12 $ choose[-12,-9.5..0])]
+#n (slow 0.13 $ choose[2,3,13])
+#begin "0.1"
+#cut"1"
+
+d2 $ density 2
+$ every 4 (1.5<~)
+$ every 5 (1.5<~)
+$ iter 2
+$ slow 0.1
+$ s "808?"
+#n (slow 0.14 $ choose[1,4])
+#release (slow 0.14 $ choose[0.1,0.2])
+#pan (slow 0.15 $ choose [0.3,0.35..0.7])
+#gain (slow 0.16 $ choose[1,1.3])

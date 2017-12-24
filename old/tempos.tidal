@@ -1,0 +1,10 @@
+m1 $ (167 <~) $ degradeBy 0.9 $ randcat [note "a3",note "d1 b2", note "f3 b2 a0", note "b3 g1 b2 f4", note "a1 d2 g2 g5 e3", note "g3 e1 f3 f3 a4 a1", note "a2 a3 b0 c4 g3 e2 b2", note "d3 e5 g2 f5 a6 b1 c3 c6"] # nudge (slow 64 $ scale 0 1.0 sine1) # velocity (scale 0.0125 1 $ rand) # dur (scale 0.00125 0.01 $ rand)
+
+
+d1 $ density 1.1 $ degradeBy 0.9 $ randcat [s "a",s "a*2",s "a*3"] # n (choose[1,2,5,12,14,15])# end (scale 0.001 0.2 $ rand) # up (choose[0,-12,-24]) # gain (scale 1.0 4.0 $ rand) # pan rand # nudge (slow 52 $ scale 0 1.0 sine1) # attack "0" # release "0.01"
+
+d2 $ degradeBy 1.0 $ s "303" # n "2" # cut  "1" #  up (choose[-12,-24])
+
+let hush = mapM_ ($ silence) [d1,d2,m1,m2,m3]
+solo = (>>) hush
+hush

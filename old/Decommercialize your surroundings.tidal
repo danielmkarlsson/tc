@@ -1,0 +1,10 @@
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,m1]
+solo = (>>) hush
+hush
+d1 $ slowspread density [0.125,0.25,0.5,1,2,4,8] $ degradeBy 0.9 $ (222<~) $ (randcat [s "gab",s "gab*2"]) # cutoff (scale 20 4000 $ rand) # pan rand # cut "2" #  up (density 89 $ choose[6,12,0,0,0,-12])
+d2 $ slowspread density [0.125,0.25,0.5,1,2,4,8,16,32] $ degradeBy 0.9 $ (111<~) $ s "rave*2" # n (choose[0,1,2,3,60,83,31,56,51]) # pan (density 33 $ choose[0,0.125,0.25,0.375,0.5,0.625,0.75,0.875,1]) # cutoff (scale 20 10000 $ rand) # cut (choose[0,1,1,1])  # gain (density 34 $ scale 0.125 0.75 $ rand) # attack "0" # release (density 35 $ scale 0.004 4 $ rand) # end (density 36 $ scale 0.04 0.4 $ rand) # loop (scale 0 40 rand) # up (choose[2,1.75 .. -2])
+d3 $ s "ac" # n "3" # gain "1.3" # attack "0" # release (scale 0.05 0.5 $ rand)
+d4 $ s "ac*4" # n "2" # gain (scale 0.1 1.1 $ rand) # pan rand
+d5 $ (3<~) $ degradeBy 0.95 $ s "a*8" # n "56" # gain (scale 0.05 1.2 $ rand) # pan rand
+d6 $ (1<~) $ degradeBy 0.96 $ s "ac*8" # n "1" # gain (scale 0.125 1.2 $ rand) # pan rand # shape (scale 0.01 0.75 $ rand) #  up (density 67 $ choose[6,12,0,0,0,-12,-24])
+  m1 $ (0.1 <~) $ slow 1 $ n "128" # cc0 (scale 0.1 1.0 $ rand) {-dry/wet IRs-} # cc1 (density 2 $ scale 0.5 1.0 $ rand) {-combMix-} # cc2 (density 3 $ scale 0.75 1 $ rand) {-combFeed-} # cc3 (density 4 $ scale 0 0.4 $ rand) {-combFilter-} # cc4 (density 5 $ scale 0 1.0 $ rand) {-linkTimes-} # cc5 (density 6 $ scale 0.0 1 $ rand) {-combOn-} # cc6 (density 7 $ scale 0 0.125 $ rand) {-combTimeLeft-} # cc7 (density 8 $ scale 0 0.125 $ rand) {-combTimeRight-} # cc8 (density 9 $ scale 0 1 $ rand) {-roomOn-} # cc9 (density 10 $ scale 0 1 $ rand) {-roomDecay-} # cc10 (density 11 $ scale 0 1 $ rand) {-cvrOn-} # cc11 (density 12 $ scale 0 0.5 $ rand) {-cvrMix-} # cc12 (density 13 $ scale 0 1.0 $ rand) {-cvrPitch-} # cc13 (density 14 $ scale 0.0 1 $ rand) {-roomMix-} # cc14 (density 15 $ scale 0.0 1 $ rand) {-combCrossFeed-} # cc15 (density 16 $ scale 0 0.06125 $ rand) {-drive-} # cc16 (density 17 $ scale 0.0 1.0 $ rand) {-OTTdepth-} # cc17 (density 18 $ scale 0 0.1 $ rand) {-dropOut-}

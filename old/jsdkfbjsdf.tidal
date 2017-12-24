@@ -1,0 +1,7 @@
+m1 $ (3467 <~) $ degradeBy 0.4 $ slowspread density [0.5, 1.0 .. 3.0] $ note "a c5 e g6 f4" # modwheel sine1 # dur "0.5"
+m2 $ (2673 <~) $ degradeBy 0.8 $ slowspread density [0.5, 1.0 .. 2.0] $ note "d c5 e3 ~ g2 f" # modwheel sine1 # dur "0.5"
+m3 $ (6874 <~) $ degradeBy 0.3 $ slowspread density [0.5, 1.0 .. 4.0] $ note "e1 c2 e3 g4 ~ f6 ~" # modwheel sine1 # dur "0.5"
+
+hush
+
+cps 0.25

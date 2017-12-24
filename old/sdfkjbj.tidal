@@ -1,0 +1,28 @@
+d1 $ degradeBy 0.75 $ s "ac*8" # n "3" # pan rand
+d2 $ (0.125~>) $ degradeBy 0.75 $ s "ac*8" # n "4" # pan rand
+d3 $ (0.25~>) $ degradeBy 0.75 $ s "ac*8" # n "5" # pan rand
+d4 $ (0.375~>) $ degradeBy 0.75 $ s "ac*8" # n "6" # pan rand
+d5 $ (0.5~>) $ degradeBy 0.75 $ s "ac*8" # n "0" # pan rand
+d6 $ (0.625~>) $ degradeBy 0.75 $ s "ac*8" # n "1" # pan rand
+d7 $ (0.75~>) $ degradeBy 0.75 $ s "808*8" # n "2" # pan rand
+d8 $ (0.875~>) $ degradeBy 0.75 $ s "808*8" # n "15" # pan rand
+d9 $ (1.0~>) $ degradeBy 0.75 $ s "808*8" # n "16" # pan rand
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-
+[radom  operations in TidalCycles] are actually continuous patterns, which in practical terms means they have infinite detail - you can treat them as pure information! As with all patterns they are also deterministic, stateless functions of time, so that if you retriggered a pattern from the same logical time point, exactly the same numbers would be produced. Furthermore, if you use a rand or irand in two different places, you would get the same ‘random’ pattern - if this isn’t what you want, you can simply shift or slow down time a little for one of them, e.g. slow 0.3 rand.
+-}

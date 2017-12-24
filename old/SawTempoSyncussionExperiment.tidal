@@ -1,0 +1,75 @@
+d1 
+$ slow 11
+$ fast (discretise (1/5) $ wchoose [10,11,12,13,14,15,16,17,18,19,20] [1..9])
+$ stack[
+spaceOut (map (1/) [1..20])
+$ s "syn"
+# pan 0,
+spaceOut (map (1/) [1..22])
+$ s "syn:1"
+# pan 1,
+spaceOut (map (1/) [1..24])
+$ s "syn:2"
+# pan 0.5,
+spaceOut (map (1/) [1..26])
+$ s "syn:3"
+# pan 0.25,
+spaceOut (map (1/) [1..28])
+$ s "syn:5"
+# pan 0.75,
+spaceOut (map (1/) [1..30])
+$ s "syn:7"
+# pan 0.1,
+spaceOut (map (1/) [1..32])
+$ s "syn:9"
+# pan 0.9,
+spaceOut (map (1/) [1..34])
+$ s "syn:18"
+# pan 0.2,
+spaceOut (map (1/) [1..36])
+$ s "syn:19"
+# pan 0.8, 
+spaceOut (map (1/) [1..38])
+$ s "syn:20"
+# pan 0.3,
+spaceOut (map (1/) [1..40])
+$ s "syn:21"
+# pan 0.7,
+spaceOut (map (1/) [1..42])
+$ s "syn:22"
+# pan 0.4,
+spaceOut (map (1/) [1..44])
+$ s "syn:24"
+# pan 0.6,
+spaceOut (map (1/) [1..46])
+$ s "syn:28"
+# pan 0.05,
+spaceOut (map (1/) [1..48])
+$ s "syn:29"
+# pan 0.95,
+spaceOut (map (1/) [1..50])
+$ s "syn:36"
+# pan 0.15,
+spaceOut (map (1/) [1..52])
+$ s "syn:41"
+# pan 0.85,
+spaceOut (map (1/) [1..54])
+$ s "syn:44"
+# pan 0.35,
+spaceOut (map (1/) [1..56])
+$ s "syn:64"
+# pan 0.65,
+spaceOut (map (1/) [1..58])
+$ s "syn:65"
+# pan 0.45
+# up 12
+]
+# nudge (slow 32 $ scale 0 3 $ sine)
+# gain (slow 33 $ scalex 2 4 $ sine)
+# lpf (slow 24 $ scalex 2000 20000 $ sine)
+# shape (slow 35 $ scalex 0.000001 0.9 $ sine)
+# rel (slow 36 $ scalex 0.1 2 $ sine)
+# delay (slow 6 $ scalex 0.02 0.8 $ sine)
+# delayfb (slow 11 $ scalex 0.3 1 $ sine)
+# delayt (discretise (1/3) $ slow 17 $ scalex 0.01 0.001 $ saw * choose [1..8] / choose [2..20])
+

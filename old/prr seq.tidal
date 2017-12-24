@@ -1,0 +1,15 @@
+d1
+$ degradeBy 0.2
+$ slowspread iter [1,2,3,4]
+$ spread density ([1,1.25,0.5,0.25,0.75,1.5,2,1.75,2.5]++[1..0.2])
+$ spreadChoose density [0.875, 1, 1.125,1.5]
+$ s (randcat["prr*6?","prr*7?","prr*8?","prr*9?"])
+# n (slow 0.1 $ choose [0,1,2,3,4,5,6,7])
+# nudge (slow 12 $ scale (-0.5) 3 $ saw1)
+# release (slow 0.11 $ scale 0.1 0.9 $ rand)
+# cut (slow 0.12 $ choose [0,1])
+# up (slow 0.13 $ choose [-24,-21,-18,-15,-12,-9,-6,-3,0,3,6,9,12,15,18,21,24])
+# gain (slow 0.14 $ choose [0.5,0.75,1,1.25])
+# cutoff (slow 0.15 $ scale 2000 20000 $ rand)
+# shape (slow 0.16 $ scale 0 0.5 $ rand)
+# pan (slow 0.17 $ scale 0.128 0.875 $ rand)

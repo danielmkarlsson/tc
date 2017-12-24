@@ -1,0 +1,48 @@
+d1 
+$ fast (discretise (1/3) $ choose [9..21])
+$ stack[
+degradeBy 0.125
+$ randcat[s"sbu",s"srg"]
+# n (discretise (1/7) $ choose [0..8])
+# rel (discretise (1/8) $ choose [1/8,1/6,1/4])
+# pan (discretise (1/6) $ slow 0.1 $ scale 0.25 0.75 $ rand)
+# up (discretise (1/5) $ slow 0.11 $ wchoose [1,2,4][0,-12,-24])
+# gain (slow 0.12 $ scalex 0.125 2 $ rand)
+# cut 1
+# shape (slow 0.13 $ scale 0 0.5 $ rand),
+degradeBy 0.125
+$ s "rap"
+# n (discretise (1/9) $ choose [0..16])
+# pan (discretise (1/9) $ slow 0.1 $ scale 1 0 $ rand)
+# gain (slow 0.14 $ scalex 0.125 1.4 $ rand)
+# rel (slow 16 sine)
+# up (-3)
+]
+
+m1
+$ fast (discretise (1/3) $ choose [9..21])
+$ degradeBy 0.125
+$ (randcat[n"[0,3,5]",n"[3,5,7]",n"[5,7,10]",n"[7,10,12]",n"[10,12,14]",n"[12,14,15]",n"[14,15,17]"] |+| n (choose [12,0,-12]))
+# dur (discretise (1/9) $ choose [1/4,1/3,1/2])
+# cc0 (discretise (1/9) $ slow 0.1 $ rand)
+# cc1 (discretise (1/9) $ slow 0.11 $ rand)
+# cc2 (discretise (1/9) $ slow 0.12 $ scalex 0.5 1 $ rand)
+# cc3 (discretise (1/9) $ slow 0.13 $ rand)
+# cc4 (discretise (1/9) $ slow 0.14 $ rand)
+# cc5 (discretise (1/9) $ slow 0.15 $ rand)
+# cc6 (discretise (1/9) $ slow 0.16 $ rand)
+# cc7 (discretise (1/9) $ slow 0.17 $ scalex 0.25 1  $ rand)
+# cc8 (discretise (1/9) $ slow 0.18 $ scalex 0.25 1  $ rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush

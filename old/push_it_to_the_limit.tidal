@@ -1,0 +1,24 @@
+d1
+$ fast 3.125
+$ sometimesBy 0.125 (fast 1.5)
+$ s "pmb*8?"
+# n (slow 0.1 $ choose [0..9])
+# pan (slow 0.11 $ rand)
+# cut (slow 0.12 $ wchoose [8,1][0,1])
+# att (slow 0.13 $ scalex 1 0.001 $ rand)
+# hold (slow 0.14 $ scalex 0.001 3 $ rand)
+# rel (slow 0.15 $ scalex 0.001 4 $ rand)
+# begin (slow 0.16 $ scalex 2 0.001 $ rand)
+# end (slow 0.17 $ scalex 2.1 5 $ rand)
+# loop (slow 0.18 $ choose [1..4])
+# lpf (slow 0.19 $ scalex 2000 20000 $ rand)
+# hpf (slow 0.2 $ scalex 1000 20 $ rand)
+# speed (slow 0.21 $ scalex 0.5 1.25 $ rand)
+# accelerate (slow 0.22 $ scale (-0.02) 0.02 $ rand)
+# delay (slow 27 $ scalex 1 0.001 $ sine)
+# delayfb (slow 26 $ scalex 0.99 1 $ sine)
+# delayt (discretise (1/19) $ slow 0.23 $ choose [0.125..0.25] 
+/ choose [1.5,2,2.5,3,3.5,4,4.5]) 
+# gain (slow 0.23 $ scalex 0.1 3 $ rand)
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)

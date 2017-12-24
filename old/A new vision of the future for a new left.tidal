@@ -1,0 +1,10 @@
+d1 $ slowspread density [3,3,5,7,6,7,5] $ slowspread density [3,3,4,5,5,5,6,7,7,6,5,5,5,5,4] $ randcat [
+s "808" # cutoff (density 8 $ choose[20000, 10000, 5000, 2500, 1250]) # cut "1" # pan (choose[0,0.125,0.25,0.375,0.5,0.675,0.75,0.875,1]) # n "1" # gain "3.5",
+s "808" # n (choose[1,3,4,5,7]) # pan (density 21 $ scale 0 1 $ rand),
+s "dx/3" # n (choose[0,6]) # cut "2" # up (density 8 $ choose[12,0,2,3,5,-5,-7,-9]) # attack "0" # release "0.15" # gain "0.9" # cutoff (scale 20 20000 $ rand),
+s "dx/2" # n "15" # cut "3" # up (choose[12,0,2,3,5,-5,-7,-9]) # attack "0" # release "0.2" # gain "1.3" # hcutoff (scale 20 2500 $ rand) # pan (density 31 $ scale 0.25 0.75 $ rand),
+s "dx/5" # n "16" # attack "0" # release "0.3" # up (choose[12,0,2,3,5,-5,-7,-9]) #hcutoff "1250" # gain "4" # pan (density 21 $ scale 0 1 $ rand),
+s "sh9" # n (density 8 $ choose[0,1,4,5,6,8,13,20,24,29,30,32,33]),
+s "303/13" # n "7" # cut "4" # up (density 8 $ choose[12,0,2,3,5,-5,-7,-9]) # attack "0" # release "0.4",
+s "dr110/4" # n "3" # attack "0" # release "0.1" # gain "1.3" # pan (density 31 $ scale 0 1 $ rand)
+] # gain "1.5"

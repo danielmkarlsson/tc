@@ -1,0 +1,3 @@
+d1 $ sound "[cp odx] [hc 808bd? cp?]" #pan rand
+
+d1 $ s "amencutup amencutup:31"

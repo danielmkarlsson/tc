@@ -1,0 +1,33 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ degradeBy 0.0625
+$ every 5 (0.25<~)
+$ fast "1 2 1 2 2 2 2 2 2"
+$ iter (wchoose[8,4,1][1,2,4])
+$ fast (slow 0.1 $ wchoose[2,1,16][4,2,1])
+$ slow (slow 0.11 $ wchoose[4,2,1][1,4,8])
+$ (rarely $ spread _slow [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+$ s (randcat["oiz*4","oiz*4","oiz*4","oiz*2","oiz*2","oiz"])
+# n (slow 0.12 $ wchoose[1,16,17,10,14,13,12,1,19,11,13,15][0,1,2,3,4,5,6,7,8,9,10,11])
+# cut (slow 0.13 $ wchoose[1,10][0,1])
+# lpf (slow 0.14 $ (discretise'(1/8)$ wchoose[5,6,7,8,9,10,25][312,625,1250,2500,5000,10000,20000]))
+# hpf (slow 0.15 $ scale 20 200 $ rand)
+# gain (slow 0.16 $ scale 1 3 $ rand)
+# up (-3)
+# pan (fast 9 $ rand)
+# release 1
+# delay (slow 0.17 $ wchoose[5,1][0,1])
+# delayt (slow 0.18 $ choose[0.03125,0.0625,0.125,0.25])
+# delayfb (slow 0.19 rand)
+
+m1
+$ degradeBy 0.0625
+$ every 5 (0.25<~)
+$ fast "1 2 1 2 2 2 2 2 2"
+$ iter (wchoose[8,4,1][1,2,4])
+$ fast (slow 0.1 $ wchoose[2,1,16][4,2,1])
+$ slow (slow 0.11 $ wchoose[4,2,1][1,4,8])
+$ (rarely $ spread _slow [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+$ n (randcat["128*4","128*4","128*4","128*2","128*2","128"])
+# cc0 (slow 0.2 $ rand)

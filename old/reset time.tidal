@@ -1,0 +1,7 @@
+let runnow d p = do now <- getNow -- Evaluate these two lines together
+                    d $ (nextSam now) ~> p -- This indentation seems to be necessary
+runnow d1 $ degradeBy 0.5 $ sound "odx*8" # gain (scale 0 1 (12789 ~> rand)) # pan "0" # cutoff (scale 20 20000 (94756 ~> rand)) # shape (scale 0.1 0.999 (37465 ~> rand))
+runnow d2 $ degradeBy 0.5 $ sound "odx*8" # gain (scale 0 1 (21111 ~> rand)) # pan "1" # cutoff (scale 20 20000 (17456 ~> rand)) # shape (scale 0.1 0.999 (97485 ~> rand))
+cps (-1) -- Resets all of time everywhere
+cps 1 -- This starts time back up again at "zero".
+hush

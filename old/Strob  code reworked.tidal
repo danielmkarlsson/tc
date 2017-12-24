@@ -1,0 +1,10 @@
+d1 $ every 9 (0.125 <~) $ slowspread density [2,2,2,2.5,3,4] $ slowspread slow [3,3.2 .. 7] $ s "odx*8 cp hc gabba"
+# cutoff (density 1.0 $ scale 20 20000 $ rand)
+# pan (density 1.1 $ scale 0.0 1.0 $ rand)
+# shape (density 1.2 $ scale 0.0 1.0 $ rand)
+# gain (density 1.3 $ scale 1.0 2.0 $ rand)
+# cut "1"
+# end "0.3"
+
+m1 $ every 9 (0.125 <~) $ slowspread density [2,2,2,2.5,3,4] $ slowspread slow [3,3.2 .. 7] $ n "[c0*8, cs0*8, d0*4, ds0, e0, es0]"
+# velocity (density 1.4 scale 0 1 $ rand) -- Stroboscope

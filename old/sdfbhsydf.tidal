@@ -1,0 +1,8 @@
+d1
+$ fast (slow 0.11 $ choose [0.25,0.5,1,1.5,3])
+$ s "{gab cp hc odx cp odx bass1}%5"
+# pan rand
+# cut 1
+# lpf (slow 0.1 $ scale 20 20000 $ rand)
+# rel 0.1
+# up (slow 0.12 $ choose[0,2,3,5,7,8,11])

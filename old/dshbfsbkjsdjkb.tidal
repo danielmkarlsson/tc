@@ -1,0 +1,6 @@
+d1
+$ s "clp*8?"
+# pan (slow 0.1 $ rand)
+# cutoff (slow 0.11 $ scale 20 20000 $ rand)
+
+hush

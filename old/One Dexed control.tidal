@@ -1,0 +1,77 @@
+d1
+$ sometimesBy 0.25 (fast 2)
+$ spreadChoose _fast ([0.33,0.5,0.66]++[1..6])
+$ s (randcat["srg","prr","808bd","cp","rap/3?","esc"])
+# n (slow 0.21 $ choose [0..401])
+# pan (slow 64 saw)
+# rel (slow 0.46 $ scale 0 0.2 $ rand)
+# gain (slow 0.22 $ scale 0.75 3 $ rand)
+# up (slow 0.23 $ choose [-12,-9,-6,-3,0])
+# delay (slow 47 sine)
+# delayfb 0.125
+# delayt (slow 0.24 $ choose [1/8] * choose [1/64,1/32,1/16,1/8,1/4,1/2])
+# hpf (slow 17 $ scale 20 200 $ sine)
+# lpf (slow 29 $ scale 20 20000 $ sine)
+# nudge (slow 94 sine)
+
+solo $ m1
+$ degradeBy 0.125
+$ spreadChoose _fast ([0.33,0.5,0.66]++[1..6])
+$ midinote (randcat [30,32,40,50,54,60,65,70,74,78,80,87,90])
+# velocity (slow 0.1 $ scale 0 1 $ rand)
+# cc127 (discretise (1/118) $ slow 0.11 $ choose [0,0.01,0.02]) -- Preset
+# cc126 (discretise (1/107) $ slow 0.12 $ rand) -- Algorithm
+# cc125 (discretise (1/96) $ slow 0.13 $ rand) -- Feedback
+# cc124 (slow 0.14 $ rand) -- Operator 1 key velocity
+# cc123 (slow 0.15 $ rand) -- Operator 2 key velocity
+# cc122 (slow 0.16 $ rand) -- Operator 3 key velocity
+# cc121 (slow 0.17 $ rand) -- Operator 4 key velocity
+# cc120 (slow 0.18 $ rand) -- Operator 5 key velocity
+# cc119 (slow 0.19 $ rand) -- Operator 6 key velocity
+# cc118 (slow 0.20 $ wchoose [3,1][0,1]) -- freeze
+# nudge (slow 94 sine)
+# cc117 (slow 0.25 $ rand) -- freeze
+# cc116 (slow 0.26 $ choose [0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08]) -- 303 Preset
+# cc115 (slow 0.27 $ rand) -- 303 Time
+# cc114 (slow 0.28 $ rand) -- fft
+# cc113 (slow 0.29 $ rand) -- fft
+# cc112 (slow 0.30 $ rand) -- fft
+# cc111 (slow 0.31 $ choose [0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79]) {-algorithm-}
+# cc110 (slow 0.32 $ rand) -- fft
+# cc109 (slow 0.33 $ rand) -- fft
+# cc108 (slow 0.34 $ rand) -- fft
+# cc107 (slow 0.35 $ rand) -- fft
+# cc106 (slow 0.36 $ choose [0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79]) {-algorithm-}
+# cc105 (slow 0.37 $ rand) -- fft
+# cc104 (slow 0.38 $ rand) -- shift
+# cc103 (slow 0.39 $ rand) -- deviation
+# cc102 (slow 0.40 $ rand) -- partialGate
+# cc101 (slow 0.41 $ rand) -- 303 pan
+# cc100 (slow 0.42 $ wchoose [2,1][0,1]) -- 303 freeze
+# cc99 (discretise (1/8) $ slow 0.43 $ rand) -- tape feedback
+# cc98 (discretise (1/8) $ slow 0.44 $ rand) -- FM lowpass left
+# cc97 (discretise (1/8) $ slow 0.45 $ rand) -- FM lowpass right
+# cc96 (discretise (1/5) $ wchoose [1,2][0,1]) -- 303 mute
+
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush
+
+m2 $ degradeBy 0.0 $ slowspread density [3,4,5] $ randcat [n "25/2", n "27/3", n "28/5"] # cc41 (density 2 $ scale 0.1 0.7 $ rand) {-velocity-} {- # cc42 (density 3 $ scale 0 0 $ rand) {-modulator attack-}  # cc43 (density 4 $ scale 0.75 1.0 $ rand) {-modulator decay-}  # cc44 (density 5 $ scale 0.0 0 $ rand) {-carrier attack-}  # cc45 (scale 0.75 1.0 $ rand) {-carrier decay-} -} # cc48 (density 16 $ choose [0, 0.04, 0.07, 0.10, 0.14, 0.18, 0.22, 0.25, 0.28, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.7, 0.73, 0.76, 0.79]) {-algorithm-}
+
+let hush = mapM_ ($ silence) [m2]
+solo = (>>) hush
+hush
+1/32
+
+0,0.05,0.07,0.10,0.14
+
+0,0.04,0.07,0.10,0.14,0.18,0.22,0.25,0.28,0.31,0.34,0.37,0.40,0.43,0.46,0.49,0.52,0.55,0.58,0.61,0.64,0.67,0.7,0.73,0.76,0.79,0.82,0.86,0.89,0.92,0.95,1

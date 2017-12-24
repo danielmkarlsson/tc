@@ -1,0 +1,4 @@
+d1 $ s "[a cp cp a a a cp] [a a cp a]" # n (choose [30,50,75, 200]) # pan rand # speed "1"
+d2 $ s "a ~ a a cp bd" # n (choose [1,50,75,100, 200]) # pan rand # speed "1"
+d2 silence
+hush

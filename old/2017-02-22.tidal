@@ -1,0 +1,3 @@
+d1 $ s "cp" 
+#pan (slow 0.1 $ rand) #delay "1" #delaytime (slow 0.1 $ rand) #release"0.3" #cutoff (slow 0.1 $ scale 20 20000 $ rand)
+

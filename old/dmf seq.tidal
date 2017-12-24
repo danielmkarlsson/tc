@@ -1,0 +1,65 @@
+cps 1
+
+d1
+$ sometimesBy 0.1 (slow 0.9)
+$ every 1 (0.25~>)
+$ spread _slow [1]
+$ stack[
+degradeBy 0.95
+$ spreadChoose _fast [4..11]
+$ s "<dmf>"
+# pan (slow 0.1 $ scale 0.3 0.6 $ rand)
+# n (slow 0.11 $ choose (
+[204..241]++
+[0,1,13]++
+[22..34]++
+[36..47]++
+[49..51]++
+[54..66]++
+[68,70]++
+[71..113]++
+[115..118]++
+[123,127,129]++
+[137..145]++
+[147,148,151,153,156,158]++
+[160..164]++
+[172..182]++
+[184..187]++
+[196..199]
+))
+# gain (slow 0.12 $ scale 1 2 $ rand)
+# cut (slow 0.13 $ choose [0,1,1])
+# hpf (slow 0.14 $ scale 20 160 $ rand),
+degradeBy 0.25
+$ spreadChoose _slow [1..5]
+$ spreadChoose _fast [1..9]
+$ slow 2
+$ s "<txz*2>"
+# hpf (slow 0.15 $ scale 20 3000 $ rand)
+# pan "1 0"
+# up (slow 0.16 $ choose [0.5] * choose [-12..12] + choose [0,12]),
+degradeBy 0.5
+$ spreadChoose _fast [4..11]
+$ slow 2
+$ s "<srg*2>"
+# n (slow 0.17 $ choose [0..11])
+# pan "0 1"
+# up (slow 0.16 $ choose [0.5] * choose [-12..12] + choose [0,-12])
+# gain 1.5
+# rel 0.5,
+s "rap/2?"
+# n (slow 0.18 $ choose [0..99])
+# cut 1
+# up "-6",
+s "prr*9?"
+# n (choose [0..99])
+# pan (slow 378 sine),
+s "8080*2?"
+# n (irand 99)
+# pan (slow 378 $ scale 1 0 sine)
+# rel (slow 347 $ scale 0 1 sine)
+]
+# delay (slow 999 $ scale 0 1 $ saw)
+# delayfb (slow 99 $ scale 0.5 1 $ saw)
+# delayt (slow 0.17 $ scale 0.000000000000000000000000000001 0.001 $ rand * choose [1,2,4,8,16,32,64,128,256,512])
+# nudge (slow 32 $ scale 0 2 sine)

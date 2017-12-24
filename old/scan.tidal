@@ -1,0 +1,3 @@
+d1 $ up (slow 4 $ scan 4) # sound "arpy"
+
+d1 $ jux rev $ n (slow 8 $ slowcat [scan 8, density 8 $ run 8]) # sound "amencutup" # speed 2

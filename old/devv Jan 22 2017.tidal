@@ -1,0 +1,16 @@
+d1 $ degradeBy 0.999 $ (7812~>) $ every 2 (1~>) $ iter 5 $ slow 0.1 $ stack[
+s "808bd"
+#n (slow 0.1 $ choose [0..24])
+#pan (slow 99 $ scale 0 1 $ saw1)
+#cut (choose [0, 1, 1, 1])
+#up (slow 0.12 $ choose [-36, -33 .. 0])
+#end (slow 39 $ scale 0 0.01 $ saw1)
+#gain (slow 0.13 $ scale 1 8 $ rand)
+#shape (slow 0.14 $ scale 0 0.9999 $ rand)
+#cutoff (slow 0.15 $ scale 20 20000 $ rand)
+#delaytime (slow 0.16 $ scale 0.005 0.04 $ rand)
+#delayfeedback "1"
+#delay (slow 256 $ scale 0.1 0.05 $ saw1)
+#attack (slow 27 $ scale 0 0.125 $ tri1)
+#release (slow 28 $ scale 0 1.1 $ saw1)
+]

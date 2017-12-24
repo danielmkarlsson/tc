@@ -1,0 +1,31 @@
+m1 $ n (randcat["0*3","0*2","0/7","0/17","0/27","0/37"])
+# cc2 (slow 0.1 $ scale 0 0.75 $ rand) --wavewrap
+# cc3 (slow 0.11 $ scale 0.9 1 $ rand) --lowpassfilter
+# cc4 (slow 0.12 $ scale 0 1 $ rand) --tempo
+# cc5 (slow 0.13 $ scale 0 0.5 $ rand) --masterOscillator decay
+# cc6 (slow 0.14 $ scale 0.25 0.5 $ rand) --masterOscillator frequency
+# cc8 (slow 0.15 $ scale 0 1 $ rand) --slaveOscillator decay
+# cc9 (slow 0.16 $ scale 0 1 $ rand) --slaveOscillator level
+# cc10 (slow 0.17 $ scale 0 0.5 $ rand) --slaveOscillator frequency
+# cc12 (slow 0.18 $ scale 1 1 $ rand) --click level
+# cc13 (slow 0.19 $ scale 0 1 $ rand) --noise level
+# cc14 (slow 0.20 $ rand) --noise filter type
+# cc15 (slow 0.21 $ scale 0 0.5 $ rand) --noise filter frequency
+# cc16 (slow 0.22 $ scale 0 0.5 $ rand) --noise filter resonance
+# cc19 (slow 0.23 $ scale 0 0.5 $ rand) --noise filter sweep
+# cc20 (slow 0.24 $ scale 0 0.25 $ rand) --noise filter decay
+# cc21 (slow 0.25 $ scale 0.5 1 $ rand) --envelope decay
+# cc22 (slow 0.26 $ scale 0.25 0.75 $ rand) --pan
+# cc23 0 --clock gate
+
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Driver Bus 1" 1 ccallController
+m2 <- midiStream devs "IAC Driver Bus 1" 2 ccallController
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9]
+hush

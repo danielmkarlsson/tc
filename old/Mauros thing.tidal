@@ -1,0 +1,24 @@
+cps 0.5
+
+solo $
+  d1 $
+  slowspread (\wa ->
+               slowspread (\wb ->
+                            sometimes (within(wa, wb)
+                                       (slowspread (\f ->
+                                                     (slowspread (\v ->
+                                                                   (f v))
+                                                      [0.25, 0.25, 0.75]))
+                                        [(stut 4 0.75), (stut 2 0.75), (<~),
+                                         (stut 4 0.75), (stut 2 0.75), (~>)])))
+               [0.5, 0.75, 1])
+  [0.25, 0.25, 0, 0] $
+  stack[
+    slowcat[
+       n "{0 [~ 0] ~ 0}%8",
+       n "0(3,8)"
+       ] # s "odx",
+    s "hc(4, 16, 2)",
+    s "hc([8, [1 2 4 8 12 14 16]/6],16)" # sustain "0.025",
+    sometimes (0.25 <~) $ s "cp(2, 16, [3 8 9 2]/4)" # sustain (scale 0.05 0.125 rand)
+    ]

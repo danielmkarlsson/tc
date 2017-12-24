@@ -1,0 +1,36 @@
+d2 
+$ slow 6.9
+$ sometimesBy 0.5 (iter 7)
+$ degradeBy 0.5
+$ sometimesBy 0.5 (17<~)
+$ spreadChoose _fast [1..19]
+$ spread _fast [1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9]
+$ iter 8
+$ s "tuu?"
+# pan (slow 2.11 $ rand)
+# gain (slow 0.12 $ scale 0 1 $ rand)
+# up (slow 0.14 $ choose[-30..10])
+# n (slow 0.19 $ choose [0..9])
+# lpf (slow 0.2 $ scale 20 20000 $ rand)
+# nudge (slow 0.21 $ rand)
+# comb rand
+
+d2 
+$ slow 2.9
+$ sometimesBy 0.2 (iter 3)
+$ degradeBy 0.5
+$ sometimesBy 0.5 (19<~)
+$ spreadChoose _fast [1..9]
+$ spread _fast [1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9]
+$ iter 8
+$ s "tuu?"
+# pan (slow 0.11 $ rand)
+# gain (slow 0.12 $ scale 0.2 1 $ rand)
+# up (slow 0.14 $ choose[-30..10])
+# n (slow 0.19 $ choose [0..9])
+# lpf (slow 0.2 $ scale 20 20000 $ rand)
+# nudge (slow 0.21 $ rand)
+
+import Sound.Tidal.SpectralTricks
+
+let wchoose weights values = choose $ concatMap (\x ->replicate (fst x) (snd x)) (zip weights values)

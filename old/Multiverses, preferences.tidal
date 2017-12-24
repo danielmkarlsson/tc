@@ -1,0 +1,29 @@
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+
+d1
+$ every 9 (fast 1.25)
+$ every 3 (spread _slow [1,1])
+$ slow (discretise (1/5) $ slow 0.21 $ wchoose [4,3,2,1][0.75,1,2,4])
+$ fast (discretise (1/5) $ slow 0.17 $ wchoose [1,2,3,4,5,6,7][1,1.125,1.25,1.375,1.5,1.625])
+$ stack[
+degradeBy 0.125
+$ s "<bass1*8,cp/3,hc(3,8)>"
+# gain (slow (choose [1..16]) $ scale 0 2 $ sine)
+# up (randcat ["<12,15,19,22,24,26,29,31,34>","<17,20,25,27,29,32,36>","<19,22,24,29,31,41>"])
+# hpf (slow 0.1 $ scale 20 2000 $ rand)
+# pan (slow 0.11 $ rand)
+# lpf (slow 0.12 $ scale 20 5000 $ rand)
+# rel (slow 0.13 $ scale 0.1 2 $ rand)
+# n (slow 0.18 $ choose [5,7,9,13,19]),
+s "808bd:9*2?"
+# gain (slow 0.14 $ scale 0 3 $ rand)
+# lpf (slow 0.15 $ scale 20 20000 $ rand)
+# up (slow 0.16 $ choose [12,9,6,3,0,-3,-6,-9,-12])
+# rel (slow 0.17 $ scale 0.5 3 $ rand)
+]
+# room (slow 0.19 $ scale 0 0.0125 $ rand)
+# size (slow 0.2 $ scale 0.9 1 $ rand)
+# delayt (discretise (1/16) $ slow 0.13 $ choose [0.125,0.625] * choose [1/2,1/4,1/8,1/16,1/32,1/64,1/128])
+# delayfb (slow 0.14 $ scale 0.1 1 $ rand)
+# delay (discretise 1 $ slow 0.14 $ scale 0.125 0 $ rand)
+# nudge (slow 16 $ sine)

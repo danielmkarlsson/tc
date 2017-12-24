@@ -1,0 +1,26 @@
+d1 
+$ sometimesBy (1/16) ((1/4)<~)
+$ sometimesBy (1/8) (iter 4)
+$ sometimesBy (spread fast(replicate 256 1))
+$ degradeBy 0.2
+$ fast (choose[1,1.1..16])
+$ s (randcat[
+"amencutup","rap","dx7"
+])
+# rel (slow 17 $ scale 0.01 2 $ sine)
+# cut (slow 0.14 $ wchoose [5,1][1,0])
+# n (slow 0.1 $ choose [0..999])
+# gain 9
+# up (discretise (1/2) $ slow 0.11 $ wchoose [1..98] [-49..0])
+# loop 999
+# begin (slow 27 $ sine)
+# end (slow 7 $ scale 0.001 1 $ sine)
+# room (slow 0.13 $ wchoose [20,1] [0,0.001])
+# size (slow 11 $ scale 0.9 1 $ sine)
+# orbit 1
+# delay (slow 19 $ scale 1 1 $ sine)
+# delayfb (slow 17 $ scale 1 1 $ sine)
+# delayt (1/47 * choose [0,2,3,5,7,8,11])
+# hpf (slow 5 $ scalex 20 1000 $ sine)
+# hresonance (slow 0.12 $ scale 0.75 1 $ rand)
+# pan (slow 0.15 $ rand)

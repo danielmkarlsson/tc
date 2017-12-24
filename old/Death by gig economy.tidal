@@ -1,0 +1,7 @@
+m1 $ (3467 <~) $ degradeBy 0.0 $ slowspread density [0.5, 1.0 .. 1.5] $ note "c1 d4 g2 d3" # modwheel (scale 0.5 1.0 $ rand) # dur "0.5" # velocity (scale 0 127 $ rand)
+m2 $ (2673 <~) $ degradeBy 0.0 $ slowspread density [0.5, 1.0 .. 1.5] $ note "a1 e2 g4" # modwheel (scale 0.5 1.0 $ rand) # dur "0.5" # velocity (scale 0 127 $ rand)
+m3 $ (6874 <~) $ degradeBy 0.0 $ slowspread density [0.5, 1.0 .. 1.5] $ note "d1 f3" # modwheel (scale 0.5 1.0 $ rand) # dur "0.5" # velocity (scale 0 127 $ rand)
+
+hush
+
+cps 0.25

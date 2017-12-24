@@ -1,0 +1,8 @@
+d1
+$ s "nvc*2"
+# attack "0.2 0"
+# hold "0 0.4"
+# rel "0.1 0.4"
+# up (slow 0.1 $ choose [0,2,3,5,7,8,11] + choose [0,12,24])
+
+d1 $ slow (4/3) $ sound "ho ho:2 ho:3 hc"

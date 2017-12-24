@@ -1,0 +1,31 @@
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+import Sound.Tidal.MIDI.CC -- This right here adds #cc127 capability.
+devs <- midiDevices
+displayOutputDevices >>= putStrLn
+m1 <- midiStream devs "IAC Bus 1" 1 ccallController -- See here how it's called ccallController. These might need renaming 4 yur comp.
+m2 <- midiStream devs "IAC Bus 1" 2 ccallController
+-- m2 <- midiStream devs "IAC Bus 2" 2 synthController -- This is only good for the midinote stuffs.
+let hush = mapM_ ($ silence) [m1,m2,d1,d2,d3,d4,d5,d6,d7,d8,d9] -- edit this list. It changes what hush means.
+solo = (>>) hush
+hush
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
+import qualified Sound.Tidal.Scales as Scales
+import qualified Sound.Tidal.Chords as Chords
+
+d1
+$ spreadChoose _slow [0.05,0.06..1]
+$ s "prr?"
+# n (slow 0.1 $ choose [0..7])
+# gain (slow 0.11 $ scale 0 2 $ rand)
+# up (slow 0.12 $ choose [-12,-9,-6,-3,0,3,6,9,12])
+# pan (slow 0.13 $ rand)
+
+d1 silence
+
+m1
+$ slow (choose[1,0.5,0.25])
+$ fast (choose[0.0625,0.125,0.25,0.5,0.75,1])
+$ midinote (toScale Scales.melodicMinor (randcat["0","1","2","3","4","5","6","7","8","9","10","11"]+(99<~randcat["0","12","24","36"])))
+# dur 1
