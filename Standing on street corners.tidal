@@ -1,0 +1,49 @@
+m1                  
+$ (947<~)
+$ sometimesBy (1/8) (slow 14)
+$ degradeBy (1/7)
+$ fast (choose [1..11])
+$ slow (choose [1,1.1..3])
+$ n (randcat["[0,3,5]","[3,5,7]","[5,7,8]","[7,8,11]","[0,5,7]","[3,7,8]","[5,8,11]"] - choose[-60,-48,-36,-24,-12,0,12])
+# dur (slow 0.12 $ scalex 0.1 0.5 $ rand)
+# cc127 (slow 0.1 $ rand)
+# cc126 (slow 0.11 $ rand)
+# cc125 (slow 0.12 $ rand)
+# cc124 (slow 0.16 $ rand)
+# cc123 (slow 0.17 $ rand)
+# cc122 (slow 0.19 $ rand)
+# cc121 (slow 0.20 $ rand)
+# cc120 (slow 0.22 $ wchoose [18,1] [0,1])
+# cc119 (slow 0.23 $ rand)
+# cc118 (slow 0.24 $ wchoose [1,16] [0,1])
+
+d1                  
+$ (947<~)
+$ sometimesBy (1/8) (slow 14)
+$ degradeBy (1/7)
+$ fast (choose [1..11])
+$ slow (choose [1,1.1..3])
+$ s (randcat["808bd","808","cal","sbu"])
+# n (slow 0.14 $ choose [1,3,5])
+# up (choose [-6,-3,3,6])
+# gain (slow 0.15 $ scalex 1 2 $ rand)
+# pan (slow 64 $ saw)
+# rel 4
+
+d2                  
+$ (947<~)
+$ sometimesBy (1/8) (slow 14)
+$ degradeBy (1/4)
+$ fast (choose [1..11])
+$ slow (choose [1,1.1..3])
+$ s (randcat["jus"])
+# n (slow 0.14 $ choose [1..35])
+# up (choose [-6,-3,0])
+# gain (slow 0.15 $ scale 0.5 1.4 $ rand)
+# pan (slow 64 $ scale 1 0 $ saw)
+# loop (slow 0.18 $ wchoose[6,3,1] [0..2])
+# hpf (slow 0.21 $ scalex 40 1000 $ rand)
+
+cps (-1)
+
+cps 1
