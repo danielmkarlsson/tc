@@ -1,0 +1,9 @@
+d1
+$ fast (slow 0.1 $ choose [1,1.125..16])
+$ s "gabor"
+# n (irand 72 - 48)
+# attack (slow 0.11 $ scalex 1 8 $ rand)
+# rel (slow 0.12 $ scalex 1 8 $ rand)
+# sustain (slow 0.14 $ scalex 6 12 $ rand)
+# pan (slow 0.15 $ rand)
+# gain (slow 0.16 $ scalex 0.1 1 $ rand)

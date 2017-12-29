@@ -1,0 +1,17 @@
+d1$fast(choose[1..18])$degradeBy 0.4$s(randcat["cp","bass","gab","house","arp","numbers","bass1"])#n(every 4(iter 8)$"3 4 6 7 9 2 5 1")#cut(irand 5)#rel rand#orbit 1#up(irand(-19))#delayfb 1#delayt(0.5/choose[1..64])#gain 4#delay(discretise(1/18)$scale 0 0.5rand)#shape rand#pan rand
+
+d1
+$ fast (choose [1..18])
+$ degradeBy 0.4
+$ s (randcat ["cp","bass","gab","house","arp","numbers","bass1"])
+# n (every 4 (iter 8) $ "3 4 6 7 9 2 5 1")
+# cut (irand 5)
+# rel rand
+# orbit 1
+# up (irand (-19))
+# delayfb 1
+# delayt (0.5 / choose [1..64])
+# gain 4
+# delay (discretise (1/18) $ scale 0 0.5 rand)
+# shape rand
+# pan rand
