@@ -1,0 +1,385 @@
+d1 -- Collections  
+$ slow (choose $ [0.05,0.1..1])
+$ s "blip*3?"
+# up (discretise 9 $ choose [-48,-45..0])
+# delay 1
+# delayt (slow 9 $ scale 0.03 1.0e-31 $ saw)
+# delayfb 0.95
+
+d1 -- Through an intermediary
+$ slow (choose $ [0.2,0.3..2] ++ [0.04,0.039..0.003])
+$ s "odx*3?"
+# gain (fast 2 $ scale 0.5 2 $ rand)
+# hpf (slow 3 $ scale 20 20000 $ saw) 
+# pan (slow 9 $ rand)
+
+d1 -- Regurgitation
+$ slow 0.1 
+$ s "amencutup"
+# n (choose [0..31])
+# pan (slow 198 $ saw)
+# nudge (slow 99 $ scale (-0.5) 3 $ sine)
+# up 3 
+# rel (slow 2 $ rand)
+# gain 2
+
+d1 -- Hidden saws
+$ fast (choose [1..9])
+$ s "808cy*3?"
+# speed (slow (choose [1..9]) 
+$ scale 0.5 8 $ sine)
+# pan (fast 9 $ rand)
+
+d1 -- Intentionally left blank
+$ s "gabba*8"
+# n (choose [0,0,0,1]) 
+# lpf (fast 8 $ scale 20 20000 $ rand)
+# pan (fast 9 $ choose [0,0.125..1])
+# cut (fast 7 $ choose [0,1,1])
+# shape 0.99
+
+d1 -- Adversarial
+$ slow 0.08 
+$ randcat [s"odx", s"cp", s"hc", s"bd", s"clak"]
+# rel 0.1
+# gain (slow (choose [9,5,7]) $ scale 0.5 2 $ saw)
+# pan (fast 9 $ rand)
+
+d1 -- Formless insistence
+$ fast 1.75
+$ s "808*49"
+# n 5
+# pan (fast (choose [1,4,7,10]) $ scale 1 0 $ saw)
+# up (slow 40 $ scale (-79) 9 $ saw)
+# end 0.1 
+# shape 0.9
+# gain 0.75
+
+d1 -- Caught at outermost position
+$ fast (choose $ [1,1.5..4] 
+++ [3.75,3.5..1.25] 
+++ [2,2.75..5.75] 
+++ [4.5,3.25..0.75])
+$ s "odx hc cp sf d if"
+# pan (fast 9 $ rand)
+# cut 1
+# gain 1.5
+
+d1 -- Provided in addition to what is already present
+$ slow 3.5 
+$ spread slow [0.2,0.1,0.1] 
+$ superimpose (iter 4) 
+$ s "808:7? house:5*2?"
+# rel "0.1 2"
+# gain "1.6 1"
+# pan (fast 9 $ rand)
+
+d1 -- Half seeming
+$ foldEvery [3..19] (slow 0.9) 
+$ spread slow [0.05,0.1,0.2] 
+$ smash 9 [9] 
+$ s "bd v*99"
+# n (run 4) 
+# pan tri 
+# up "1 0 80 60 70 50 30 20 10 40 90 1 3"
+
+
+
+
+
+
+
+
+d1 -- All takes rerouted
+$ slow 0.1 
+$ s (randcat ["hc","bd","odx","jazz","~"])
+# pan (slow 66 $ saw)
+# shape (slow 77 $ saw)
+# end (slow 88 $ saw)
+# lpf (slow 99 $ scale 200 20000 $ saw)
+
+d1 -- Equal to past values 
+$ iter (choose [1,2,3])
+$ spread _slow [0.05,0.09..1] 
+$ s "d hc? cp"
+# delayt (scale 1.0e-6 0.1 $ rand)
+# delay 1 
+# delayfb 0.93 
+# pan (fast 9 $ rand)
+
+d1 -- Held accountable
+$ slow 0.09 
+$ stack [
+s "blip?"
+# cut 1 
+# up (choose [-24,-22, -21,-9])
+# lpf 999, s"odx?"]
+# gain (fast 2 $ scale 0.8 1.4 $ rand) 
+# pan(fast 3 $ rand) 
+# gain 1.3
+
+d1 -- Various pointers
+$ fast 1.1 $ every 7 (rev)
+$ every 9 (1.5~>)
+$ every 5 (slow 1.5)
+$ s "hc ul~drum bd*2 feel"
+# n (choose ([1,2] ++ [5..7]))
+# cut "{1,0}"
+# pan saw
+# gain 1.1
+
+d1 -- Jig to your saw
+$ slow 0.1 
+$ stack [
+s "haw"
+# end 0.1 
+# n (irand 5)
+# pan 0.25, 
+s "stab" 
+# n (irand 22)
+# cut 1 
+# pan 0.75, 
+s "bd", 
+s "hc?"
+]
+# shape 0.5
+# up "-9"
+
+d1 -- Had time to
+$ jux (slow 0.5)
+$ every 7 (slow 3) 
+$ every 5 (0.5<~)
+$ s (every 7 (rev) $ "drum*3? jazz*5? bass?")
+# n (rarely (rev) $ "5 4 3 7")
+# end saw
+# gain 1.4
+
+d1 -- Unbroken lineage 
+$ jux rev
+$ slow 0.1
+$ s"click?" 
+# n (choose [2,3,3])
+# lpf (scale 20 20000 $ rand)
+# hpf (slow 0.6 $ scale 18000 20 $ rand)
+# shape (slow 2 $ rand) 
+# gain 1.8
+
+d1 -- Turn to face your deceitful nature
+$ iter 2
+$ slow 0.1 $ 
+(s $ randcat $ "808" : (p. ("808" ++) 
+<$> words "bd cy hc ht lc lt mc mt oh sd"))
+# n (irand 24)
+# pan (fast 9 $ rand)
+# cut 1
+# gain 1.5
+
+d1 -- Overthrown governments anonymous
+$ every 2 (1~>)
+$ iter 5 $ slow 0.1 $ s "hh27"
+# n (slow 0.1 $ choose [0..12])
+# pan (fast 9 $ rand)
+# cut (choose [0,1,1,1])
+# up (choose [-12,-9..12])
+# gain 2
+
+d1 -- Any of the aforementioned
+$ every 4 (1.5<~) 
+$ iter 2
+$ slow 0.1
+$ stack [
+s "808bd?"
+# up (choose [-6,-3..9]),
+s "bass?"
+# up (choose [-9,-3,9])]
+# n (choose [0..9])
+# cut 1
+# gain 1.3
+
+d1 -- Synchronized block
+$ stack [
+s "{hc, erk?, 808bd:1?}%11"
+# gain (slow 2 $ choose [0.4,1,1.2])
+# cut (choose[0,1,1,1]),
+s "808:3/3?"
+# gain 2]
+# pan (fast 9 $ rand)
+
+d1 -- Keeping lines parallel 
+$ slow 0.1
+$ s "tech"
+# n (choose [5..9])
+# speed 2
+# delay 1
+# delayt (slow (choose [1,4.5..99]) 
+$ scale 0.005 0.0325 $ saw)
+# delayfb 0.8
+# gain 1.8
+
+d1 -- Further misuse
+$ slow 0.15
+$ s (randcat["if*3", "ifdrums", "if*2"])
+# cut 1
+# n (irand 4)
+# pan (fast 9 $ rand)
+# lpf (scale 200 9999 $ rand)
+# up (scale (-9) 9 $ rand)
+# gain 1.4
+
+d1 -- Incongruous
+$ slow (choose [0.015, 0.02..0.2])
+$ s "bass1"
+# rel (slow 8 $ saw)
+# n 17
+# up (choose [1,5.5..24])
+# hpf (slow 7 $ scale 20 2000 $ saw)
+# pan (fast 9 $ rand)
+
+d1 -- Same entry level type criminality
+$ s "foo*9"
+# n (irand 99)
+# speed (scale(-1) 2 $ rand)
+# cut 1
+# bandf(scale 200 4000rand)
+# end (scale 0.01 0.3 $ rand)
+# accelerate (-0.25)
+# gain 1.7
+
+d1 -- Rows of sets
+$ stack[
+spread slow [1,1,1,1] 
+$ iter 4
+$ s "bass1*8"
+# cut 1
+# n (choose([2..4] ++ [12,22])),
+s "808*4?"
+# n 1
+# up 5,
+s "odx*8?"
+# up 11]
+# pan saw
+# gain 1.2
+
+d1 -- Clocking as wide as possible
+$ iter "1 2 3" 
+$ jux (rev) 
+$ every 2 (striate' 9 (4/7)) 
+$ striate' 12 (2/2) 
+$ s "drumtraks*4"
+# n (slow 3 $ choose [0,1,2,6,8,9,11,12]) 
+# pan (slow 999 $ saw)
+
+d1 -- Halves and thirds 
+$ slow 0.2 $ stack[
+s (randcat ["tech*2", "808bd", "d", "cp"])
+# n (choose [0,2,5,6])
+# cut 1
+# up (choose [0,12]),
+s "808bd*2"
+# n"0 1"]
+# pan (fast 9 $ rand)
+
+d1 -- Recalibrated that tendency
+$ slow (1/8.75) 
+$ s (randcat ["pad/2", "pad", "pad/4"])
+# n 1
+# begin 0.8
+# end 0.89
+# up (choose [-36,-33..7])
+# cut 1
+# pan (slow 33 $ tri)
+# gain 1.8
+
+d1 -- On the way over
+$ iter 8
+$ stack[
+s "e*11"
+# delay 1
+# delayfb 0.93
+# delayt (scale 0.02 0.0025 $ rand)
+# orbit 0,
+s "odx*11?"
+# orbit 1]
+# pan (fast 9 $ rand)
+# gain 1.1
+
+d1 -- At regular intervals
+$ degradeBy 0.1
+$ jux (slow 1.000002)
+$ iter 4
+$ stack[
+s "stab*8"]
+# n (choose ([1..9] ++ [12,15,16]))
+# up (choose [12,14,15,17,7,8,11]) 
+# gain "1.12 1"
+
+d1 -- Orbits
+$ stack[
+s "cp*9"
+# nudge (slow 9 $ scale 0 3 $ sine)
+# hpf (slow 5 $ scale 9999 20 $ sine)
+# pan (slow 7 $ sine),
+s "808bd:6*2"
+# pan (slow 3 $ saw)]
+# gain 1.2  
+
+d1 -- A stern talking to
+$ spread _slow [0.5..3] 
+$ stut 99 9 1 
+$ spread _fast [5,7,9]
+$ s"gab?"
+# n (irand 7)
+# up (choose [-29..0]) 
+# pan (fast 9 $ rand)
+# end 0.1
+# gain 0.11
+
+d1 -- Spun
+$ stack[ 
+s "808*9"
+# n"1"
+# nudge (slow 5 $ sine),
+s "808*5"
+# n"4"
+# nudge (slow 7 $ sine),
+s "808*7"
+# n 5
+# nudge (slow 6 $ sine)]
+# pan (fast 9 $ rand)
+# up 3
+
+d1 -- Gently tilted 
+$ s "ades2*9"
+# n (choose[0..8])
+# gain (scale 1 2 $ rand)
+# loop (slow 19 $ run 9)
+# nudge (slow 9 $ sine)
+# pan (slow 2 $ rand)
+# end (slow 9 $ scale 0.3 1 $ sine)
+
+d1 -- Ran that through quick
+$ slow (choose [0.7..1]) 
+$ iter 4 
+$ s "{909?, ab, rm, east?}%8"
+# n (choose [2,4,5,7,8,11])
+# pan (choose [0,0.125..1])
+# up (fast 9 $ choose [0,2..12])
+
+d1 -- On the mend
+$ slow 0.1 
+$ s "armora*2"
+# n 6
+# rel 0.5
+# lpf (fast 9 $ scale 20 9999 $ rand)
+# lpq (fast 8rand)
+# speed (scale 0 3 $ rand)
+# pan "0 0.25 0.5 0.75 1"
+
+d1 -- Raves might have been different then, who knows
+$ iter 9 
+$ spreadChoose _slow [0.125, 0.25, 0.5,1]$
+s "bassdm*24 cp?"
+# n (run 24)
+# up (run 23)
+# shape (slow 9 $ scale 0.5 0.9 $ saw)
+# pan (slow 18 $ saw)
