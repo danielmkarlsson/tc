@@ -1,0 +1,29 @@
+{-|
+In the long run, making programs free is a step toward the post-scarcity world, where nobody will have to work very hard just to make a living. People will be free to devote themselves to activities that are fun, such as programming, after spending the necessary ten hours a week on required tasks such as legislation, family counseling, robot repair and asteroid prospecting. There will be no need to be able to make a living from programming. - Richard Stallman
+-}
+
+d1
+$ sometimesBy (1/13) (slow 2)
+$ sometimesBy (1/9) (iter 3)
+$ spaceOut (map (1/) [1..15])
+$ fast "<1 2 3 4 5 6 7 8 9 10 11 12 11 10 9 8 7 6 5>"
+$ slow "<2 3 2 1 1 1 1>"
+$ degradeBy 0.125
+$ s "plucksc"
+# freq (discretise (1/9) $ randcat[100,200,300,400,500,600,700] / wchoose [1,2][1,2] * wchoose [1,2,4,8,16][5,4,3,2,1])
+# coef (discretise (1/5) $ slow 0.1 $ scalex 0.00001 1 $ rand)
+# sustain (discretise (1/7) $ slow 0.11 $ choose [0.125,0.25,0.5,1,2,4,8])
+# pan (discretise (1/11) $ slow 0.12 $ rand)
+# lpf (slow 0.13 $ scalex 2500 5000 $ rand)
+# orbit 1
+# delay (discretise (1/19) $ slow 0.14 $ scalex 1 0.01 $ sine)
+# delayfb (discretise (1/17) $ slow 0.15 $ scalex 1 0.75 $ rand)
+# delayt (discretise (1/15) $ slow 0.16 $ 1/64 / choose [8..64] + choose [0.01..0.05] * wchoose [1,2,4,8][8,4,2,1])
+# att 8
+# rel 8
+# gain 8
+
+let (freq, f_p) = pF "freq" (Just 440)
+let (decay, f_p) = pF "decay" (Just 5)
+let (coef, f_p) = pF "coef" (Just 0.1)
+let wchoose weights values = choose $ concatMap (\x -> replicate (fst x) (snd x)) (zip weights values)
