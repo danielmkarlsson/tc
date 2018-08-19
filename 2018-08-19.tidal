@@ -1,0 +1,19 @@
+d1                                          -- The first stream (on it's own line makes it easy to spot quick)
+$ (236<~)                                   -- I think of this as setting the seed for all future stochastic operations
+$ fast 4                                    -- Speeds everything up 4 times
+$ somecyclesBy (1/15) (1<<~)                -- 1/15 chance of pushing a pattern element 1 step to left
+$ somecyclesBy (1/13) (2<<~)                -- 1/13 chance of pushing a pattern element 2 steps to left
+$ somecyclesBy (1/11) (3<<~)                -- 1/11 chance of pushing a pattern element 3 steps to left
+$ s "har"                                   -- Chooses sample folder (harpsichord samples)
+# n ("<1 3 4 1 3 6 4 3>"                    -- Linear sequence (numbers ascending chromatically in folder)
++ (rep (1/3) $ wchoose [1,8,16] [12,24,36]) -- 3 repeats, weighted choice of octave (weights in 1st array, values in 2nd)
++ "<0 0 0 0 0 5>"                           -- Linear sequence of 6 additions to # n (new lines for clarity)
++ "<0 0 0 0 0 0 0 0 2>"                     -- Linear sequence of 9 additions to # n  
+- "<0 0 0 0 0 0 0 0 0 0 0 7>"               -- Linear sequence of 12 subtractions from # n 
+- "<0 0 0 0 0 0 0 0 0 0 0 0 0 2>"           -- Linear sequence of 14 subtractions from # n
+)                                           -- This paranthesis ends # n (on it's own line for clarity)
+# pan (slow 0.1 $ rand)                     -- # pan gets its own unique speed from the pseudorandom stream (deterministic)
+
+cps (-1)                                    -- "Resets" "time" to "zero" (sorry about the quotes; dense no-state lore) 
+                                            
+cps 1                                       -- Starts "time" back up again from seed (line 2)
