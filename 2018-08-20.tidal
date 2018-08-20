@@ -1,0 +1,21 @@
+d1                                                      -- A stream
+$ (382<~)                                               -- Did I really try 382 different ways to collapse the wavefront?
+$ stack[                                                -- Stack let's you put as many things as you like in a stream
+s "cel/16"                                              -- Lowest note, full duration Celesta sample gets played every 16 cycles
+# gain 0.85,                                            -- Took the amplitude down a tad (who knows about db w/ value range 0 to 1?)
+sometimesBy (1/3) (spaceOut (map (1/) [0.5,0.7..2.9]))  -- 1/3 likelyness of the Ben Gold SpaceOut trick happening
+$ every 2 (spaceOut (map (1/) [0.3,0.6..4.9]))          -- Same every 2 cycles w/ different values than above (0.3 step size to 4.9)
+$ fast (rep (1/2) $ wchoose [8,5,1,3,10] [3,5,7,9,11])  -- Weighted speed choice repeats over two cycles
+$ s "cel"                                               -- The Celesta samples in the folder are organized a lil differently
+# n (rep (1/4) $ 0 + wchoose [1,2..20] [0,5..29]        -- Repeats choice 4 times, starts w/ 0 then adds wighted choice
++ wchoose [4,3..1] [0..3])                              -- Because of how the files are organazized in the folder this chooses octave
+# pan (slow 64 $ scale 0.25 0.75 $ tri)                 -- Tri doesn't linger at the edges like sine for the panning over 64 cycles
+# gain (slow 0.1 $ scalex 0.4 1.1 $ rand)               -- Exponential scaling is nice for gain here (0 not ok so use 0.00001 if bad)
+# rel (slow 0.11 $ scalex 0.2 0.5 $ rand)               -- Long samples makes it hard to do fast rhythms so quick n dirty workaround
+# end (slow 0.11 $ scalex 0.2 0.5 $ rand)               -- # end uses the same slow of 0.11 to end right where the release ends
+# lpf (slow 0.12 $ scalex 640 20000 $ rand)             -- Freqs in octaves so: 20,40,80,160,320,640 is five octaves up from 20
+]                                                       -- The stack ends here
+
+cps (-1)                                                -- Rewind
+
+cps 1                                                   -- Start from the top
