@@ -38,4 +38,4 @@ $ s (randcat(                                                               -- R
 
 cps (-1)                                                                    -- Rewind
                                                                             
-cps 1                                                                       -- Start from (444<~) (see line 3 above)
+cps 1                                                                       -- Start from (762<~) (see line 3 above)
