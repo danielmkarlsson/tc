@@ -1,0 +1,41 @@
+d1                                                                          -- A stream
+$ slow 1.5                                                                  -- Slows everything down a smidgeon
+$ (762<~)                                                                   -- Seed or the amount of cycles to rewind, depending on perspective 
+$ sometimesBy (1/3) (spaceOut (map (1/) ([0.25,0.5..4]++[3.75,3.5..0.5])))  -- Ben Gold's spaceOut trick 1/3 likeliness, up then down
+$ somecyclesBy (1/10) (2.5<~)                                               -- 1/10 likeliness of rewinding 2.5 cycles per cycle
+$ sometimesBy (1/9) (2.25<~)                                                -- 1/9 likeliness of rewinding 2.25 cycles per event
+$ somecyclesBy (1/8) (2<~)                                                  -- 1/8 likeliness of rewinding 2 cycles per cycle
+$ somecyclesBy (1/7) (1.75<~)                                               -- 1/7 likeliness of rewinding 1.75 cycles per cycle
+$ sometimesBy (1/6) (1.5<~)                                                 -- 1/6 likeliness of rewinding 1.5 cycles per event
+$ somecyclesBy (1/5) (1.25<~)                                               -- 1/5 likeliness of rewinding 1.25 cycles per cycle
+$ sometimesBy  (1/4) (1<~)                                                  -- 1/4 likeliness of rewinding 1 cycles per event
+$ somecyclesBy (1/3) (0.75<~)                                               -- 1/3 likeliness of rewinding 0.75 cycles per event
+$ sometimesBy (1/2) (0.5<~)                                                 -- 1/2 likeliness of rewinding 0.5 cycles per event
+$ somecyclesBy (1/3) (spread _fast (replicate 2 1))                         -- 1/3 likeliness of repeating a cycle per cycle
+$ sometimesBy (1/4) (# n (discretise (1/3) $ slow 0.1 $ choose [40..81]))   -- 1/4 likeliness per event of choosing a value between 40 to 81 and repeating it 3 times 
+$ degradeBy (1/4)                                                           -- A quarter or 0.25 or 25 % of the events won't happen (I like fractions best)
+$ every "2,3..16" (#gain 0)                                                 -- I might be wrong but I think that this 0 gain overrides the gain below every 2,3..16 cycles
+$ s (randcat(                                                               -- Random glueing together of patterns for which folder to play 
+(replicate 2 "has*7")                                                       -- This replicates the "has*7" pattern 2 times
+++ (replicate 2 "has*8")                                                    -- This replicates the "has*8" pattern 2 times (same likelyness as the line above)
+++ (replicate 3 "has*9")                                                    -- This replicates the "has*9" pattern 3 times (the likelyness increases in pairs below) 
+++ (replicate 3 "has*10")                                                   -- This replicates the "has*10" pattern 3 times   
+++ (replicate 4 "has*11")                                                   -- This replicates the "has*11" pattern 4 times
+++ (replicate 4 "has*12")                                                   -- This replicates the "has*12" pattern 4 times
+++ (replicate 5 "has*13")                                                   -- This replicates the "has*13" pattern 5 times
+++ (replicate 5 "has*14")                                                   -- This replicates the "has*14" pattern 5 times
+++ (replicate 6 "has*15")                                                   -- This replicates the "has*15" pattern 6 times
+++ (replicate 6 "has*16")                                                   -- This replicates the "has*16" pattern 6 times
+++ (replicate 7 "has*17")                                                   -- This replicates the "has*17" pattern 7 times
+++ (replicate 7 "has*18")                                                   -- This replicates the "has*18" pattern 7 times
+))                                                                          -- The randcat ends here. I think of this whole randcat bit as weighted choice
+# n (slow 0.1 $ choose [0..81])                                             -- Again, I could be wrong; This line chooses samples unweightedly 1/3 of the time (full chromatic range)
+# pan (slow 0.11 $ scale 0.25 0.75 rand)                                    -- Panning get's chosen on it's own pseudorandom (actually detereministic) stream, not too wide
+# gain (slow 0.12 $ scale 0.1 0.8 $ rand)                                   -- The gain get's chosen on it's own stream, a lot of dynamics in this one 
+# up (discretise (1/512) $ slow 0.15 $ choose [-0.125,0,0,0.125])           -- Every 512 events either a 16th tone above or below or no transposition (note poor-person's weight of 0)
+# nudge (slow 65 $ scale 0 3 $ sine)                                        -- Delays the actual OSC messages 0 to 3 seconds and back again using a sine lfo over 65 cycles 
+                                                                            -- Nudge is meant for setting swing with a single value like 0.5 but superFun to misUse like this instead
+
+cps (-1)                                                                    -- Rewind
+                                                                            
+cps 1                                                                       -- Start from (444<~) (see line 3 above)
