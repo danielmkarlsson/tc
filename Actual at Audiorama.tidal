@@ -1,0 +1,160 @@
+d1
+$ sometimesBy (1/21) (500<~)
+$ sometimesBy (1/17) (25<~)
+$ sometimesBy (1/13) (fast 2)
+$ sometimesBy (1/12) (spread _slow (replicate 2 1))
+$ sometimesBy (1/15) (iter 2)
+$ stack [
+degradeBy 0.75
+$ s "srg:1"
+# rel 0.7,
+s "mcb:9",
+s "sbu:1",
+someCyclesBy (1/2) (0.25<~)
+$ degradeBy 0.5
+$ s "bch" 
+# n (rep (1/2) $ slow 0.1 $ wchoose [3,2..1] [25..26])
+# up (rep (1/5) $ slow 0.12 $ choose [0,1,2,4,6,8,10,11] 
+- 11)
+# lpf (slow 132 $ scalex 20 200 $ sine)
+# cut (slow 0.13 $ wchoose [1,8] [0,1])
+# pan (slow 0.19 $ rand)
+# rel 0.7
+]
+# delay (slow 97 $ scale 0 1 $ saw)
+# delayfb (slow 96 $ scale 0.1 0.94 $ saw)
+# delayt (slow 0.11 $ choose [1/8] * choose [1..19]) 
+# gain (slow 96 $ scale 1 3.8 $ rand)
+# pan (rep (1/8) $ slow 0.1 $ scale 0.4 0.6 $ rand)
+
+t2 (xfadeIn 4) 
+$ s "prr:4*2" 
+# orbit 1
+# rel 0.19 
+# gain (slow 0.17 $ scale 4 4 $ rand)
+# pan (slow 200 $ sine)
+# hpf 1800
+
+m8
+$ sometimesBy (1/21) (500<~)
+$ sometimesBy (1/17) (25<~)
+$ sometimesBy (1/13) (fast 2)
+$ sometimesBy (1/12) (spread _slow (replicate 2 1))
+$ sometimesBy (1/15) (iter 2)
+$ midinote (7 + choose [0..47])
+# cc0 (slow 0.1 $ choose [0,1]) -- Rate
+# cc1 (slow 0.11 $ rand) -- X position
+# cc2 (slow 0.12 $ rand) -- Y position
+# cc3 (slow 0.13 $ rand) -- Width/height
+# cc4 (slow 0.14 $ choose [0,1]) -- Rotate
+# cc5 (slow 0.15 $ rand) -- Left 
+# cc6 (slow 0.16 $ rand) -- Right
+# cc7 (slow 0.17 $ rand) -- Bottom
+# cc8 (slow 0.18 $ rand) -- Top edge
+# cc9 (slow 0.19 $ choose [0,1]) -- Horizontal bleed
+# cc10 (slow 0.19 $ choose [1,0]) -- Vertical bleed
+# cc13 (slow 0.23 $ wchoose [1,1] [0,1]) -- Edge blowout
+# cc14 (slow 0.24 $ wchoose [1,1] [0.5,1]) -- Amp follow
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.
+
+Download this code at:
+
+www.danielmkarlsson.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
