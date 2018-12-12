@@ -1,0 +1,35 @@
+d1
+$ (838<~)
+$ somecyclesBy (1/9) (degradeBy 0.85)
+$ somecyclesBy (1/5) (spread _slow (replicate 5 1))
+$ fast (rep (1/15) $ slow 0.1 $ choose [1,1.1..2])
+$ s (randcat(
+   replicate 1 "hch*9"
+++ replicate 2 "hch*8"
+++ replicate 3 "hch*7"
+++ replicate 4 "hch*6"
+++ replicate 5 "hch*5"
+++ replicate 6 "hch*4"
+++ replicate 7 "hch*3"
+++ replicate 8 "hch*2"
+++ replicate 9 "hch*1"
+++ replicate 10 "hch?"
+))
+# n (rep (1/11) $ slow 0.1 $ choose [11..27])
+# begin (slow 20 $ scalex 0.1 0.8 $ saw)
+# pan (slow 11 $ saw)
+# att (slow 45 $ saw)
+# rel (slow 17 $ scale 1.5 3.8 $ saw)
+# loop (rep (1/7) $ slow 0.11 $ choose [1..11])
+# gain (rep (1/7) $ slow 0.12 $ scale 2 3.5 $ rand)
+# lpf (slow 33 $ scale 320 20000 $ saw)
+# orbit 1
+# delay (slow 67 $ scale 0.01 0.05 $ sine)
+# delayfb 0.97
+# delayt ((1/264) * 4 / wchoose [1..4] [1,2,4,8,16])
+# cut (slow 0.11 $ wchoose [1,4] [0,1])
+# speed (slow 0.12 $ wchoose [100,1] [1,-1])
+
+cps (-1)
+
+cps 1
