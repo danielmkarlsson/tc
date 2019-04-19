@@ -1,0 +1,24 @@
+cps (1)
+
+d1
+$ fast (rep (1/5) $ slow 0.1 $ choose [1,1.01..10.1])
+$ s (randcat(
+   replicate 1 "drm*9"
+++ replicate 2 "drm*8"
+++ replicate 3 "drm*7"
+++ replicate 4 "drm*6"
+++ replicate 5 "drm*5"
+++ replicate 5 "drm*4"
+++ replicate 6 "drm*3"
+++ replicate 7 "drm*2"
+++ replicate 8 "drm*1"
+++ replicate 8 "drm*11"
+++ replicate 8 "drm*13"
+            ))
+# begin (slow 249 $ saw)
+# up (-6)
+# cut (slow 0.11 $ wchoose [1,1] [0,1]) 
+# rel 4
+# pan (slow 0.12 $ wchoose [1,8,1] [0,0.5,1])
+# lpf (slow 0.13 $ scalex 80 20000 $ rand)
+# gain (rep (1/16) $ slow 0.14 $ scalex 2 4 $ rand)
